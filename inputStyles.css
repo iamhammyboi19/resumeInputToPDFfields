@@ -222,7 +222,8 @@ h5 {
 /* --------------------------- EMPLOYMENT DETAILS ------------------------------ */
 
 .employment-div,
-.education-div {
+.education-div,
+.link-div {
   display: flex;
   align-items: center;
   justify-items: center;
@@ -232,18 +233,21 @@ h5 {
   margin-bottom: 3.5rem;
 }
 .add-employment,
-.add-education {
+.add-education,
+.add-link {
   color: #339af0;
   font-size: 2rem;
 }
 .add-employment-text,
-.add-education-text {
+.add-education-text,
+.add-link-text {
   font-size: 1.5rem;
   font-weight: 500;
   color: #339af0;
 }
 .employment-div:hover,
-.education-div:hover {
+.education-div:hover,
+.link-div:hover {
   background-color: #e7f5ff;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -364,12 +368,14 @@ h5 {
 
 /* -------------- employement textarea styles --------------------- */
 .employment-details--,
-.edu-details-- {
+.edu-details--,
+.link-details-- {
   margin-bottom: 1.8rem;
 }
 
 .employment-form,
-.education-form {
+.education-form,
+.socialLink-form {
   margin-top: 4rem;
 }
 .summary-input-emp,
@@ -460,7 +466,8 @@ h5 {
   position: relative;
 }
 .employment-details--,
-.edu-details-- {
+.edu-details--,
+.link-details-- {
   border: 1px solid #e9ecef;
   padding: 1.5rem 1.5rem;
   border-radius: 0.5rem;
@@ -570,7 +577,9 @@ h5 {
 .job-title-update-con-1,
 .job-title-update-con-2,
 .job-title-update-con-1-edu,
-.job-title-update-con-2-edu {
+.job-title-update-con-2-edu,
+.job-title-update-con-1-link,
+.job-title-update-con-2-link {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -580,20 +589,26 @@ h5 {
 .job-title-update-1,
 .job-title-update-2,
 .job-title-update-1-edu,
-.job-title-update-2-edu {
+.job-title-update-2-edu,
+.job-title-update-1-link,
+.job-title-update-2-link {
   font-size: 1.3rem;
 }
 
 .job-title-update-icon[name="chevron-down-outline"],
 .job-title-update-icon[name="chevron-up-outline"],
 .job-title-update-icon-edu[name="chevron-down-outline"],
-.job-title-update-icon-edu[name="chevron-up-outline"] {
+.job-title-update-icon-edu[name="chevron-up-outline"],
+.job-title-update-icon-link[name="chevron-up-outline"],
+.job-title-update-icon-link[name="chevron-down-outline"] {
   font-size: 1.5rem;
 }
 .job-title-update-con-1:hover,
 .job-title-update-con-2:hover,
 .job-title-update-con-1-edu:hover,
-.job-title-update-con-2-edu:hover {
+.job-title-update-con-2-edu:hover,
+.job-title-update-con-1-link:hover,
+.job-title-update-con-2-link:hover {
   cursor: pointer;
   color: #339af0;
   transition: all 0.3s ease;

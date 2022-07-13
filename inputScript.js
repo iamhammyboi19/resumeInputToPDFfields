@@ -85,6 +85,17 @@ const inputDivSchool = document.querySelector(".input-div-school");
 // ------------------------------------------------------------------------------------
 // ------------------------------------------------------------------------------------
 
+// // website & social links
+
+const webSocialLinksSection = document.querySelector(".link-details--");
+const addSocialBtn = document.querySelector(".link-div");
+const socialLinkTitleInp = document.querySelector(".socialLink-job-title-inp");
+const linkTitleUpdate1 = document.querySelector(".job-title-update-con-1-link");
+const linkTitleUpdate2 = document.querySelector(".job-title-update-con-2-link");
+
+// ------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------
+
 const thedate = new Date();
 let curDate = thedate.getFullYear();
 calendarYear.textContent = curDate;
@@ -370,3 +381,8 @@ document.documentElement.addEventListener("click", showHideSuggestionBoxEmploy);
 // hiding positioned element clicking outing the element CALENDAR
 
 // ------------------------------------------------------------------------------------
+
+// show education section
+addSocialBtn.addEventListener("click", function () {
+  webSocialLinksSection.classList.remove("hidden");
+});
