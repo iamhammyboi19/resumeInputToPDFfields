@@ -92,6 +92,10 @@ const addSocialBtn = document.querySelector(".link-div");
 const socialLinkTitleInp = document.querySelector(".socialLink-job-title-inp");
 const linkTitleUpdate1 = document.querySelector(".job-title-update-con-1-link");
 const linkTitleUpdate2 = document.querySelector(".job-title-update-con-2-link");
+const linkTitleUpdateText1 = document.querySelector(".job-title-update-1-link");
+const linkTitleUpdateText2 = document.querySelector(".job-title-update-2-link");
+const WebSocialLinkForm = document.querySelector(".socialLink-form");
+const webLinkTitleInp = document.querySelector(".socialLink-job-title-inp");
 
 // ------------------------------------------------------------------------------------
 // ------------------------------------------------------------------------------------
@@ -274,6 +278,19 @@ calendarMonthsEdu.addEventListener("click", function (e) {
 
 // ------------------------------------------------------------------------------------
 
+// REUSEABLE FUNCTION FOR FILLING THE NON-SPECIFIED PART
+
+const nonSpecificTextFill = function (e) {
+  const jobTitleObs = e.target.value;
+  if (jobTitleObs.length === 0) {
+    this[0].textContent = this[1].textContent = "(Not Specfied)";
+  } else {
+    this[0].textContent = this[1].textContent = jobTitleObs;
+  }
+};
+
+// ------------------------------------------------------------------------------------
+
 // show employment section
 addEmploymentBtn.addEventListener("click", function () {
   employmentSection.classList.remove("hidden");
@@ -290,16 +307,11 @@ jobTitleUpdate1.addEventListener("click", showHideEmploymentform);
 
 jobTitleUpdate2.addEventListener("click", showHideEmploymentform);
 
-employmentJobTitleInp.addEventListener("input", function (e) {
-  const jobTitleObs = e.target.value;
-  if (jobTitleObs.length === 0) {
-    jobtitleUpdatetext1.textContent = jobtitleUpdatetext2.textContent =
-      "(Not Specfied)";
-  } else {
-    jobtitleUpdatetext1.textContent = jobtitleUpdatetext2.textContent =
-      jobTitleObs;
-  }
-});
+employmentJobTitleInp.addEventListener(
+  "input",
+  nonSpecificTextFill.bind([jobtitleUpdatetext1, jobtitleUpdatetext2])
+);
+
 // ------------------------------------------------------------------------------------
 
 // show education section
@@ -318,16 +330,10 @@ schTitleUpdate1.addEventListener("click", showHideEducationform);
 
 schTitleUpdate2.addEventListener("click", showHideEducationform);
 
-educationJobTitleInp.addEventListener("input", function (e) {
-  const sclTitleObs = e.target.value;
-  if (sclTitleObs.length === 0) {
-    schtitleUpdatetext1.textContent = schtitleUpdatetext2.textContent =
-      "(Not Specfied)";
-  } else {
-    schtitleUpdatetext1.textContent = schtitleUpdatetext2.textContent =
-      sclTitleObs;
-  }
-});
+educationJobTitleInp.addEventListener(
+  "input",
+  nonSpecificTextFill.bind([schtitleUpdatetext1, schtitleUpdatetext2])
+);
 
 // ------------------------------------------------------------------------------------
 
@@ -386,3 +392,16 @@ document.documentElement.addEventListener("click", showHideSuggestionBoxEmploy);
 addSocialBtn.addEventListener("click", function () {
   webSocialLinksSection.classList.remove("hidden");
 });
+
+const showHideWebsiteAndSocialLinks = function () {
+  linkTitleUpdate1.classList.toggle("hidden");
+  linkTitleUpdate2.classList.toggle("hidden");
+  WebSocialLinkForm.classList.toggle("hidden");
+};
+
+linkTitleUpdate1.addEventListener("click", showHideWebsiteAndSocialLinks);
+linkTitleUpdate2.addEventListener("click", showHideWebsiteAndSocialLinks);
+webLinkTitleInp.addEventListener(
+  "input",
+  nonSpecificTextFill.bind([linkTitleUpdateText1, linkTitleUpdateText2])
+);
