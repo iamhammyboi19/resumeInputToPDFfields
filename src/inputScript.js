@@ -1,5 +1,7 @@
 "use strict";
 
+import { addMoreEmploymentMarkup } from "./markups.js";
+
 const hiddenForms = document.querySelectorAll(".hidden-input-divs");
 const showFormCon = document.querySelector(".show-form-container");
 const hidFormCon = document.querySelector(".hide-form-container");
@@ -60,7 +62,9 @@ const employmentForm = document.querySelector(".employment-form");
 const employmentTextStyle = document.querySelector(
   ".text-styles-con-employment"
 );
-const addEmploymentBtn = document.querySelector(".employment-div");
+const addEmploymentBtn = document.querySelector(".employment-div-add");
+const addMoreEmploymentBtn = document.querySelector(".employment-div-addMore");
+const employmentParentCon = document.querySelector(".employment-parent");
 const employmentJobTitleInp = document.querySelector(
   ".employment-job-title-inp"
 );
@@ -297,23 +301,105 @@ const nonSpecificTextFill = function (e) {
 // show employment section
 addEmploymentBtn.addEventListener("click", function () {
   employmentSection.classList.remove("hidden");
+  addEmploymentBtn.classList.add("hidden");
+  addMoreEmploymentBtn.classList.remove("hidden");
 });
 
-const showHideEmploymentform = function () {
-  employmentForm.classList.toggle("hidden");
-  jobTitleUpdate1.classList.toggle("hidden");
-  jobTitleUpdate2.classList.toggle("hidden");
-  employmentTextStyle.classList.toggle("hidden");
+// addMoreEmploymentBtn.addEventListener("click", function () {
+//   employmentParentCon.insertAdjacentHTML(
+//     "beforeend",
+//     addMoreEmploymentMarkup()
+//   );
+// });
+
+// employmentParentCon.addEventListener("click", function (e) {
+//   // console.log(e.target.closest(".job-title-update-con-1"));
+//   if (e.target.closest(".job-title-update-con-1")) {
+//     console.log("first");
+//   }
+//   if (e.target.closest(".job-title-update-con-2")) {
+//     console.log("second");
+//   }
+//   // const openBtn = e.target.closest(".job-title-update-con-1");
+//   // const closeBtn = e.target.closest(".job-title-update-con-2");
+//   // if (!openBtn || !closeBtn) return;
+//   // console.log(e.target);
+//   // if (openBtn) {
+//   //   console.log("first");
+//   // }
+//   // if (closeBtn) {
+//   //   console.log("second");
+//   // }
+// });
+
+// const showHideEmploymentform = function () {
+//   employmentForm.classList.toggle("hidden");
+//   jobTitleUpdate1.classList.toggle("hidden");
+//   jobTitleUpdate2.classList.toggle("hidden");
+//   employmentTextStyle.classList.toggle("hidden");
+// };
+
+// jobTitleUpdate1.addEventListener("click", showHideEmploymentform);
+
+// jobTitleUpdate2.addEventListener("click", showHideEmploymentform);
+
+const showHideEmploymentform = function (e) {
+  e.target
+    .closest(".employment-details--")
+    .querySelector(".employment-form")
+    .classList.toggle("hidden");
+  e.target
+    .closest(".employment-details--")
+    .querySelector(".job-title-update-con-1")
+    .classList.toggle("hidden");
+  e.target
+    .closest(".employment-details--")
+    .querySelector(".job-title-update-con-2")
+    .classList.toggle("hidden");
+  e.target
+    .closest(".employment-details--")
+    .querySelector(".text-styles-con-employment")
+    .classList.toggle("hidden");
 };
 
-jobTitleUpdate1.addEventListener("click", showHideEmploymentform);
+addMoreEmploymentBtn.addEventListener("click", function () {
+  employmentParentCon.insertAdjacentHTML(
+    "beforeend",
+    addMoreEmploymentMarkup()
+  );
+});
 
-jobTitleUpdate2.addEventListener("click", showHideEmploymentform);
+employmentParentCon.addEventListener("click", function (e) {
+  if (e.target.closest(".job-title-update-con-1")) {
+    showHideEmploymentform(e);
+  }
 
-employmentJobTitleInp.addEventListener(
-  "input",
-  nonSpecificTextFill.bind([jobtitleUpdatetext1, jobtitleUpdatetext2])
-);
+  if (e.target.closest(".job-title-update-con-2")) {
+    showHideEmploymentform(e);
+  }
+
+  if (e.target.closest(".employment-details--")) {
+    e.target
+      .closest(".employment-details--")
+      .querySelector(".employment-job-title-inp")
+      .addEventListener(
+        "input",
+        nonSpecificTextFill.bind([
+          e.target
+            .closest(".employment-details--")
+            .querySelector(".job-title-update-1"),
+          e.target
+            .closest(".employment-details--")
+            .querySelector(".job-title-update-2"),
+        ])
+      );
+  }
+});
+
+// employmentJobTitleInp.addEventListener(
+//   "input",
+//   nonSpecificTextFill.bind([jobtitleUpdatetext1, jobtitleUpdatetext2])
+// );
 
 // ------------------------------------------------------------------------------------
 

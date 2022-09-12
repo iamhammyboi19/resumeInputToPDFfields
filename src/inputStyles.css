@@ -373,6 +373,9 @@ h5 {
 .link-details-- {
   margin-bottom: 1.8rem;
 }
+.employment-parent {
+  list-style: none;
+}
 .employment-form,
 .education-form,
 .socialLink-form {
