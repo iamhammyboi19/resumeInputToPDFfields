@@ -96,7 +96,10 @@ const linkTitleUpdateText1 = document.querySelector(".job-title-update-1-link");
 const linkTitleUpdateText2 = document.querySelector(".job-title-update-2-link");
 const WebSocialLinkForm = document.querySelector(".socialLink-form");
 const webLinkTitleInp = document.querySelector(".socialLink-job-title-inp");
-
+const deleteSocialLink = document.querySelector(".delete-link-con");
+const linkDeleteAndSocialCon = document.querySelector(
+  ".link-detailsAndDeleteCon"
+);
 // ------------------------------------------------------------------------------------
 // ------------------------------------------------------------------------------------
 
@@ -405,3 +408,9 @@ webLinkTitleInp.addEventListener(
   "input",
   nonSpecificTextFill.bind([linkTitleUpdateText1, linkTitleUpdateText2])
 );
+// linkDeleteAndSocialCon.addEventListener("mouseover", function () {
+//   deleteSocialLink.classList.remove("hidden");
+// });
+// linkDeleteAndSocialCon.addEventListener("mouseout", function () {
+//   deleteSocialLink.classList.add("hidden");
+// });

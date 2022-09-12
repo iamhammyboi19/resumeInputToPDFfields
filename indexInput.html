@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Start making your resume</title>
-    <link href="inputStyles.css" rel="stylesheet" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -16,6 +16,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
     />
+    <link href="inputStyles.css" rel="stylesheet" />
 
     <script defer src="inputScript.js"></script>
   </head>
@@ -490,53 +491,55 @@
           website
         </p>
 
-       
-
-        <div class="link-details-- hidden">
-          <div class="calendar-form-div-con-link">
-            <div>
-              <div class="job-title-update-div-link">
-                <span class="job-title-update-con-1-link">
-                  <h6 class="job-title-update-1-link">(Not specified)</h6>
-                  <ion-icon
-                    name="chevron-down-outline"
-                    class="job-title-update-icon-link"
-                  ></ion-icon
-                ></span>
-                <span class="job-title-update-con-2-link hidden">
-                  <h6 class="job-title-update-2-link">(Not specified)</h6>
-                  <ion-icon
-                    name="chevron-up-outline"
-                    class="job-title-update-icon-link"
-                  ></ion-icon
-                ></span>
-              </div>
-              <form class="main-form socialLink-form hidden">
-                <div class="input-div input-div-school">
-                  <label class="personal-d-label">Label</label>
-                  <input
-                    type="text"
-                    class="personal-d-input-1 per-det-inp socialLink-job-title-inp"
-                  />
+        <div class="link-detailsAndDeleteCon">
+          <div class="link-details-- hidden">
+            <div class="calendar-form-div-con-link">
+              <div>
+                <div class="job-title-update-div-link">
+                  <span class="job-title-update-con-1-link">
+                    <h6 class="job-title-update-1-link">(Not specified)</h6>
+                    <ion-icon
+                      name="chevron-down-outline"
+                      class="job-title-update-icon-link"
+                    ></ion-icon
+                  ></span>
+                  <span class="job-title-update-con-2-link hidden">
+                    <h6 class="job-title-update-2-link">(Not specified)</h6>
+                    <ion-icon
+                      name="chevron-up-outline"
+                      class="job-title-update-icon-link"
+                    ></ion-icon
+                  ></span>
                 </div>
-                <div class="input-div">
-                  <label class="personal-d-label">Link</label>
-                  <input type="text" class="personal-d-input-1 per-det-inp" />
-                </div>
-              </form>       
-                </div>
+                <form class="main-form socialLink-form hidden">
+                  <div class="input-div input-div-school">
+                    <label class="personal-d-label">Label</label>
+                    <input
+                      type="text"
+                      class="personal-d-input-1 per-det-inp socialLink-job-title-inp"
+                    />
+                  </div>
+                  <div class="input-div">
+                    <label class="personal-d-label">Link</label>
+                    <input type="text" class="personal-d-input-1 per-det-inp" />
+                  </div>
+                </form>
               </div>
             </div>
-            <div class="link-div">
-              <ion-icon name="add-outline" class="add-link"></ion-icon>
-              <span class="add-link-text">Add Link</span>
-            </div>
-
           </div>
-       
+          <div class="delete-link-con hidden">
+            <ion-icon name="trash-outline" class="delete-link"></ion-icon>
+          </div>
+        </div>
+        <div class="link-div">
+          <ion-icon name="add-outline" class="add-link"></ion-icon>
+          <span class="add-link-text">Add Link</span>
+        </div>
+        <div class="link-div-2 hidden">
+          <ion-icon name="add-outline" class="add-link"></ion-icon>
+          <span class="add-link-text">Add one more link</span>
+        </div>
       </div>
-
-      
     </div>
 
     <script
