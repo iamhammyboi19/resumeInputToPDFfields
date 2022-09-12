@@ -344,6 +344,8 @@ addEmploymentBtn.addEventListener("click", function () {
 // jobTitleUpdate2.addEventListener("click", showHideEmploymentform);
 
 const showHideEmploymentform = function (e) {
+  // SELECT EACH FORM THROUGH THE PARENT ELEMENT AND HIDE AND SHOW WHEREVER YOU CLICK ON THE BUTTON
+
   e.target
     .closest(".employment-details--")
     .querySelector(".employment-form")
@@ -378,13 +380,18 @@ employmentParentCon.addEventListener("click", function (e) {
     showHideEmploymentform(e);
   }
 
+  // FILLING THE NOT SPECIFIED AREA IN THE FORM
+
   if (e.target.closest(".employment-details--")) {
+    // SELECT THE CURRENT ELEMENT INPUT FORM ON CLICK AND addEventListener to it
+
     e.target
       .closest(".employment-details--")
       .querySelector(".employment-job-title-inp")
       .addEventListener(
         "input",
         nonSpecificTextFill.bind([
+          // SELECT THE NON SPECIFIED FIELD AREA FOR EACH CURRENT FORM ELEMENT
           e.target
             .closest(".employment-details--")
             .querySelector(".job-title-update-1"),
