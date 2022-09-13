@@ -367,13 +367,45 @@ h5 {
   visibility: visible;
 }
 
+/* delete icon */
+.edu-details--,
+.employment-details-- {
+  position: relative;
+}
+.edu-delete-icon-container,
+.employ-delete-icon-container {
+  position: absolute;
+  right: 0;
+  top: 30%;
+  transform: translateX(150%);
+  opacity: 0;
+}
+.education-parent:hover,
+.employment-parent:hover {
+  cursor: pointer;
+}
+.edu-details--:hover .edu-delete-icon-container,
+.employment-details--:hover .employ-delete-icon-container {
+  opacity: 100;
+  transition: all 0.3s ease-in-out;
+}
+.delete-icon {
+  font-size: 2rem;
+  color: #495057;
+}
+.delete-icon:hover {
+  color: #4dabf7;
+  cursor: pointer;
+}
+
 /* -------------- employement textarea styles --------------------- */
 .employment-details--,
 .edu-details--,
 .link-details-- {
   margin-bottom: 1.8rem;
 }
-.employment-parent {
+.employment-parent,
+.education-parent {
   list-style: none;
 }
 .employment-form,

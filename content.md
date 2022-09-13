@@ -167,3 +167,91 @@ Dedicated Visual Artist with a decorated background in a variety of artistic med
                   </div>
                 </aside>
    </div> -->
+
+<!-- // addMoreEmploymentBtn.addEventListener("click", function () {
+// employmentParentCon.insertAdjacentHTML(
+// "beforeend",
+// addMoreEmploymentMarkup()
+// );
+// });
+
+// employmentParentCon.addEventListener("click", function (e) {
+// // console.log(e.target.closest(".job-title-update-con-1"));
+// if (e.target.closest(".job-title-update-con-1")) {
+// console.log("first");
+// }
+// if (e.target.closest(".job-title-update-con-2")) {
+// console.log("second");
+// }
+// // const openBtn = e.target.closest(".job-title-update-con-1");
+// // const closeBtn = e.target.closest(".job-title-update-con-2");
+// // if (!openBtn || !closeBtn) return;
+// // console.log(e.target);
+// // if (openBtn) {
+// // console.log("first");
+// // }
+// // if (closeBtn) {
+// // console.log("second");
+// // }
+// }); -->
+
+<!-- // const showHideEmploymentform = function () {
+// employmentForm.classList.toggle("hidden");
+// jobTitleUpdate1.classList.toggle("hidden");
+// jobTitleUpdate2.classList.toggle("hidden");
+// employmentTextStyle.classList.toggle("hidden");
+// };
+
+// jobTitleUpdate1.addEventListener("click", showHideEmploymentform);
+
+// jobTitleUpdate2.addEventListener("click", showHideEmploymentform);
+
+// employmentJobTitleInp.addEventListener(
+// "input",
+// nonSpecificTextFill.bind([jobtitleUpdatetext1, jobtitleUpdatetext2])
+// );
+
+// linkDeleteAndSocialCon.addEventListener("mouseover", function () {
+// deleteSocialLink.classList.remove("hidden");
+// });
+// linkDeleteAndSocialCon.addEventListener("mouseout", function () {
+// deleteSocialLink.classList.add("hidden");
+// }); -->
+
+<!-- this[0].target
+    .closest(this[1])
+    .querySelector(this[2])
+    .classList.toggle("hidden");
+  this[0].target
+    .closest(this[1])
+    .querySelector(this[3])
+    .classList.toggle("hidden");
+  this[0].target
+    .closest(this[1])
+    .querySelector(this[4])
+    .classList.toggle("hidden");
+  this[0].target
+    .closest(this[1])
+    .querySelector(this[5])
+    .classList.toggle("hidden"); -->
+
+<!-- // const showHideEmploymentform = function (e) {
+//   // SELECT EACH FORM THROUGH THE PARENT ELEMENT AND HIDE AND SHOW WHEREVER YOU CLICK ON THE BUTTON
+
+//   e.target
+//     .closest(".employment-details--")
+//     .querySelector(".employment-form")
+//     .classList.toggle("hidden");
+//   e.target
+//     .closest(".employment-details--")
+//     .querySelector(".job-title-update-con-1")
+//     .classList.toggle("hidden");
+//   e.target
+//     .closest(".employment-details--")
+//     .querySelector(".job-title-update-con-2")
+//     .classList.toggle("hidden");
+//   e.target
+//     .closest(".employment-details--")
+//     .querySelector(".text-styles-con-employment")
+//     .classList.toggle("hidden");
+// }; -->

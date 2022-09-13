@@ -1,6 +1,10 @@
 "use strict";
 
-import { addMoreEmploymentMarkup } from "./markups.js";
+import { addMoreEducationMarkup, addMoreEmploymentMarkup } from "./markups.js";
+import { textareaFillWhole, textareaFill } from "./textAreaFillWhole.js";
+import { showHideEmploymentform, showHideEmDetails } from "./employments.js";
+
+import { showHideEducationform, showHideEduDetails } from "./education.js";
 
 const hiddenForms = document.querySelectorAll(".hidden-input-divs");
 const showFormCon = document.querySelector(".show-form-container");
@@ -79,6 +83,7 @@ const educationSection = document.querySelector(".edu-details--");
 const schTitleUpdate1 = document.querySelector(".job-title-update-con-1-edu");
 const schTitleUpdate2 = document.querySelector(".job-title-update-con-2-edu");
 const educationForm = document.querySelector(".education-form");
+const educationParentCon = document.querySelector(".education-parent");
 const educationTextStyle = document.querySelector(".text-styles-con-education");
 const addEducationBtn = document.querySelector(".education-div-add");
 const addMoreEducationBtn = document.querySelector(".education-div-addMore");
@@ -154,21 +159,6 @@ hideSuggestBoxEm.addEventListener("click", showHideSuggestBoxEmployFunc);
 
 // ------------------------------------------------------------------------------------
 
-const textareaFill = function (e) {
-  if (!e.target.classList.contains(`${this[0]}`)) return;
-  const thetextContent = e.target.textContent.split(" ");
-  const theevent = e.target;
-  theevent.style.pointerEvents = "none";
-  theevent.style.color = "#868e96";
-  const thefiltered = thetextContent.filter((r) => r.length > 0);
-  const filtered2 = thefiltered.filter((r) => r.trim());
-  const filtered3 = filtered2.filter((r) => {
-    if (!r.endsWith("\n")) return r;
-  });
-  const thejoinedTextContent = filtered3.join(" ");
-  this[1].textContent += thejoinedTextContent + " ";
-};
-
 theBoxTexts.addEventListener(
   "click",
   textareaFill.bind(["suggestion-texts", textareaInput])
@@ -180,23 +170,6 @@ theBoxTextsEmploy.addEventListener(
 );
 
 // ------------------------------------------------------------------------------------
-
-const textareaFillWhole = function (e) {
-  const thetextContent = this[0].textContent.split(" ");
-  [...this[1]].forEach((e) => {
-    e.style.pointerEvents = "none";
-    e.style.color = "#868e96";
-  });
-  this[2].classList.toggle("hide-open-close-btn");
-  this[3].classList.toggle("hide-open-close-btn");
-  const thefiltered = thetextContent.filter((r) => r.length > 0);
-  const filtered2 = thefiltered.filter((r) => r.trim());
-  const filtered3 = filtered2.filter((r) => {
-    if (!r.endsWith("\n")) return r;
-  });
-  const thejoinedTextContent = filtered3.join(" ");
-  this[4].textContent += thejoinedTextContent + "." + " ";
-};
 
 // theBoxTexts suggestionTexts prePhraseArrowBtn prePhraseCloseArrowBtn textareaInput
 // fill textarea at once for first suggestion text
@@ -306,65 +279,6 @@ addEmploymentBtn.addEventListener("click", function () {
   addMoreEmploymentBtn.classList.remove("hidden");
 });
 
-// addMoreEmploymentBtn.addEventListener("click", function () {
-//   employmentParentCon.insertAdjacentHTML(
-//     "beforeend",
-//     addMoreEmploymentMarkup()
-//   );
-// });
-
-// employmentParentCon.addEventListener("click", function (e) {
-//   // console.log(e.target.closest(".job-title-update-con-1"));
-//   if (e.target.closest(".job-title-update-con-1")) {
-//     console.log("first");
-//   }
-//   if (e.target.closest(".job-title-update-con-2")) {
-//     console.log("second");
-//   }
-//   // const openBtn = e.target.closest(".job-title-update-con-1");
-//   // const closeBtn = e.target.closest(".job-title-update-con-2");
-//   // if (!openBtn || !closeBtn) return;
-//   // console.log(e.target);
-//   // if (openBtn) {
-//   //   console.log("first");
-//   // }
-//   // if (closeBtn) {
-//   //   console.log("second");
-//   // }
-// });
-
-// const showHideEmploymentform = function () {
-//   employmentForm.classList.toggle("hidden");
-//   jobTitleUpdate1.classList.toggle("hidden");
-//   jobTitleUpdate2.classList.toggle("hidden");
-//   employmentTextStyle.classList.toggle("hidden");
-// };
-
-// jobTitleUpdate1.addEventListener("click", showHideEmploymentform);
-
-// jobTitleUpdate2.addEventListener("click", showHideEmploymentform);
-
-const showHideEmploymentform = function (e) {
-  // SELECT EACH FORM THROUGH THE PARENT ELEMENT AND HIDE AND SHOW WHEREVER YOU CLICK ON THE BUTTON
-
-  e.target
-    .closest(".employment-details--")
-    .querySelector(".employment-form")
-    .classList.toggle("hidden");
-  e.target
-    .closest(".employment-details--")
-    .querySelector(".job-title-update-con-1")
-    .classList.toggle("hidden");
-  e.target
-    .closest(".employment-details--")
-    .querySelector(".job-title-update-con-2")
-    .classList.toggle("hidden");
-  e.target
-    .closest(".employment-details--")
-    .querySelector(".text-styles-con-employment")
-    .classList.toggle("hidden");
-};
-
 addMoreEmploymentBtn.addEventListener("click", function () {
   employmentParentCon.insertAdjacentHTML(
     "beforeend",
@@ -374,11 +288,11 @@ addMoreEmploymentBtn.addEventListener("click", function () {
 
 employmentParentCon.addEventListener("click", function (e) {
   if (e.target.closest(".job-title-update-con-1")) {
-    showHideEmploymentform(e);
+    showHideEmploymentform.bind(showHideEmDetails)(e);
   }
 
   if (e.target.closest(".job-title-update-con-2")) {
-    showHideEmploymentform(e);
+    showHideEmploymentform.bind(showHideEmDetails)(e);
   }
 
   // FILLING THE NOT SPECIFIED AREA IN THE FORM
@@ -404,33 +318,49 @@ employmentParentCon.addEventListener("click", function (e) {
   }
 });
 
-// employmentJobTitleInp.addEventListener(
-//   "input",
-//   nonSpecificTextFill.bind([jobtitleUpdatetext1, jobtitleUpdatetext2])
-// );
-
 // ------------------------------------------------------------------------------------
 
 // show education section
 addEducationBtn.addEventListener("click", function () {
   educationSection.classList.remove("hidden");
+  addEducationBtn.classList.add("hidden");
+  addMoreEducationBtn.classList.remove("hidden");
 });
 
-const showHideEducationform = function () {
-  educationForm.classList.toggle("hidden");
-  schTitleUpdate1.classList.toggle("hidden");
-  schTitleUpdate2.classList.toggle("hidden");
-  educationTextStyle.classList.toggle("hidden");
-};
+addMoreEducationBtn.addEventListener("click", function () {
+  educationParentCon.insertAdjacentHTML("beforeend", addMoreEducationMarkup());
+});
 
-schTitleUpdate1.addEventListener("click", showHideEducationform);
+educationParentCon.addEventListener("click", function (e) {
+  if (e.target.closest(".job-title-update-con-1-edu")) {
+    showHideEducationform.bind(showHideEduDetails)(e);
+  }
+  if (e.target.closest(".job-title-update-con-2-edu")) {
+    showHideEducationform.bind(showHideEduDetails)(e);
+  }
 
-schTitleUpdate2.addEventListener("click", showHideEducationform);
+  // FILLING THE NOT SPECIFIED AREA IN THE FORM
 
-educationJobTitleInp.addEventListener(
-  "input",
-  nonSpecificTextFill.bind([schtitleUpdatetext1, schtitleUpdatetext2])
-);
+  if (e.target.closest(".edu-details--")) {
+    // SELECT THE CURRENT ELEMENT INPUT FORM ON CLICK AND addEventListener to it
+
+    e.target
+      .closest(".edu-details--")
+      .querySelector(".education-job-title-inp")
+      .addEventListener(
+        "input",
+        nonSpecificTextFill.bind([
+          // SELECT THE NON SPECIFIED FIELD AREA FOR EACH CURRENT FORM ELEMENT
+          e.target
+            .closest(".edu-details--")
+            .querySelector(".job-title-update-1-edu"),
+          e.target
+            .closest(".edu-details--")
+            .querySelector(".job-title-update-2-edu"),
+        ])
+      );
+  }
+});
 
 // ------------------------------------------------------------------------------------
 
@@ -445,6 +375,20 @@ educationJobTitleInp.addEventListener(
 5) show the open->(show-suggestion-box-btn) btn under the second condition
 
 */
+
+const showHideSuggestionBoxEmploy = function (e) {
+  if (
+    e.target.closest(".suggestion-texts-con-div-emp") ||
+    e.target.closest(".pre-written-employment") ||
+    e.target.closest(".close-pre-con-employment")
+  )
+    return;
+  suggestionBoxDivEmploy.classList.remove("hide-suggestion-box-emp");
+  if (!suggestionBoxDivEmploy.classList.contains("hide-suggestion-box-emp")) {
+    showSuggestBoxEmploy.classList.remove("hide-open-close-btn");
+    hideSuggestBoxEm.classList.add("hide-open-close-btn");
+  }
+};
 
 const showHideSuggestionBoxProf = function (e) {
   if (
@@ -461,25 +405,11 @@ const showHideSuggestionBoxProf = function (e) {
 };
 
 document.documentElement.addEventListener("click", showHideSuggestionBoxProf);
+document.documentElement.addEventListener("click", showHideSuggestionBoxEmploy);
 
 // hiding positioned element clicking outing the element EMPLOY
 
 // suggestion-texts-con-div-emp pre-written-employment close-pre-con-employment hide-suggestion-box-emp
-
-const showHideSuggestionBoxEmploy = function (e) {
-  if (
-    e.target.closest(".suggestion-texts-con-div-emp") ||
-    e.target.closest(".pre-written-employment") ||
-    e.target.closest(".close-pre-con-employment")
-  )
-    return;
-  suggestionBoxDivEmploy.classList.remove("hide-suggestion-box-emp");
-  if (!suggestionBoxDivEmploy.classList.contains("hide-suggestion-box-emp")) {
-    showSuggestBoxEmploy.classList.remove("hide-open-close-btn");
-    hideSuggestBoxEm.classList.add("hide-open-close-btn");
-  }
-};
-document.documentElement.addEventListener("click", showHideSuggestionBoxEmploy);
 
 // hiding positioned element clicking outing the element CALENDAR
 
@@ -502,9 +432,3 @@ webLinkTitleInp.addEventListener(
   "input",
   nonSpecificTextFill.bind([linkTitleUpdateText1, linkTitleUpdateText2])
 );
-// linkDeleteAndSocialCon.addEventListener("mouseover", function () {
-//   deleteSocialLink.classList.remove("hidden");
-// });
-// linkDeleteAndSocialCon.addEventListener("mouseout", function () {
-//   deleteSocialLink.classList.add("hidden");
-// });
