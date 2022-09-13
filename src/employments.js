@@ -8,6 +8,7 @@ const showHideEmploymentform = function (e) {
 };
 
 // [parent, form, formTitleUpdate1, formTitleUpdate2, textStyle]
+
 const showHideEmDetails = [
   ".employment-details--",
   ".employment-form",

@@ -1,8 +1,18 @@
 "use strict";
 
-import { addMoreEducationMarkup, addMoreEmploymentMarkup } from "./markups.js";
+import {
+  addMoreEducationMarkup,
+  addMoreEmploymentMarkup,
+  addMoreWebsiteLinkMarkup,
+} from "./markups.js";
+
 import { textareaFillWhole, textareaFill } from "./textAreaFillWhole.js";
 import { showHideEmploymentform, showHideEmDetails } from "./employments.js";
+
+import {
+  showHideWebDetails,
+  showHideWebsiteAndSocialLinks,
+} from "./websitelinks.js";
 
 import { showHideEducationform, showHideEduDetails } from "./education.js";
 
@@ -98,7 +108,9 @@ const inputDivSchool = document.querySelector(".input-div-school");
 // // website & social links
 
 const webSocialLinksSection = document.querySelector(".link-details--");
-const addSocialBtn = document.querySelector(".link-div");
+const webSocialLinkParent = document.querySelector(".weblink-parent");
+const addSocialBtn = document.querySelector(".link-div-add");
+const addMoreSocialBtn = document.querySelector(".link-div-addMore");
 const socialLinkTitleInp = document.querySelector(".socialLink-job-title-inp");
 const linkTitleUpdate1 = document.querySelector(".job-title-update-con-1-link");
 const linkTitleUpdate2 = document.querySelector(".job-title-update-con-2-link");
@@ -107,11 +119,13 @@ const linkTitleUpdateText2 = document.querySelector(".job-title-update-2-link");
 const WebSocialLinkForm = document.querySelector(".socialLink-form");
 const webLinkTitleInp = document.querySelector(".socialLink-job-title-inp");
 const deleteSocialLink = document.querySelector(".delete-link-con");
-const linkDeleteAndSocialCon = document.querySelector(
-  ".link-detailsAndDeleteCon"
-);
+// const linkDeleteAndSocialCon = document.querySelector(
+//   ".link-detailsAndDeleteCon"
+// );
 // ------------------------------------------------------------------------------------
 // ------------------------------------------------------------------------------------
+
+// CURRENT DATE
 
 const thedate = new Date();
 let curDate = thedate.getFullYear();
@@ -279,6 +293,7 @@ addEmploymentBtn.addEventListener("click", function () {
   addMoreEmploymentBtn.classList.remove("hidden");
 });
 
+// ADDING MORE SECTION
 addMoreEmploymentBtn.addEventListener("click", function () {
   employmentParentCon.insertAdjacentHTML(
     "beforeend",
@@ -316,6 +331,14 @@ employmentParentCon.addEventListener("click", function (e) {
         ])
       );
   }
+
+  // DELETE FORM
+  if (e.target.closest(".employ-delete-icon-container")) {
+    const curDeleteBtn = e.target.closest(".employ-delete-icon-container");
+    curDeleteBtn
+      .closest(".employment-details--")
+      .parentElement.removeChild(curDeleteBtn.closest(".employment-details--"));
+  }
 });
 
 // ------------------------------------------------------------------------------------
@@ -327,10 +350,12 @@ addEducationBtn.addEventListener("click", function () {
   addMoreEducationBtn.classList.remove("hidden");
 });
 
+// ADDING MORE SECTION
 addMoreEducationBtn.addEventListener("click", function () {
   educationParentCon.insertAdjacentHTML("beforeend", addMoreEducationMarkup());
 });
 
+// SHOW AND HIDE FORM ON CLICK
 educationParentCon.addEventListener("click", function (e) {
   if (e.target.closest(".job-title-update-con-1-edu")) {
     showHideEducationform.bind(showHideEduDetails)(e);
@@ -360,8 +385,75 @@ educationParentCon.addEventListener("click", function (e) {
         ])
       );
   }
+
+  // DELETE FORM
+  if (e.target.closest(".edu-delete-icon-container")) {
+    const curDeleteBtn = e.target.closest(".edu-delete-icon-container");
+    curDeleteBtn
+      .closest(".edu-details--")
+      .parentElement.removeChild(curDeleteBtn.closest(".edu-details--"));
+  }
 });
 
+// ------------------------------------------------------------------------------------
+
+// ------------------------------------------------------------------------------------
+
+// show education section
+addSocialBtn.addEventListener("click", function () {
+  webSocialLinksSection.classList.remove("hidden");
+  addSocialBtn.classList.add("hidden");
+  addMoreSocialBtn.classList.remove("hidden");
+});
+
+// ADDING MORE SECTION
+addMoreSocialBtn.addEventListener("click", function () {
+  webSocialLinkParent.insertAdjacentHTML(
+    "beforeend",
+    addMoreWebsiteLinkMarkup()
+  );
+});
+
+// SHOW AND HIDE FORM ON CLICK
+webSocialLinkParent.addEventListener("click", function (e) {
+  if (e.target.closest(".job-title-update-con-1-link")) {
+    showHideWebsiteAndSocialLinks.bind(showHideWebDetails)(e);
+  }
+
+  if (e.target.closest(".job-title-update-con-2-link")) {
+    showHideWebsiteAndSocialLinks.bind(showHideWebDetails)(e);
+  }
+
+  // FILLING THE NOT SPECIFIED AREA IN THE FORM
+  if (e.target.closest(".link-details--")) {
+    // SELECT THE CURRENT ELEMENT INPUT FORM ON CLICK AND addEventListener to it
+    e.target
+      .closest(".link-details--")
+      .querySelector(".socialLink-job-title-inp")
+      .addEventListener(
+        "input",
+        nonSpecificTextFill.bind([
+          // SELECT THE NON SPECIFIED FIELD AREA FOR EACH CURRENT FORM ELEMENT
+          e.target
+            .closest(".link-details--")
+            .querySelector(".job-title-update-1-link"),
+          e.target
+            .closest(".link-details--")
+            .querySelector(".job-title-update-2-link"),
+        ])
+      );
+  }
+
+  // DELETE FORM
+  if (e.target.closest(".weblink-delete-icon-container")) {
+    const curDeleteBtn = e.target.closest(".weblink-delete-icon-container");
+    curDeleteBtn
+      .closest(".link-details--")
+      .parentElement.removeChild(curDeleteBtn.closest(".link-details--"));
+  }
+});
+
+// ------------------------------------------------------------------------------------
 // ------------------------------------------------------------------------------------
 
 // hiding positioned element clicking outing the element PROFESSIONAL
@@ -412,23 +504,3 @@ document.documentElement.addEventListener("click", showHideSuggestionBoxEmploy);
 // suggestion-texts-con-div-emp pre-written-employment close-pre-con-employment hide-suggestion-box-emp
 
 // hiding positioned element clicking outing the element CALENDAR
-
-// ------------------------------------------------------------------------------------
-
-// show education section
-addSocialBtn.addEventListener("click", function () {
-  webSocialLinksSection.classList.remove("hidden");
-});
-
-const showHideWebsiteAndSocialLinks = function () {
-  linkTitleUpdate1.classList.toggle("hidden");
-  linkTitleUpdate2.classList.toggle("hidden");
-  WebSocialLinkForm.classList.toggle("hidden");
-};
-
-linkTitleUpdate1.addEventListener("click", showHideWebsiteAndSocialLinks);
-linkTitleUpdate2.addEventListener("click", showHideWebsiteAndSocialLinks);
-webLinkTitleInp.addEventListener(
-  "input",
-  nonSpecificTextFill.bind([linkTitleUpdateText1, linkTitleUpdateText2])
-);

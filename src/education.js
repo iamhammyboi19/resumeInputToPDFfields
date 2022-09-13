@@ -7,6 +7,8 @@ const showHideEducationform = function (e) {
   e.target.closest(this[0]).querySelector(this[4]).classList.toggle("hidden");
 };
 
+// [parent, form, formTitleUpdate1, formTitleUpdate2, textStyle]
+
 const showHideEduDetails = [
   ".edu-details--",
   ".education-form",

@@ -367,13 +367,15 @@ h5 {
   visibility: visible;
 }
 
-/* delete icon */
+/*--------------- delete icon -----------------*/
 .edu-details--,
-.employment-details-- {
+.employment-details--,
+.link-details-- {
   position: relative;
 }
 .edu-delete-icon-container,
-.employ-delete-icon-container {
+.employ-delete-icon-container,
+.weblink-delete-icon-container {
   position: absolute;
   right: 0;
   top: 30%;
@@ -381,11 +383,13 @@ h5 {
   opacity: 0;
 }
 .education-parent:hover,
-.employment-parent:hover {
+.employment-parent:hover,
+.weblink-parent:hover {
   cursor: pointer;
 }
 .edu-details--:hover .edu-delete-icon-container,
-.employment-details--:hover .employ-delete-icon-container {
+.employment-details--:hover .employ-delete-icon-container,
+.link-details--:hover .weblink-delete-icon-container {
   opacity: 100;
   transition: all 0.3s ease-in-out;
 }
@@ -405,7 +409,8 @@ h5 {
   margin-bottom: 1.8rem;
 }
 .employment-parent,
-.education-parent {
+.education-parent,
+.weblink-parent {
   list-style: none;
 }
 .employment-form,
@@ -650,19 +655,19 @@ h5 {
 }
 
 /* ------------------------- link part ------------------------ */
-.link-detailsAndDeleteCon {
+/* .link-detailsAndDeleteCon {
   display: grid;
   grid-template-columns: 3fr 0.1fr;
   column-gap: 0.5rem;
   align-items: flex-start;
-}
-.delete-link-con {
+} */
+/* .delete-link-con {
   margin-top: 1rem;
 }
 .delete-link-con:hover,
 .link-detailsAndDeleteCon:hover {
   cursor: pointer;
-}
+} */
 /*  ------------------- hide few things ----------------------- */
 .hide-open-close-btn,
 .hidden {
