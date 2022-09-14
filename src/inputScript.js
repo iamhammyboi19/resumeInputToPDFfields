@@ -294,28 +294,6 @@ if (calendarMonthsEdu) {
     calendarDivEdu.classList.toggle("hide-show-calendar-div");
   });
 }
-
-// deductCurYearEdu.addEventListener("click", function () {
-//   +curYearEdu--;
-//   calendarYearEdu.textContent = curYearEdu;
-// });
-
-// addCurYearEdu.addEventListener("click", function () {
-//   +curYearEdu++;
-//   calendarYearEdu.textContent = curYearEdu;
-// });
-
-// calendarYearEdu.addEventListener("click", function () {
-//   startDateEdu.value = calendarYearEdu.textContent;
-// });
-
-// calendarMonthsEdu.addEventListener("click", function (e) {
-//   if (e.target.classList.contains("calendar-months-con-edu")) return;
-//   startDateEdu.value =
-//     e.target.textContent + "," + " " + calendarYearEdu.textContent;
-//   calendarDivEdu.classList.toggle("hide-show-calendar-div");
-// });
-
 // ------------------------------------------------------------------------------------
 
 // REUSEABLE FUNCTION FOR FILLING THE NON-SPECIFIED PART
@@ -457,11 +435,6 @@ educationParentCon.addEventListener("click", function (e) {
 // ------------------------------------------------------------------------------------
 
 // show education section
-// addSocialBtn.addEventListener("click", function () {
-//   webSocialLinksSection.classList.remove("hidden");
-//   addSocialBtn.classList.add("hidden");
-//   addMoreSocialBtn.classList.remove("hidden");
-// });
 
 // ADDING MORE SECTION
 addSocialBtn.addEventListener("click", function () {
@@ -518,11 +491,6 @@ webSocialLinkParent.addEventListener("click", function (e) {
 
 // ------------------------------------------------------------------------------------
 // ------------------------------------------------------------------------------------
-
-// const addSkillsBtn = document.querySelector(".skills-div-add");
-// const skillsParentCon = document.querySelector(".skills-parent");
-// // job-title-update-con-1-skills
-// // job-title-update-con-2-skills
 
 // show skills section
 addSkillsBtn.addEventListener("click", function () {
