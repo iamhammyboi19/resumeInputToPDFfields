@@ -223,7 +223,8 @@ h5 {
 
 .employment-div,
 .education-div,
-.link-div {
+.link-div,
+.skills-div {
   display: flex;
   align-items: center;
   justify-items: center;
@@ -235,20 +236,23 @@ h5 {
 .add-employment,
 .add-education,
 .add-link,
-.delete-link {
+.delete-link,
+.add-skills {
   color: #339af0;
   font-size: 2rem;
 }
 .add-employment-text,
 .add-education-text,
-.add-link-text {
+.add-link-text,
+.add-skills-text {
   font-size: 1.5rem;
   font-weight: 500;
   color: #339af0;
 }
 .employment-div:hover,
 .education-div:hover,
-.link-div:hover {
+.link-div:hover,
+.skills-div:hover {
   background-color: #e7f5ff;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -370,12 +374,14 @@ h5 {
 /*--------------- delete icon -----------------*/
 .edu-details--,
 .employment-details--,
-.link-details-- {
+.link-details--,
+.skills-details-- {
   position: relative;
 }
 .edu-delete-icon-container,
 .employ-delete-icon-container,
-.weblink-delete-icon-container {
+.weblink-delete-icon-container,
+.skills-delete-icon-container {
   position: absolute;
   right: 0;
   top: 30%;
@@ -384,12 +390,14 @@ h5 {
 }
 .education-parent:hover,
 .employment-parent:hover,
-.weblink-parent:hover {
+.weblink-parent:hover,
+.skills-parent:hover {
   cursor: pointer;
 }
 .edu-details--:hover .edu-delete-icon-container,
 .employment-details--:hover .employ-delete-icon-container,
-.link-details--:hover .weblink-delete-icon-container {
+.link-details--:hover .weblink-delete-icon-container,
+.skills-details--:hover .skills-delete-icon-container {
   opacity: 100;
   transition: all 0.3s ease-in-out;
 }
@@ -405,17 +413,20 @@ h5 {
 /* -------------- employement textarea styles --------------------- */
 .employment-details--,
 .edu-details--,
-.link-details-- {
+.link-details--,
+.skills-details-- {
   margin-bottom: 1.8rem;
 }
 .employment-parent,
 .education-parent,
-.weblink-parent {
+.weblink-parent,
+.skills-parent {
   list-style: none;
 }
 .employment-form,
 .education-form,
-.socialLink-form {
+.socialLink-form,
+.skills-form {
   margin-top: 4rem;
 }
 .summary-input-emp,
@@ -507,7 +518,8 @@ h5 {
 }
 .employment-details--,
 .edu-details--,
-.link-details-- {
+.link-details--,
+.skills-details-- {
   border: 1px solid #e9ecef;
   padding: 1.5rem 1.5rem;
   border-radius: 0.5rem;
@@ -619,7 +631,9 @@ h5 {
 .job-title-update-con-1-edu,
 .job-title-update-con-2-edu,
 .job-title-update-con-1-link,
-.job-title-update-con-2-link {
+.job-title-update-con-2-link,
+.job-title-update-con-1-skills,
+.job-title-update-con-2-skills {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -631,7 +645,9 @@ h5 {
 .job-title-update-1-edu,
 .job-title-update-2-edu,
 .job-title-update-1-link,
-.job-title-update-2-link {
+.job-title-update-2-link,
+.job-title-update-1-skills,
+.job-title-update-2-skills {
   font-size: 1.3rem;
 }
 
@@ -640,7 +656,9 @@ h5 {
 .job-title-update-icon-edu[name="chevron-down-outline"],
 .job-title-update-icon-edu[name="chevron-up-outline"],
 .job-title-update-icon-link[name="chevron-up-outline"],
-.job-title-update-icon-link[name="chevron-down-outline"] {
+.job-title-update-icon-link[name="chevron-down-outline"],
+.job-title-update-icon-skills[name="chevron-up-outline"],
+.job-title-update-icon-skills[name="chevron-down-outline"] {
   font-size: 1.5rem;
 }
 .job-title-update-con-1:hover,
@@ -648,7 +666,9 @@ h5 {
 .job-title-update-con-1-edu:hover,
 .job-title-update-con-2-edu:hover,
 .job-title-update-con-1-link:hover,
-.job-title-update-con-2-link:hover {
+.job-title-update-con-2-link:hover,
+.job-title-update-con-1-skills:hover,
+.job-title-update-con-2-skills:hover {
   cursor: pointer;
   color: #339af0;
   transition: all 0.3s ease;

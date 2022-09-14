@@ -336,8 +336,52 @@ const addMoreWebsiteLinkMarkup = function () {
   `;
 };
 
+const addMoreSkillsMarkup = function () {
+  return `
+  <li class="skills-details--">
+  <div class="calendar-form-div-con-skills">
+    <div>
+      <div class="job-title-update-div-skills">
+        <span class="job-title-update-con-1-skills">
+          <h6 class="job-title-update-1-skills">(Not specified)</h6>
+          <ion-icon
+            name="chevron-down-outline"
+            class="job-title-update-icon-skills"
+          ></ion-icon
+        ></span>
+        <span class="job-title-update-con-2-skills hidden">
+          <h6 class="job-title-update-2-skills">(Not specified)</h6>
+          <ion-icon
+            name="chevron-up-outline"
+            class="job-title-update-icon-skills"
+          ></ion-icon
+        ></span>
+      </div>
+      <form class="main-form skills-form">
+        <div class="input-div input-div-school">
+          <label class="personal-d-label">Label</label>
+          <input
+            type="text"
+            class="personal-d-input-1 per-det-inp skills-job-title-inp"
+          />
+        </div>
+        <div class="input-div">
+          <label class="personal-d-label">Level</label>
+          <input type="text" class="personal-d-input-1 per-det-inp" />
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="skills-delete-icon-container">
+    <ion-icon name="trash-outline" class="delete-icon"></ion-icon>
+  </div>
+</li>
+  `;
+};
+
 export {
   addMoreEmploymentMarkup,
   addMoreEducationMarkup,
   addMoreWebsiteLinkMarkup,
+  addMoreSkillsMarkup,
 };

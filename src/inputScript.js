@@ -4,6 +4,7 @@ import {
   addMoreEducationMarkup,
   addMoreEmploymentMarkup,
   addMoreWebsiteLinkMarkup,
+  addMoreSkillsMarkup,
 } from "./markups.js";
 
 import { textareaFillWhole, textareaFill } from "./textAreaFillWhole.js";
@@ -15,6 +16,8 @@ import {
 } from "./websitelinks.js";
 
 import { showHideEducationform, showHideEduDetails } from "./education.js";
+
+import { showHideskills, showHideSkillsDetails } from "./skills.js";
 
 const hiddenForms = document.querySelectorAll(".hidden-input-divs");
 const showFormCon = document.querySelector(".show-form-container");
@@ -125,15 +128,25 @@ const deleteSocialLink = document.querySelector(".delete-link-con");
 // ------------------------------------------------------------------------------------
 // ------------------------------------------------------------------------------------
 
+// // skills section
+const addSkillsBtn = document.querySelector(".skills-div-add");
+const skillsParentCon = document.querySelector(".skills-parent");
+// job-title-update-con-1-skills
+// job-title-update-con-2-skills
+
 // CURRENT DATE
 
 const thedate = new Date();
 let curDate = thedate.getFullYear();
-calendarYear.textContent = curDate;
+if (calendarYear) {
+  calendarYear.textContent = curDate;
+}
 
 const theDate2 = new Date();
 let curDateEdu = theDate2.getFullYear();
-calendarYearEdu.textContent = curDateEdu;
+if (calendarYearEdu) {
+  calendarYearEdu.textContent = curDateEdu;
+}
 
 // ------------------------------------------------------------------------------------
 
@@ -243,33 +256,65 @@ calendarMonths.addEventListener("click", function (e) {
 // ------------------------------------------------------------------------------------
 
 // education calendar
-educationForm.addEventListener("click", function (e) {
-  if (!e.target.classList.contains("startdate-edu")) return;
-  calendarDivEdu.classList.toggle("hide-show-calendar-div");
-});
+
+if (educationForm) {
+  educationForm.addEventListener("click", function (e) {
+    if (!e.target.classList.contains("startdate-edu")) return;
+    calendarDivEdu.classList.toggle("hide-show-calendar-div");
+  });
+}
 
 let curYearEdu = curDateEdu;
 
-deductCurYearEdu.addEventListener("click", function () {
-  +curYearEdu--;
-  calendarYearEdu.textContent = curYearEdu;
-});
+if (deductCurYearEdu) {
+  deductCurYearEdu.addEventListener("click", function () {
+    +curYearEdu--;
+    calendarYearEdu.textContent = curYearEdu;
+  });
+}
 
-addCurYearEdu.addEventListener("click", function () {
-  +curYearEdu++;
-  calendarYearEdu.textContent = curYearEdu;
-});
+if (addCurYearEdu) {
+  addCurYearEdu.addEventListener("click", function () {
+    +curYearEdu++;
+    calendarYearEdu.textContent = curYearEdu;
+  });
+}
 
-calendarYearEdu.addEventListener("click", function () {
-  startDateEdu.value = calendarYearEdu.textContent;
-});
+if (calendarYearEdu) {
+  calendarYearEdu.addEventListener("click", function () {
+    startDateEdu.value = calendarYearEdu.textContent;
+  });
+}
 
-calendarMonthsEdu.addEventListener("click", function (e) {
-  if (e.target.classList.contains("calendar-months-con-edu")) return;
-  startDateEdu.value =
-    e.target.textContent + "," + " " + calendarYearEdu.textContent;
-  calendarDivEdu.classList.toggle("hide-show-calendar-div");
-});
+if (calendarMonthsEdu) {
+  calendarMonthsEdu.addEventListener("click", function (e) {
+    if (e.target.classList.contains("calendar-months-con-edu")) return;
+    startDateEdu.value =
+      e.target.textContent + "," + " " + calendarYearEdu.textContent;
+    calendarDivEdu.classList.toggle("hide-show-calendar-div");
+  });
+}
+
+// deductCurYearEdu.addEventListener("click", function () {
+//   +curYearEdu--;
+//   calendarYearEdu.textContent = curYearEdu;
+// });
+
+// addCurYearEdu.addEventListener("click", function () {
+//   +curYearEdu++;
+//   calendarYearEdu.textContent = curYearEdu;
+// });
+
+// calendarYearEdu.addEventListener("click", function () {
+//   startDateEdu.value = calendarYearEdu.textContent;
+// });
+
+// calendarMonthsEdu.addEventListener("click", function (e) {
+//   if (e.target.classList.contains("calendar-months-con-edu")) return;
+//   startDateEdu.value =
+//     e.target.textContent + "," + " " + calendarYearEdu.textContent;
+//   calendarDivEdu.classList.toggle("hide-show-calendar-div");
+// });
 
 // ------------------------------------------------------------------------------------
 
@@ -299,6 +344,11 @@ addMoreEmploymentBtn.addEventListener("click", function () {
     "beforeend",
     addMoreEmploymentMarkup()
   );
+  if (employmentParentCon.children.length > 0) {
+    addMoreEmploymentBtn.querySelector(
+      "span"
+    ).textContent = `Add more employment`;
+  }
 });
 
 employmentParentCon.addEventListener("click", function (e) {
@@ -338,21 +388,25 @@ employmentParentCon.addEventListener("click", function (e) {
     curDeleteBtn
       .closest(".employment-details--")
       .parentElement.removeChild(curDeleteBtn.closest(".employment-details--"));
+    console.log(employmentParentCon.children.length);
+    if (employmentParentCon.children.length === 0) {
+      addMoreEmploymentBtn.querySelector("span").textContent = `Add employment`;
+    }
   }
 });
 
 // ------------------------------------------------------------------------------------
 
 // show education section
-addEducationBtn.addEventListener("click", function () {
-  educationSection.classList.remove("hidden");
-  addEducationBtn.classList.add("hidden");
-  addMoreEducationBtn.classList.remove("hidden");
-});
 
 // ADDING MORE SECTION
-addMoreEducationBtn.addEventListener("click", function () {
+addEducationBtn.addEventListener("click", function () {
   educationParentCon.insertAdjacentHTML("beforeend", addMoreEducationMarkup());
+  if (educationParentCon.children.length > 0) {
+    addEducationBtn.querySelector(
+      "span"
+    ).textContent = `Add one more education`;
+  }
 });
 
 // SHOW AND HIDE FORM ON CLICK
@@ -392,6 +446,9 @@ educationParentCon.addEventListener("click", function (e) {
     curDeleteBtn
       .closest(".edu-details--")
       .parentElement.removeChild(curDeleteBtn.closest(".edu-details--"));
+    if (educationParentCon.children.length === 0) {
+      addEducationBtn.querySelector("span").textContent = `Add education`;
+    }
   }
 });
 
@@ -400,18 +457,21 @@ educationParentCon.addEventListener("click", function (e) {
 // ------------------------------------------------------------------------------------
 
 // show education section
-addSocialBtn.addEventListener("click", function () {
-  webSocialLinksSection.classList.remove("hidden");
-  addSocialBtn.classList.add("hidden");
-  addMoreSocialBtn.classList.remove("hidden");
-});
+// addSocialBtn.addEventListener("click", function () {
+//   webSocialLinksSection.classList.remove("hidden");
+//   addSocialBtn.classList.add("hidden");
+//   addMoreSocialBtn.classList.remove("hidden");
+// });
 
 // ADDING MORE SECTION
-addMoreSocialBtn.addEventListener("click", function () {
+addSocialBtn.addEventListener("click", function () {
   webSocialLinkParent.insertAdjacentHTML(
     "beforeend",
     addMoreWebsiteLinkMarkup()
   );
+  if (webSocialLinkParent.children.length > 0) {
+    addSocialBtn.querySelector("span").textContent = `Add one more link`;
+  }
 });
 
 // SHOW AND HIDE FORM ON CLICK
@@ -450,6 +510,65 @@ webSocialLinkParent.addEventListener("click", function (e) {
     curDeleteBtn
       .closest(".link-details--")
       .parentElement.removeChild(curDeleteBtn.closest(".link-details--"));
+    if (webSocialLinkParent.children.length === 0) {
+      addSocialBtn.querySelector("span").textContent = `Add link`;
+    }
+  }
+});
+
+// ------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------
+
+// const addSkillsBtn = document.querySelector(".skills-div-add");
+// const skillsParentCon = document.querySelector(".skills-parent");
+// // job-title-update-con-1-skills
+// // job-title-update-con-2-skills
+
+// show skills section
+addSkillsBtn.addEventListener("click", function () {
+  skillsParentCon.insertAdjacentHTML("beforeend", addMoreSkillsMarkup());
+  if (skillsParentCon.children.length > 0) {
+    addSkillsBtn.querySelector("span").textContent = `Add one more skill`;
+  }
+});
+
+skillsParentCon.addEventListener("click", function (e) {
+  if (e.target.closest(".job-title-update-con-1-skills")) {
+    showHideskills.bind(showHideSkillsDetails)(e);
+  }
+  if (e.target.closest(".job-title-update-con-2-skills")) {
+    showHideskills.bind(showHideSkillsDetails)(e);
+  }
+
+  // FILLING THE NOT SPECIFIED AREA IN THE FORM
+  if (e.target.closest(".skills-details--")) {
+    // SELECT THE CURRENT ELEMENT INPUT FORM ON CLICK AND addEventListener to it
+    e.target
+      .closest(".skills-details--")
+      .querySelector(".skills-job-title-inp")
+      .addEventListener(
+        "input",
+        nonSpecificTextFill.bind([
+          // SELECT THE NON SPECIFIED FIELD AREA FOR EACH CURRENT FORM ELEMENT
+          e.target
+            .closest(".skills-details--")
+            .querySelector(".job-title-update-1-skills"),
+          e.target
+            .closest(".skills-details--")
+            .querySelector(".job-title-update-2-skills"),
+        ])
+      );
+  }
+
+  // DELETE FORM
+  if (e.target.closest(".skills-delete-icon-container")) {
+    const curDeleteBtn = e.target.closest(".skills-delete-icon-container");
+    curDeleteBtn
+      .closest(".skills-details--")
+      .parentElement.removeChild(curDeleteBtn.closest(".skills-details--"));
+    if (skillsParentCon.children.length === 0) {
+      addSkillsBtn.querySelector("span").textContent = `Add skills`;
+    }
   }
 });
 
