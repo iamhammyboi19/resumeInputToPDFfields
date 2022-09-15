@@ -1,23 +1,49 @@
 "use strict";
 
+import { textareaFillWhole, textareaFill } from "./textAreaFillWhole.js";
+
 import {
   addMoreEducationMarkup,
   addMoreEmploymentMarkup,
   addMoreWebsiteLinkMarkup,
   addMoreSkillsMarkup,
+  addMoreInternshipsMarkup,
 } from "./markups.js";
 
-import { textareaFillWhole, textareaFill } from "./textAreaFillWhole.js";
-import { showHideEmploymentform, showHideEmDetails } from "./employments.js";
+import {
+  showHideEmploymentform,
+  showHideEmDetails,
+  fillEmploymentTitle,
+  employmentDeleteDetails,
+} from "./employments.js";
 
 import {
   showHideWebDetails,
   showHideWebsiteAndSocialLinks,
+  fillSocialTitle,
+  linkDeleteDetails,
 } from "./websitelinks.js";
 
-import { showHideEducationform, showHideEduDetails } from "./education.js";
+import {
+  showHideEducationform,
+  showHideEduDetails,
+  fillEducationTitle,
+  educationDeleteDetails,
+} from "./education.js";
 
-import { showHideskills, showHideSkillsDetails } from "./skills.js";
+import {
+  showHideskills,
+  showHideSkillsDetails,
+  fillSkillsTitle,
+  skillsDeleteDetails,
+} from "./skills.js";
+
+import {
+  showHideInternship,
+  showHideInternshipDetails,
+  fillInternshipTitle,
+  internshipDeleteDetails,
+} from "./internship.js";
 
 const hiddenForms = document.querySelectorAll(".hidden-input-divs");
 const showFormCon = document.querySelector(".show-form-container");
@@ -134,6 +160,12 @@ const skillsParentCon = document.querySelector(".skills-parent");
 // job-title-update-con-1-skills
 // job-title-update-con-2-skills
 
+// // internship section
+const addInternshipBtn = document.querySelector(".internship-div-add");
+const internshipParentCon = document.querySelector(".internship-parent");
+// job-title-update-con-1-skills
+// job-title-update-con-2-skills
+
 // CURRENT DATE
 
 const thedate = new Date();
@@ -226,32 +258,85 @@ prePhraseArrowBtnEmp.addEventListener(
 // ------------------------------------------------------------------------------------
 
 // employment calendar
-employmentForm.addEventListener("click", function (e) {
-  if (!e.target.classList.contains("startdate")) return;
-  calendarDiv.classList.toggle("hide-show-calendar-div");
+// employmentForm
+document.documentElement.addEventListener("click", function (e) {
+  // CHECK IF DECREASE OR INCREASE YEAR BUTTON IS CLICK AND STILL LEAVE THE CALENDAR
+  if (
+    e.target.closest(".calendar-back-pointer") ||
+    e.target.closest(".calendar-front-pointer")
+  )
+    return;
+
+  // CHECK IF START-DATE BUTTON IS CLICK AND SHOW THE CALENDAR FORM
+  if (
+    e.target.closest(".employment-details--") &&
+    e.target.classList.contains("startdate")
+  ) {
+    e.target
+      .closest(".employment-details--")
+      .querySelector(".calendar-form-div-con").style.position = "relative";
+    e.target
+      .closest(".employment-details--")
+      .querySelector(".calendar-div")
+      .classList.toggle("hide-show-calendar-div");
+  }
+
+  // CHECK IF ANY OTHER BUTTON IS CLICKED TO HIDE THE CALENDAR FORM
+  else {
+    e.target
+      .closest(".employment-details--")
+      ?.querySelector(".calendar-div")
+      .classList.remove("hide-show-calendar-div");
+  }
 });
 
 let curYear = curDate;
 
-deductCurYear.addEventListener("click", function () {
-  +curYear--;
-  calendarYear.textContent = curYear;
-});
+document
+  .querySelector(".employment-parent")
+  .addEventListener("click", function (e) {
+    // REDUCE THE YEAR ON CLICK AND CHANGE CURRENT YEAR
+    if (e.target.closest(".calendar-back-pointer")) {
+      +curYear--;
+      e.target.closest(
+        ".calendar-back-pointer"
+      ).nextElementSibling.textContent = curYear;
+    }
 
-addCurYear.addEventListener("click", function () {
-  +curYear++;
-  calendarYear.textContent = curYear;
-});
+    // INCREASE THE YEAR ON CLICK AND CHANGE CURRENT YEAR
+    if (e.target.closest(".calendar-front-pointer")) {
+      +curYear++;
+      e.target.closest(
+        ".calendar-front-pointer"
+      ).previousElementSibling.textContent = curYear;
+    }
 
-calendarYear.addEventListener("click", function () {
-  startDate.value = calendarYear.textContent;
-});
+    // TAKE THE YEAR ON CLICK AND CHANGE START DATE
+    if (e.target.closest(".calendar-year")) {
+      e.target
+        .closest(".employment-details--")
+        .querySelector(".startdate").value =
+        e.target.closest(".calendar-year").textContent;
+    }
 
-calendarMonths.addEventListener("click", function (e) {
-  if (e.target.classList.contains("calendar-months-con")) return;
-  startDate.value = e.target.textContent + "," + " " + calendarYear.textContent;
-  calendarDiv.classList.toggle("hide-show-calendar-div");
-});
+    // TAKE THE YEAR AND MONTH ON CLICK AND CHANGE START DATE ALSO HIDE THE CALENDAR FORM
+    if (e.target.closest(".calendar-months-con")) {
+      if (e.target.classList.contains("calendar-months-con")) return;
+      e.target
+        .closest(".employment-details--")
+        .querySelector(".startdate").value =
+        e.target.textContent +
+        "," +
+        " " +
+        e.target
+          .closest(".employment-details--")
+          .querySelector(".calendar-year").textContent;
+      e.target
+        .closest(".employment-details--")
+        .querySelector(".calendar-div")
+        .classList.toggle("hide-show-calendar-div");
+    }
+  });
 
 // ------------------------------------------------------------------------------------
 
@@ -307,6 +392,29 @@ const nonSpecificTextFill = function (e) {
   }
 };
 
+// [form-details, form-job-title-inp, job-title-update-1-internship, job-title-update-2-internship ]
+const fillMeUp = function (e) {
+  // SELECT THE CURRENT ELEMENT INPUT FORM ON CLICK AND addEventListener to it
+  return e.target
+    .closest(this[0])
+    .querySelector(this[1])
+    .addEventListener(
+      "input",
+      nonSpecificTextFill.bind([
+        // SELECT THE NON SPECIFIED FIELD AREA FOR EACH CURRENT FORM ELEMENT
+        e.target.closest(this[0]).querySelector(this[2]),
+        e.target.closest(this[0]).querySelector(this[3]),
+      ])
+    );
+};
+
+// [form-details-delete-btn, formDetails]
+const deleteSpecificForm = function (e) {
+  const curDeleteBtn = e.target.closest(this[0]);
+  return curDeleteBtn
+    .closest(this[1])
+    .parentElement.removeChild(curDeleteBtn.closest(this[1]));
+};
 // ------------------------------------------------------------------------------------
 
 // show employment section
@@ -325,53 +433,44 @@ addMoreEmploymentBtn.addEventListener("click", function () {
   if (employmentParentCon.children.length > 0) {
     addMoreEmploymentBtn.querySelector(
       "span"
-    ).textContent = `Add more employment`;
+    ).textContent = `Add one more employment`;
   }
 });
 
-employmentParentCon.addEventListener("click", function (e) {
-  if (e.target.closest(".job-title-update-con-1")) {
-    showHideEmploymentform.bind(showHideEmDetails)(e);
-  }
-
-  if (e.target.closest(".job-title-update-con-2")) {
-    showHideEmploymentform.bind(showHideEmDetails)(e);
-  }
-
-  // FILLING THE NOT SPECIFIED AREA IN THE FORM
-
-  if (e.target.closest(".employment-details--")) {
-    // SELECT THE CURRENT ELEMENT INPUT FORM ON CLICK AND addEventListener to it
-
-    e.target
-      .closest(".employment-details--")
-      .querySelector(".employment-job-title-inp")
-      .addEventListener(
-        "input",
-        nonSpecificTextFill.bind([
-          // SELECT THE NON SPECIFIED FIELD AREA FOR EACH CURRENT FORM ELEMENT
-          e.target
-            .closest(".employment-details--")
-            .querySelector(".job-title-update-1"),
-          e.target
-            .closest(".employment-details--")
-            .querySelector(".job-title-update-2"),
-        ])
-      );
-  }
-
-  // DELETE FORM
-  if (e.target.closest(".employ-delete-icon-container")) {
-    const curDeleteBtn = e.target.closest(".employ-delete-icon-container");
-    curDeleteBtn
-      .closest(".employment-details--")
-      .parentElement.removeChild(curDeleteBtn.closest(".employment-details--"));
-    console.log(employmentParentCon.children.length);
-    if (employmentParentCon.children.length === 0) {
-      addMoreEmploymentBtn.querySelector("span").textContent = `Add employment`;
+document
+  .querySelector(".employment-parent")
+  .addEventListener("click", function (e) {
+    // HIDE AND SHOW FORM
+    if (e.target.closest(".job-title-update-con-1")) {
+      showHideEmploymentform.bind(showHideEmDetails)(e);
     }
-  }
-});
+
+    // HIDE AND SHOW FORM
+    if (e.target.closest(".job-title-update-con-2")) {
+      showHideEmploymentform.bind(showHideEmDetails)(e);
+    }
+
+    // FILLING THE NOT SPECIFIED AREA IN THE FORM
+
+    if (e.target.closest(".employment-details--")) {
+      // SELECT THE CURRENT ELEMENT INPUT FORM ON CLICK AND addEventListener to it
+
+      fillMeUp.bind(fillEmploymentTitle)(e);
+    }
+
+    // DELETE FORM
+    if (e.target.closest(".employ-delete-icon-container")) {
+      // delete on click
+      deleteSpecificForm.bind(employmentDeleteDetails)(e);
+
+      // check if there is any child element left
+      if (employmentParentCon.children.length === 0) {
+        addMoreEmploymentBtn.querySelector(
+          "span"
+        ).textContent = `Add employment`;
+      }
+    }
+  });
 
 // ------------------------------------------------------------------------------------
 
@@ -389,9 +488,12 @@ addEducationBtn.addEventListener("click", function () {
 
 // SHOW AND HIDE FORM ON CLICK
 educationParentCon.addEventListener("click", function (e) {
+  // HIDE AND SHOW FORM
   if (e.target.closest(".job-title-update-con-1-edu")) {
     showHideEducationform.bind(showHideEduDetails)(e);
   }
+
+  // HIDE AND SHOW FORM
   if (e.target.closest(".job-title-update-con-2-edu")) {
     showHideEducationform.bind(showHideEduDetails)(e);
   }
@@ -401,29 +503,15 @@ educationParentCon.addEventListener("click", function (e) {
   if (e.target.closest(".edu-details--")) {
     // SELECT THE CURRENT ELEMENT INPUT FORM ON CLICK AND addEventListener to it
 
-    e.target
-      .closest(".edu-details--")
-      .querySelector(".education-job-title-inp")
-      .addEventListener(
-        "input",
-        nonSpecificTextFill.bind([
-          // SELECT THE NON SPECIFIED FIELD AREA FOR EACH CURRENT FORM ELEMENT
-          e.target
-            .closest(".edu-details--")
-            .querySelector(".job-title-update-1-edu"),
-          e.target
-            .closest(".edu-details--")
-            .querySelector(".job-title-update-2-edu"),
-        ])
-      );
+    fillMeUp.bind(fillEducationTitle)(e);
   }
 
   // DELETE FORM
   if (e.target.closest(".edu-delete-icon-container")) {
-    const curDeleteBtn = e.target.closest(".edu-delete-icon-container");
-    curDeleteBtn
-      .closest(".edu-details--")
-      .parentElement.removeChild(curDeleteBtn.closest(".edu-details--"));
+    // delete on click
+    deleteSpecificForm.bind(educationDeleteDetails)(e);
+
+    // check if there is any child element left
     if (educationParentCon.children.length === 0) {
       addEducationBtn.querySelector("span").textContent = `Add education`;
     }
@@ -449,10 +537,12 @@ addSocialBtn.addEventListener("click", function () {
 
 // SHOW AND HIDE FORM ON CLICK
 webSocialLinkParent.addEventListener("click", function (e) {
+  // HIDE AND SHOW FORM
   if (e.target.closest(".job-title-update-con-1-link")) {
     showHideWebsiteAndSocialLinks.bind(showHideWebDetails)(e);
   }
 
+  // HIDE AND SHOW FORM
   if (e.target.closest(".job-title-update-con-2-link")) {
     showHideWebsiteAndSocialLinks.bind(showHideWebDetails)(e);
   }
@@ -460,29 +550,15 @@ webSocialLinkParent.addEventListener("click", function (e) {
   // FILLING THE NOT SPECIFIED AREA IN THE FORM
   if (e.target.closest(".link-details--")) {
     // SELECT THE CURRENT ELEMENT INPUT FORM ON CLICK AND addEventListener to it
-    e.target
-      .closest(".link-details--")
-      .querySelector(".socialLink-job-title-inp")
-      .addEventListener(
-        "input",
-        nonSpecificTextFill.bind([
-          // SELECT THE NON SPECIFIED FIELD AREA FOR EACH CURRENT FORM ELEMENT
-          e.target
-            .closest(".link-details--")
-            .querySelector(".job-title-update-1-link"),
-          e.target
-            .closest(".link-details--")
-            .querySelector(".job-title-update-2-link"),
-        ])
-      );
+    fillMeUp.bind(fillSocialTitle)(e);
   }
 
   // DELETE FORM
   if (e.target.closest(".weblink-delete-icon-container")) {
-    const curDeleteBtn = e.target.closest(".weblink-delete-icon-container");
-    curDeleteBtn
-      .closest(".link-details--")
-      .parentElement.removeChild(curDeleteBtn.closest(".link-details--"));
+    // delete on click
+    deleteSpecificForm.bind(linkDeleteDetails)(e);
+
+    // check if there is any child element left
     if (webSocialLinkParent.children.length === 0) {
       addSocialBtn.querySelector("span").textContent = `Add link`;
     }
@@ -493,6 +569,8 @@ webSocialLinkParent.addEventListener("click", function (e) {
 // ------------------------------------------------------------------------------------
 
 // show skills section
+
+// ADD NEW ELEMENT TO THE PARENT
 addSkillsBtn.addEventListener("click", function () {
   skillsParentCon.insertAdjacentHTML("beforeend", addMoreSkillsMarkup());
   if (skillsParentCon.children.length > 0) {
@@ -501,9 +579,12 @@ addSkillsBtn.addEventListener("click", function () {
 });
 
 skillsParentCon.addEventListener("click", function (e) {
+  // HIDE AND SHOW FORM
   if (e.target.closest(".job-title-update-con-1-skills")) {
     showHideskills.bind(showHideSkillsDetails)(e);
   }
+
+  // HIDE AND SHOW FORM
   if (e.target.closest(".job-title-update-con-2-skills")) {
     showHideskills.bind(showHideSkillsDetails)(e);
   }
@@ -511,31 +592,64 @@ skillsParentCon.addEventListener("click", function (e) {
   // FILLING THE NOT SPECIFIED AREA IN THE FORM
   if (e.target.closest(".skills-details--")) {
     // SELECT THE CURRENT ELEMENT INPUT FORM ON CLICK AND addEventListener to it
-    e.target
-      .closest(".skills-details--")
-      .querySelector(".skills-job-title-inp")
-      .addEventListener(
-        "input",
-        nonSpecificTextFill.bind([
-          // SELECT THE NON SPECIFIED FIELD AREA FOR EACH CURRENT FORM ELEMENT
-          e.target
-            .closest(".skills-details--")
-            .querySelector(".job-title-update-1-skills"),
-          e.target
-            .closest(".skills-details--")
-            .querySelector(".job-title-update-2-skills"),
-        ])
-      );
+    fillMeUp.bind(fillSkillsTitle)(e);
   }
 
   // DELETE FORM
   if (e.target.closest(".skills-delete-icon-container")) {
-    const curDeleteBtn = e.target.closest(".skills-delete-icon-container");
-    curDeleteBtn
-      .closest(".skills-details--")
-      .parentElement.removeChild(curDeleteBtn.closest(".skills-details--"));
+    // delete on click
+    deleteSpecificForm.bind(skillsDeleteDetails)(e);
+
+    // check if there is any child element left
     if (skillsParentCon.children.length === 0) {
       addSkillsBtn.querySelector("span").textContent = `Add skills`;
+    }
+  }
+});
+
+// ------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------
+
+// add internship section
+
+// ADD NEW ELEMENT TO THE PARENT
+addInternshipBtn.addEventListener("click", function () {
+  internshipParentCon.insertAdjacentHTML(
+    "beforeend",
+    addMoreInternshipsMarkup()
+  );
+
+  if (internshipParentCon.children.length > 0) {
+    addInternshipBtn.querySelector(
+      "span"
+    ).textContent = `Add one more internship`;
+  }
+});
+
+internshipParentCon.addEventListener("click", function (e) {
+  // HIDE AND SHOW FORM
+  if (e.target.closest(".job-title-update-con-1-internship")) {
+    showHideInternship.bind(showHideInternshipDetails)(e);
+  }
+
+  // HIDE AND SHOW FORM
+  if (e.target.closest(".job-title-update-con-2-internship")) {
+    showHideInternship.bind(showHideInternshipDetails)(e);
+  }
+
+  // FILLING THE NOT SPECIFIED AREA IN THE FORM
+  if (e.target.closest(".internship-details--")) {
+    fillMeUp.bind(fillInternshipTitle)(e);
+  }
+
+  // DELETE FORM
+  if (e.target.closest(".internship-delete-icon-container")) {
+    // delete on click
+    deleteSpecificForm.bind(internshipDeleteDetails)(e);
+
+    // check if there is any child element left
+    if (internshipParentCon.children.length === 0) {
+      addInternshipBtn.querySelector("span").textContent = `Add internship`;
     }
   }
 });
@@ -585,9 +699,8 @@ const showHideSuggestionBoxProf = function (e) {
 
 document.documentElement.addEventListener("click", showHideSuggestionBoxProf);
 document.documentElement.addEventListener("click", showHideSuggestionBoxEmploy);
+// document.documentElement.addEventListener("click", showHideEmCalendar);
 
 // hiding positioned element clicking outing the element EMPLOY
 
 // suggestion-texts-con-div-emp pre-written-employment close-pre-con-employment hide-suggestion-box-emp
-
-// hiding positioned element clicking outing the element CALENDAR

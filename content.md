@@ -255,3 +255,25 @@ Dedicated Visual Artist with a decorated background in a variety of artistic med
 //     .querySelector(".text-styles-con-employment")
 //     .classList.toggle("hidden");
 // }; -->
+
+<!-- CALENDAR PLACE FOR EMPLOYMENT -->
+
+// deductCurYear.addEventListener("click", function () {
+// +curYear--;
+// calendarYear.textContent = curYear;
+// });
+
+// addCurYear.addEventListener("click", function () {
+// +curYear++;
+// calendarYear.textContent = curYear;
+// });
+
+// calendarYear.addEventListener("click", function () {
+// startDate.value = calendarYear.textContent;
+// });
+
+// calendarMonths.addEventListener("click", function (e) {
+// if (e.target.classList.contains("calendar-months-con")) return;
+// startDate.value = e.target.textContent + "," + " " + calendarYear.textContent;
+// calendarDiv.classList.toggle("hide-show-calendar-div");
+// });

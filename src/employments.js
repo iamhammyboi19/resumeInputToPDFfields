@@ -17,4 +17,21 @@ const showHideEmDetails = [
   ".text-styles-con-employment",
 ];
 
-export { showHideEmploymentform, showHideEmDetails };
+const fillEmploymentTitle = [
+  ".employment-details--",
+  ".employment-job-title-inp",
+  ".job-title-update-1",
+  ".job-title-update-2",
+];
+
+const employmentDeleteDetails = [
+  ".employment-delete-icon-container",
+  ".employment-details--",
+];
+
+export {
+  showHideEmploymentform,
+  showHideEmDetails,
+  fillEmploymentTitle,
+  employmentDeleteDetails,
+};

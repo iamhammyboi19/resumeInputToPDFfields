@@ -13,4 +13,18 @@ const showHideWebDetails = [
   ".job-title-update-con-2-link",
 ];
 
-export { showHideWebsiteAndSocialLinks, showHideWebDetails };
+const fillSocialTitle = [
+  ".link-details--",
+  ".socialLink-job-title-inp",
+  ".job-title-update-1-link",
+  ".job-title-update-2-link",
+];
+
+const linkDeleteDetails = [".weblink-delete-icon-container", ".link-details--"];
+
+export {
+  showHideWebsiteAndSocialLinks,
+  showHideWebDetails,
+  fillSocialTitle,
+  linkDeleteDetails,
+};

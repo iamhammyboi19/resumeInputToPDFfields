@@ -13,4 +13,21 @@ const showHideSkillsDetails = [
   ".job-title-update-con-2-skills",
 ];
 
-export { showHideskills, showHideSkillsDetails };
+const fillSkillsTitle = [
+  ".skills-details--",
+  ".skills-job-title-inp",
+  ".job-title-update-1-skills",
+  ".job-title-update-2-skills",
+];
+
+const skillsDeleteDetails = [
+  ".skills-delete-icon-container",
+  ".skills-details--",
+];
+
+export {
+  showHideskills,
+  showHideSkillsDetails,
+  fillSkillsTitle,
+  skillsDeleteDetails,
+};

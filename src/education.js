@@ -16,5 +16,18 @@ const showHideEduDetails = [
   ".job-title-update-con-2-edu",
   ".text-styles-con-education",
 ];
+const fillEducationTitle = [
+  ".edu-details--",
+  ".education-job-title-inp",
+  ".job-title-update-1-edu",
+  ".job-title-update-2-edu",
+];
 
-export { showHideEduDetails, showHideEducationform };
+const educationDeleteDetails = [".edu-delete-icon-container", ".edu-details--"];
+
+export {
+  showHideEduDetails,
+  showHideEducationform,
+  fillEducationTitle,
+  educationDeleteDetails,
+};

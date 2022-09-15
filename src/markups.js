@@ -108,20 +108,6 @@ const addMoreEmploymentMarkup = function () {
                             ></i
                           ></span>
                           <span class="line-up">&nbsp;</span>
-                          <span class="pre-written-employment"
-                            ><span class="open-pre-phrase-employment"
-                              >Pre-written phrases</span
-                            ><i
-                              class="fa-solid fa-circle-plus text-style-icon-sizes show-hide-suggestion-box"
-                            ></i
-                          ></span>
-                          <span class="close-pre-con-employment hide-open-close-btn">
-                            <span class="close-pre-phrase-employment"
-                              >Pre-written phrases</span
-                            ><i
-                              class="fa-solid fa-circle-xmark text-style-icon-sizes"
-                            ></i>
-                          </span>
                         </div>
 
                         <textarea
@@ -357,7 +343,7 @@ const addMoreSkillsMarkup = function () {
           ></ion-icon
         ></span>
       </div>
-      <form class="main-form skills-form">
+      <form class="main-form skills-form hidden">
         <div class="input-div input-div-school">
           <label class="personal-d-label">Label</label>
           <input
@@ -379,9 +365,106 @@ const addMoreSkillsMarkup = function () {
   `;
 };
 
+const addMoreInternshipsMarkup = function () {
+  return `
+  <li class="internship-details--">
+            <div class="calendar-form-div-con-internship">
+              <div>
+                <div class="job-title-update-div-internship">
+                  <span class="job-title-update-con-1-internship">
+                    <h6 class="job-title-update-1-internship">(Not specified)</h6>
+                    <ion-icon
+                      name="chevron-down-outline"
+                      class="job-title-update-icon-internship"
+                    ></ion-icon
+                  ></span>
+                  <span class="job-title-update-con-2-internship hidden">
+                    <h6 class="job-title-update-2-internship">(Not specified)</h6>
+                    <ion-icon
+                      name="chevron-up-outline"
+                      class="job-title-update-icon-internship"
+                    ></ion-icon
+                  ></span>
+                </div>
+                <form class="main-form internship-form hidden">
+                  <div class="input-div input-div-school">
+                    <label class="personal-d-label">Job Title</label>
+                    <input
+                      type="text"
+                      class="personal-d-input-1 per-det-inp internship-job-title-inp"
+                    />
+                  </div>
+                  <div class="input-div">
+                    <label class="personal-d-label">Employer</label>
+                    <input type="text" class="personal-d-input-1 per-det-inp" />
+                  </div>
+                  <div class="input-div">
+                    <label class="personal-d-label">Start & End Date</label>
+                    <div class="start-end-date-div-internship">
+                      <input
+                        type="text"
+                        placeholder="MM / YYYY"
+                        class="personal-d-input-1 per-det-inp start-end-date-inp-internship startdate-internship"
+                      />
+                      <input
+                        type="text"
+                        placeholder="MM / YYYY"
+                        class="personal-d-input-1 per-det-inp start-end-date-inp-internship"
+                      />
+                    </div>
+                  </div>
+                  <div class="input-div">
+                    <label class="personal-d-label">City</label>
+                    <input type="text" class="personal-d-input-1 per-det-inp" />
+                  </div>
+                </form>
+
+                
+              <div class="text-styles-con-internship hidden">
+                <div class="text-styles--internship">
+                  <span>
+                    <i class="fa-solid fa-bold text-style-icon-sizes"></i>
+                  </span>
+                  <span
+                    ><i class="fa-solid fa-italic text-style-icon-sizes"></i
+                  ></span>
+                  <span
+                    ><i class="fa-solid fa-underline text-style-icon-sizes"></i
+                  ></span>
+                  <span class="line-up">&nbsp;</span>
+                  <span
+                    ><i
+                      class="fa-solid fa-align-center text-style-icon-sizes"
+                    ></i
+                  ></span>
+                  <span
+                    ><i
+                      class="fa-solid fa-align-justify text-style-icon-sizes"
+                    ></i
+                  ></span>
+                  <span class="line-up">&nbsp;</span>
+                </div>
+
+                <textarea
+                  placeholder="e.g Created and implemented lesson plans based on child-led interests and curiosities"
+                  class="summary-input-internship"
+                  rows="10"
+                  cols="35"
+                  minlength="0"
+                ></textarea>
+              </div>
+            </div>
+            <div class="internship-delete-icon-container">
+              <ion-icon name="trash-outline" class="delete-icon"></ion-icon>
+            </div>
+          </li>
+  `;
+};
+
 export {
   addMoreEmploymentMarkup,
   addMoreEducationMarkup,
   addMoreWebsiteLinkMarkup,
   addMoreSkillsMarkup,
+  addMoreInternshipsMarkup,
 };

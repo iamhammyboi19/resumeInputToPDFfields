@@ -224,7 +224,8 @@ h5 {
 .employment-div,
 .education-div,
 .link-div,
-.skills-div {
+.skills-div,
+.internship-div {
   display: flex;
   align-items: center;
   justify-items: center;
@@ -237,14 +238,16 @@ h5 {
 .add-education,
 .add-link,
 .delete-link,
-.add-skills {
+.add-skills,
+.add-internship {
   color: #339af0;
   font-size: 2rem;
 }
 .add-employment-text,
 .add-education-text,
 .add-link-text,
-.add-skills-text {
+.add-skills-text,
+.add-internship-text {
   font-size: 1.5rem;
   font-weight: 500;
   color: #339af0;
@@ -252,19 +255,22 @@ h5 {
 .employment-div:hover,
 .education-div:hover,
 .link-div:hover,
-.skills-div:hover {
+.skills-div:hover,
+.internship-div:hover {
   background-color: #e7f5ff;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 .start-end-date-div,
-.start-end-date-div-edu {
+.start-end-date-div-edu,
+.start-end-date-div-internship {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 .start-end-date-inp,
-.start-end-date-inp-edu {
+.start-end-date-inp-edu,
+.start-end-date-inp-internship {
   width: 50%;
 }
 /* calendar */
@@ -323,7 +329,7 @@ h5 {
   column-gap: 2rem;
   row-gap: 2rem;
 }
-.calendar-form-div-con,
+/* .calendar-form-div-con, */
 .calendar-form-div-con-edu {
   position: relative;
 }
@@ -375,13 +381,15 @@ h5 {
 .edu-details--,
 .employment-details--,
 .link-details--,
-.skills-details-- {
+.skills-details--,
+.internship-details-- {
   position: relative;
 }
 .edu-delete-icon-container,
 .employ-delete-icon-container,
 .weblink-delete-icon-container,
-.skills-delete-icon-container {
+.skills-delete-icon-container,
+.internship-delete-icon-container {
   position: absolute;
   right: 0;
   top: 30%;
@@ -391,13 +399,15 @@ h5 {
 .education-parent:hover,
 .employment-parent:hover,
 .weblink-parent:hover,
-.skills-parent:hover {
+.skills-parent:hover,
+.internship-parent:hover {
   cursor: pointer;
 }
 .edu-details--:hover .edu-delete-icon-container,
 .employment-details--:hover .employ-delete-icon-container,
 .link-details--:hover .weblink-delete-icon-container,
-.skills-details--:hover .skills-delete-icon-container {
+.skills-details--:hover .skills-delete-icon-container,
+.internship-details--:hover .internship-delete-icon-container {
   opacity: 100;
   transition: all 0.3s ease-in-out;
 }
@@ -414,23 +424,27 @@ h5 {
 .employment-details--,
 .edu-details--,
 .link-details--,
-.skills-details-- {
+.skills-details--,
+.internship-details-- {
   margin-bottom: 1.8rem;
 }
 .employment-parent,
 .education-parent,
 .weblink-parent,
-.skills-parent {
+.skills-parent,
+.internship-parent {
   list-style: none;
 }
 .employment-form,
 .education-form,
 .socialLink-form,
-.skills-form {
+.skills-form,
+.internship-form {
   margin-top: 4rem;
 }
 .summary-input-emp,
-.summary-input-edu {
+.summary-input-edu,
+.summary-input-internship {
   width: 100%;
   border: none;
   padding-top: 0.5rem;
@@ -439,11 +453,13 @@ h5 {
   background-color: #e9ecef;
 }
 .summary-input-emp:focus,
-.summary-input-edu:focus {
+.summary-input-edu:focus,
+.summary-input-internship:focus {
   outline: none;
 }
 .text-styles--employment,
-.text-styles--education {
+.text-styles--education,
+.text-styles--internship {
   display: flex;
   align-items: center;
   gap: 2rem;
@@ -469,7 +485,8 @@ h5 {
 }
 
 .text-styles-con-employment,
-.text-styles-con-education {
+.text-styles-con-education,
+.text-styles-con-internship {
   background-color: #e9ecef;
   padding: 1.5rem 1.3rem;
   padding-bottom: 0;
@@ -513,19 +530,22 @@ h5 {
 }
 .text-styles-con,
 .text-styles-con-employment,
-.text-styles-con-education {
+.text-styles-con-education,
+.text-styles-con-internship {
   position: relative;
 }
 .employment-details--,
 .edu-details--,
 .link-details--,
-.skills-details-- {
+.skills-details--,
+.internship-details-- {
   border: 1px solid #e9ecef;
   padding: 1.5rem 1.5rem;
   border-radius: 0.5rem;
 }
 .text-styles-con-employment:hover,
-.text-styles-con-education:hover {
+.text-styles-con-education:hover,
+.text-styles-con-internship:hover {
   transition: all 0.3s ease;
   box-shadow: #339af0 0px 2px;
 }
@@ -633,7 +653,9 @@ h5 {
 .job-title-update-con-1-link,
 .job-title-update-con-2-link,
 .job-title-update-con-1-skills,
-.job-title-update-con-2-skills {
+.job-title-update-con-2-skills,
+.job-title-update-con-1-internship,
+.job-title-update-con-2-internship {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -647,7 +669,9 @@ h5 {
 .job-title-update-1-link,
 .job-title-update-2-link,
 .job-title-update-1-skills,
-.job-title-update-2-skills {
+.job-title-update-2-skills,
+.job-title-update-1-internship,
+.job-title-update-2-internship {
   font-size: 1.3rem;
 }
 
@@ -658,7 +682,9 @@ h5 {
 .job-title-update-icon-link[name="chevron-up-outline"],
 .job-title-update-icon-link[name="chevron-down-outline"],
 .job-title-update-icon-skills[name="chevron-up-outline"],
-.job-title-update-icon-skills[name="chevron-down-outline"] {
+.job-title-update-icon-skills[name="chevron-down-outline"],
+.job-title-update-icon-internship[name="chevron-up-outline"],
+.job-title-update-icon-internship[name="chevron-down-outline"] {
   font-size: 1.5rem;
 }
 .job-title-update-con-1:hover,
@@ -668,7 +694,9 @@ h5 {
 .job-title-update-con-1-link:hover,
 .job-title-update-con-2-link:hover,
 .job-title-update-con-1-skills:hover,
-.job-title-update-con-2-skills:hover {
+.job-title-update-con-2-skills:hover,
+.job-title-update-con-1-internship:hover,
+.job-title-update-con-2-internship:hover {
   cursor: pointer;
   color: #339af0;
   transition: all 0.3s ease;
