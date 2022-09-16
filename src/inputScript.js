@@ -3,11 +3,20 @@
 import { textareaFillWhole, textareaFill } from "./textAreaFillWhole.js";
 
 import {
-  addMoreEducationMarkup,
+  EmploymentNewFormSessions,
+  WebSocialLinkFormSessions,
+  SaveAndDeleteItemsFromLocalStorage,
+  EducationNewFormSessions,
+  InternshipNewFormSessions,
+  SkillsNewFormSessions,
+} from "./formModels.js";
+
+import {
   addMoreEmploymentMarkup,
   addMoreWebsiteLinkMarkup,
   addMoreSkillsMarkup,
   addMoreInternshipsMarkup,
+  addMoreEducationMarkup,
 } from "./markups.js";
 
 import {
@@ -22,6 +31,7 @@ import {
   showHideWebsiteAndSocialLinks,
   fillSocialTitle,
   linkDeleteDetails,
+  addMoreWebsiteLinkFromLocalStorageMarkup,
 } from "./websitelinks.js";
 
 import {
@@ -29,6 +39,7 @@ import {
   showHideEduDetails,
   fillEducationTitle,
   educationDeleteDetails,
+  addMoreEducationMarkupFromLocalStorage,
 } from "./education.js";
 
 import {
@@ -36,6 +47,7 @@ import {
   showHideSkillsDetails,
   fillSkillsTitle,
   skillsDeleteDetails,
+  addMoreSkillsFromLocalStorageMarkup,
 } from "./skills.js";
 
 import {
@@ -43,6 +55,7 @@ import {
   showHideInternshipDetails,
   fillInternshipTitle,
   internshipDeleteDetails,
+  addMoreInternshipsFromLocalStorageMarkup,
 } from "./internship.js";
 
 const hiddenForms = document.querySelectorAll(".hidden-input-divs");
@@ -78,13 +91,7 @@ const prePhraseCloseArrowBtnEmp = document.querySelector(
 // ------------------------------------------------------------------------------------
 
 //  form calendar part first calendar
-const calendarDiv = document.querySelector(".calendar-div");
 const calendarYear = document.querySelector(".calendar-year");
-const calendarBackFront = document.querySelector(".calendar-back-front");
-const deductCurYear = document.querySelector(".calendar-back-pointer");
-const addCurYear = document.querySelector(".calendar-front-pointer");
-const calendarMonths = document.querySelector(".calendar-months-con");
-const startDate = document.querySelector(".startdate");
 
 // second calendar
 const calendarDivEdu = document.querySelector(".calendar-div-edu");
@@ -99,74 +106,41 @@ const startDateEdu = document.querySelector(".startdate-edu");
 
 // employment form parts
 const employmentSection = document.querySelector(".employment-details--");
-const jobTitleUpdate1 = document.querySelector(".job-title-update-con-1");
-const jobTitleUpdate2 = document.querySelector(".job-title-update-con-2");
-const employmentForm = document.querySelector(".employment-form");
-const employmentTextStyle = document.querySelector(
-  ".text-styles-con-employment"
-);
 const addEmploymentBtn = document.querySelector(".employment-div-add");
 const addMoreEmploymentBtn = document.querySelector(".employment-div-addMore");
 const employmentParentCon = document.querySelector(".employment-parent");
-const employmentJobTitleInp = document.querySelector(
-  ".employment-job-title-inp"
-);
-const jobtitleUpdatetext1 = document.querySelector(".job-title-update-1");
-const jobtitleUpdatetext2 = document.querySelector(".job-title-update-2");
-const inputDivJob = document.querySelector(".input-div-job");
 
 // ------------------------------------------------------------------------------------
 
 // // education form parts
-const educationSection = document.querySelector(".edu-details--");
-const schTitleUpdate1 = document.querySelector(".job-title-update-con-1-edu");
-const schTitleUpdate2 = document.querySelector(".job-title-update-con-2-edu");
+
 const educationForm = document.querySelector(".education-form");
 const educationParentCon = document.querySelector(".education-parent");
-const educationTextStyle = document.querySelector(".text-styles-con-education");
 const addEducationBtn = document.querySelector(".education-div-add");
-const addMoreEducationBtn = document.querySelector(".education-div-addMore");
-const educationJobTitleInp = document.querySelector(".education-job-title-inp");
-const schtitleUpdatetext1 = document.querySelector(".job-title-update-1-edu");
-const schtitleUpdatetext2 = document.querySelector(".job-title-update-2-edu");
-const inputDivSchool = document.querySelector(".input-div-school");
 
 // ------------------------------------------------------------------------------------
 // ------------------------------------------------------------------------------------
 
 // // website & social links
 
-const webSocialLinksSection = document.querySelector(".link-details--");
 const webSocialLinkParent = document.querySelector(".weblink-parent");
 const addSocialBtn = document.querySelector(".link-div-add");
-const addMoreSocialBtn = document.querySelector(".link-div-addMore");
-const socialLinkTitleInp = document.querySelector(".socialLink-job-title-inp");
-const linkTitleUpdate1 = document.querySelector(".job-title-update-con-1-link");
-const linkTitleUpdate2 = document.querySelector(".job-title-update-con-2-link");
-const linkTitleUpdateText1 = document.querySelector(".job-title-update-1-link");
-const linkTitleUpdateText2 = document.querySelector(".job-title-update-2-link");
-const WebSocialLinkForm = document.querySelector(".socialLink-form");
-const webLinkTitleInp = document.querySelector(".socialLink-job-title-inp");
-const deleteSocialLink = document.querySelector(".delete-link-con");
-// const linkDeleteAndSocialCon = document.querySelector(
-//   ".link-detailsAndDeleteCon"
-// );
 // ------------------------------------------------------------------------------------
 // ------------------------------------------------------------------------------------
 
 // // skills section
 const addSkillsBtn = document.querySelector(".skills-div-add");
 const skillsParentCon = document.querySelector(".skills-parent");
-// job-title-update-con-1-skills
-// job-title-update-con-2-skills
+
+// ------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------
 
 // // internship section
 const addInternshipBtn = document.querySelector(".internship-div-add");
 const internshipParentCon = document.querySelector(".internship-parent");
-// job-title-update-con-1-skills
-// job-title-update-con-2-skills
 
-// CURRENT DATE
+// ------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------
 
 const thedate = new Date();
 let curDate = thedate.getFullYear();
@@ -179,6 +153,40 @@ let curDateEdu = theDate2.getFullYear();
 if (calendarYearEdu) {
   calendarYearEdu.textContent = curDateEdu;
 }
+
+// ------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------
+// SHOW AVAILABLE ITEMS ON RELOAD
+
+window.addEventListener("load", function () {
+  // GET EDUCATION FROM LOCALSTORAGE AND DISPLAY IT ON LOAD action
+  if (!addMoreEducationMarkupFromLocalStorage()) return;
+  educationParentCon.insertAdjacentHTML(
+    "beforeend",
+    addMoreEducationMarkupFromLocalStorage().join("")
+  );
+
+  // GET WEBLINKS FROM LOCALSTORAGE AND DISPLAY IT ON LOAD action
+  if (!addMoreWebsiteLinkFromLocalStorageMarkup()) return;
+  webSocialLinkParent.insertAdjacentHTML(
+    "beforeend",
+    addMoreWebsiteLinkFromLocalStorageMarkup().join("")
+  );
+
+  // GET SKILLS FROM LOCALSTORAGE AND DISPLAY IT ON LOAD action
+  if (!addMoreSkillsFromLocalStorageMarkup()) return;
+  skillsParentCon.insertAdjacentHTML(
+    "beforeend",
+    addMoreSkillsFromLocalStorageMarkup().join("")
+  );
+
+  // GET INTERNSHIPS FROM LOCALSTORAGE AND DISPLAY IT ON LOAD action
+  if (!addMoreInternshipsFromLocalStorageMarkup()) return;
+  internshipParentCon.insertAdjacentHTML(
+    "beforeend",
+    addMoreInternshipsFromLocalStorageMarkup().join("")
+  );
+});
 
 // ------------------------------------------------------------------------------------
 
@@ -484,6 +492,9 @@ addEducationBtn.addEventListener("click", function () {
       "span"
     ).textContent = `Add one more education`;
   }
+  const eduItems = new EducationNewFormSessions();
+  SaveAndDeleteItemsFromLocalStorage.collectItems(eduItems);
+  SaveAndDeleteItemsFromLocalStorage.save();
 });
 
 // SHOW AND HIDE FORM ON CLICK
@@ -533,6 +544,10 @@ addSocialBtn.addEventListener("click", function () {
   if (webSocialLinkParent.children.length > 0) {
     addSocialBtn.querySelector("span").textContent = `Add one more link`;
   }
+
+  const webLinkItems = new WebSocialLinkFormSessions();
+  SaveAndDeleteItemsFromLocalStorage.collectItems(webLinkItems);
+  SaveAndDeleteItemsFromLocalStorage.save();
 });
 
 // SHOW AND HIDE FORM ON CLICK
@@ -576,6 +591,9 @@ addSkillsBtn.addEventListener("click", function () {
   if (skillsParentCon.children.length > 0) {
     addSkillsBtn.querySelector("span").textContent = `Add one more skill`;
   }
+  const skillsItems = new SkillsNewFormSessions();
+  SaveAndDeleteItemsFromLocalStorage.collectItems(skillsItems);
+  SaveAndDeleteItemsFromLocalStorage.save();
 });
 
 skillsParentCon.addEventListener("click", function (e) {
@@ -624,6 +642,10 @@ addInternshipBtn.addEventListener("click", function () {
       "span"
     ).textContent = `Add one more internship`;
   }
+
+  const internshipItems = new InternshipNewFormSessions();
+  SaveAndDeleteItemsFromLocalStorage.collectItems(internshipItems);
+  SaveAndDeleteItemsFromLocalStorage.save();
 });
 
 internshipParentCon.addEventListener("click", function (e) {

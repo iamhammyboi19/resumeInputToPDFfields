@@ -2,7 +2,7 @@
 
 const addMoreEmploymentMarkup = function () {
   return `
-  <li class="employment-details--" data-id="123456">
+  <li class="employment-details--">
       <div class="calendar-form-div-con">
                       <div>
                         <div class="job-title-update-div">
@@ -151,7 +151,7 @@ const addMoreEmploymentMarkup = function () {
   `;
 };
 
-// EDUCATION
+// // EDUCATION
 
 const addMoreEducationMarkup = function () {
   return `
@@ -275,7 +275,7 @@ const addMoreEducationMarkup = function () {
   <div class="edu-delete-icon-container">
     <ion-icon name="trash-outline" class="delete-icon"></ion-icon>
   </div>
-</li>  
+</li>
   `;
 };
 
@@ -463,8 +463,8 @@ const addMoreInternshipsMarkup = function () {
 
 export {
   addMoreEmploymentMarkup,
-  addMoreEducationMarkup,
   addMoreWebsiteLinkMarkup,
+  addMoreEducationMarkup,
   addMoreSkillsMarkup,
   addMoreInternshipsMarkup,
 };
