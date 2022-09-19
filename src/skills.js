@@ -3,6 +3,10 @@
 // GET ITEMS FROM LOCALSTORAGE
 const getSkillsFromLocalStorage = JSON.parse(localStorage.getItem("allForms"));
 
+const checkSkills = getSkillsFromLocalStorage.find(
+  (el) => el.type === "skills"
+);
+
 const showHideskills = function (e) {
   // SELECT EACH FORM THROUGH THE PARENT ELEMENT AND HIDE AND SHOW WHEREVER YOU CLICK ON THE BUTTON
   e.target.closest(this[0]).querySelector(this[1]).classList.toggle("hidden");
@@ -90,4 +94,5 @@ export {
   fillSkillsTitle,
   skillsDeleteDetails,
   addMoreSkillsFromLocalStorageMarkup,
+  checkSkills,
 };

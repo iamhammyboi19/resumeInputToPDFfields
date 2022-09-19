@@ -24,6 +24,8 @@ import {
   showHideEmDetails,
   fillEmploymentTitle,
   employmentDeleteDetails,
+  addMoreEmploymentMarkupFromLocalStorage,
+  checkEmployment,
 } from "./employments.js";
 
 import {
@@ -32,6 +34,7 @@ import {
   fillSocialTitle,
   linkDeleteDetails,
   addMoreWebsiteLinkFromLocalStorageMarkup,
+  checkWebLinks,
 } from "./websitelinks.js";
 
 import {
@@ -40,6 +43,7 @@ import {
   fillEducationTitle,
   educationDeleteDetails,
   addMoreEducationMarkupFromLocalStorage,
+  checkEducation,
 } from "./education.js";
 
 import {
@@ -48,6 +52,7 @@ import {
   fillSkillsTitle,
   skillsDeleteDetails,
   addMoreSkillsFromLocalStorageMarkup,
+  checkSkills,
 } from "./skills.js";
 
 import {
@@ -56,6 +61,7 @@ import {
   fillInternshipTitle,
   internshipDeleteDetails,
   addMoreInternshipsFromLocalStorageMarkup,
+  checkInternship,
 } from "./internship.js";
 
 const hiddenForms = document.querySelectorAll(".hidden-input-divs");
@@ -67,26 +73,12 @@ const hidFormCon = document.querySelector(".hide-form-container");
 //  suggestion box and text parts
 const showSuggestBox = document.querySelector(".pre-written-profession");
 const hideSuggestBox = document.querySelector(".close-pre-con");
-const showSuggestBoxEmploy = document.querySelector(".pre-written-employment");
-const hideSuggestBoxEm = document.querySelector(".close-pre-con-employment");
 const suggestionBoxDiv = document.querySelector(".suggestion-texts-con-div");
 const theBoxTexts = document.querySelector(".suggestion-texts-con");
-const theBoxTextsEmploy = document.querySelector(".suggestion-texts-con-emp");
-const suggestionBoxDivEmploy = document.querySelector(
-  ".suggestion-texts-con-div-emp"
-);
 const textareaInput = document.querySelector(".summary-input");
-const textareaEmploy = document.querySelector(".summary-input-emp");
 const prePhraseArrowBtn = document.querySelector(".arrow-btn-con");
-const prePhraseArrowBtnEmp = document.querySelector(".arrow-btn-con-emp");
 const suggestionTexts = document.querySelectorAll(".suggestion-texts");
-const suggestionTextsEmp = document.querySelectorAll(
-  ".suggestion-texts-employment"
-);
 const prePhraseCloseArrowBtn = document.querySelector(".close-arrow-btn-con");
-const prePhraseCloseArrowBtnEmp = document.querySelector(
-  ".close-arrow-btn-con-emp"
-);
 
 // ------------------------------------------------------------------------------------
 
@@ -105,9 +97,7 @@ const startDateEdu = document.querySelector(".startdate-edu");
 // ------------------------------------------------------------------------------------
 
 // employment form parts
-const employmentSection = document.querySelector(".employment-details--");
 const addEmploymentBtn = document.querySelector(".employment-div-add");
-const addMoreEmploymentBtn = document.querySelector(".employment-div-addMore");
 const employmentParentCon = document.querySelector(".employment-parent");
 
 // ------------------------------------------------------------------------------------
@@ -165,6 +155,11 @@ window.addEventListener("load", function () {
     "beforeend",
     addMoreEducationMarkupFromLocalStorage().join("")
   );
+  if (checkEducation) {
+    addEducationBtn.querySelector(
+      "span"
+    ).textContent = `Add one more education`;
+  }
 
   // GET WEBLINKS FROM LOCALSTORAGE AND DISPLAY IT ON LOAD action
   if (!addMoreWebsiteLinkFromLocalStorageMarkup()) return;
@@ -172,6 +167,9 @@ window.addEventListener("load", function () {
     "beforeend",
     addMoreWebsiteLinkFromLocalStorageMarkup().join("")
   );
+  if (checkWebLinks) {
+    addSocialBtn.querySelector("span").textContent = `Add one more link`;
+  }
 
   // GET SKILLS FROM LOCALSTORAGE AND DISPLAY IT ON LOAD action
   if (!addMoreSkillsFromLocalStorageMarkup()) return;
@@ -179,6 +177,9 @@ window.addEventListener("load", function () {
     "beforeend",
     addMoreSkillsFromLocalStorageMarkup().join("")
   );
+  if (checkSkills) {
+    addSkillsBtn.querySelector("span").textContent = `Add one more skill`;
+  }
 
   // GET INTERNSHIPS FROM LOCALSTORAGE AND DISPLAY IT ON LOAD action
   if (!addMoreInternshipsFromLocalStorageMarkup()) return;
@@ -186,6 +187,23 @@ window.addEventListener("load", function () {
     "beforeend",
     addMoreInternshipsFromLocalStorageMarkup().join("")
   );
+  if (checkInternship) {
+    addInternshipBtn.querySelector(
+      "span"
+    ).textContent = `Add one more internship`;
+  }
+
+  // GET INTERNSHIPS FROM LOCALSTORAGE AND DISPLAY IT ON LOAD action
+  if (!addMoreEmploymentMarkupFromLocalStorage()) return;
+  employmentParentCon.insertAdjacentHTML(
+    "beforeend",
+    addMoreEmploymentMarkupFromLocalStorage().join("")
+  );
+  if (checkEmployment) {
+    addEmploymentBtn.querySelector(
+      "span"
+    ).textContent = `Add one more employment`;
+  }
 });
 
 // ------------------------------------------------------------------------------------
@@ -214,16 +232,6 @@ hideSuggestBox.addEventListener("click", showHideSuggestionBoxFunc);
 
 // ------------------------------------------------------------------------------------
 
-const showHideSuggestBoxEmployFunc = function () {
-  suggestionBoxDivEmploy.classList.toggle("hide-suggestion-box-emp");
-  showSuggestBoxEmploy.classList.toggle("hide-open-close-btn");
-  hideSuggestBoxEm.classList.toggle("hide-open-close-btn");
-};
-
-// hide and show the second suggestion text container
-showSuggestBoxEmploy.addEventListener("click", showHideSuggestBoxEmployFunc);
-hideSuggestBoxEm.addEventListener("click", showHideSuggestBoxEmployFunc);
-
 // ------------------------------------------------------------------------------------
 
 theBoxTexts.addEventListener(
@@ -231,10 +239,10 @@ theBoxTexts.addEventListener(
   textareaFill.bind(["suggestion-texts", textareaInput])
 );
 
-theBoxTextsEmploy.addEventListener(
-  "click",
-  textareaFill.bind(["suggestion-texts-employment", textareaEmploy])
-);
+// theBoxTextsEmploy.addEventListener(
+//   "click",
+//   textareaFill.bind(["suggestion-texts-employment", textareaEmploy])
+// );
 
 // ------------------------------------------------------------------------------------
 
@@ -248,19 +256,6 @@ prePhraseArrowBtn.addEventListener(
     prePhraseArrowBtn,
     prePhraseCloseArrowBtn,
     textareaInput,
-  ])
-);
-
-// theBoxTextsEmploy suggestionTextsEmp prePhraseArrowBtnEmp prePhraseCloseArrowBtnEmp textareaEmploy
-// fill textarea at once for second suggestion text
-prePhraseArrowBtnEmp.addEventListener(
-  "click",
-  textareaFillWhole.bind([
-    theBoxTextsEmploy,
-    suggestionTextsEmp,
-    prePhraseArrowBtnEmp,
-    prePhraseCloseArrowBtnEmp,
-    textareaEmploy,
   ])
 );
 // ------------------------------------------------------------------------------------
@@ -419,6 +414,14 @@ const fillMeUp = function (e) {
 // [form-details-delete-btn, formDetails]
 const deleteSpecificForm = function (e) {
   const curDeleteBtn = e.target.closest(this[0]);
+
+  // GET THE CUURENT DELETED ELEMENT AND ALSO DELETE FROM LOCALSTORAGE
+  const { sessionId } = curDeleteBtn.closest(this[1]).dataset;
+  const savedItems = JSON.parse(localStorage.getItem("allForms"));
+  const curTemplate = savedItems.findIndex((el) => el.id === sessionId);
+  savedItems.splice(curTemplate, 1);
+  if (savedItems.length === 0) localStorage.removeItem("allForms");
+  localStorage.setItem("allForms", JSON.stringify(savedItems));
   return curDeleteBtn
     .closest(this[1])
     .parentElement.removeChild(curDeleteBtn.closest(this[1]));
@@ -426,23 +429,23 @@ const deleteSpecificForm = function (e) {
 // ------------------------------------------------------------------------------------
 
 // show employment section
-addEmploymentBtn.addEventListener("click", function () {
-  employmentSection.classList.remove("hidden");
-  addEmploymentBtn.classList.add("hidden");
-  addMoreEmploymentBtn.classList.remove("hidden");
-});
 
 // ADDING MORE SECTION
-addMoreEmploymentBtn.addEventListener("click", function () {
+addEmploymentBtn.addEventListener("click", function () {
   employmentParentCon.insertAdjacentHTML(
     "beforeend",
     addMoreEmploymentMarkup()
   );
   if (employmentParentCon.children.length > 0) {
-    addMoreEmploymentBtn.querySelector(
+    addEmploymentBtn.querySelector(
       "span"
     ).textContent = `Add one more employment`;
   }
+
+  SaveAndDeleteItemsFromLocalStorage.collectItems(
+    new EmploymentNewFormSessions()
+  );
+  SaveAndDeleteItemsFromLocalStorage.save();
 });
 
 document
@@ -473,9 +476,7 @@ document
 
       // check if there is any child element left
       if (employmentParentCon.children.length === 0) {
-        addMoreEmploymentBtn.querySelector(
-          "span"
-        ).textContent = `Add employment`;
+        addEmploymentBtn.querySelector("span").textContent = `Add employment`;
       }
     }
   });
@@ -691,20 +692,6 @@ internshipParentCon.addEventListener("click", function (e) {
 
 */
 
-const showHideSuggestionBoxEmploy = function (e) {
-  if (
-    e.target.closest(".suggestion-texts-con-div-emp") ||
-    e.target.closest(".pre-written-employment") ||
-    e.target.closest(".close-pre-con-employment")
-  )
-    return;
-  suggestionBoxDivEmploy.classList.remove("hide-suggestion-box-emp");
-  if (!suggestionBoxDivEmploy.classList.contains("hide-suggestion-box-emp")) {
-    showSuggestBoxEmploy.classList.remove("hide-open-close-btn");
-    hideSuggestBoxEm.classList.add("hide-open-close-btn");
-  }
-};
-
 const showHideSuggestionBoxProf = function (e) {
   if (
     e.target.closest(".suggestion-texts-con-div") ||
@@ -720,8 +707,6 @@ const showHideSuggestionBoxProf = function (e) {
 };
 
 document.documentElement.addEventListener("click", showHideSuggestionBoxProf);
-document.documentElement.addEventListener("click", showHideSuggestionBoxEmploy);
-// document.documentElement.addEventListener("click", showHideEmCalendar);
 
 // hiding positioned element clicking outing the element EMPLOY
 

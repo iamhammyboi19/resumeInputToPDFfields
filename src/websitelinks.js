@@ -5,6 +5,10 @@ const getWeblinksFromLocalStorage = JSON.parse(
   localStorage.getItem("allForms")
 );
 
+const checkWebLinks = getWeblinksFromLocalStorage.find(
+  (el) => el.type === "webLinks"
+);
+
 const showHideWebsiteAndSocialLinks = function (e) {
   // SELECT EACH FORM THROUGH THE PARENT ELEMENT AND HIDE AND SHOW WHEREVER YOU CLICK ON THE BUTTON
   e.target.closest(this[0]).querySelector(this[1]).classList.toggle("hidden");
@@ -62,14 +66,15 @@ const addMoreWebsiteLinkFromLocalStorageMarkup = function () {
                       <input
                         type="text"
                         class="personal-d-input-1 per-det-inp socialLink-job-title-inp"
-                        value=${item.label || " "}
+                        value=${item.label.replace("/", "")}
                       />
                     </div>
                     <div class="input-div">
                       <label class="personal-d-label">Link</label>
-                      <input type="text" class="personal-d-input-1 per-det-inp" value=${
-                        item.link || " "
-                      }/>
+                      <input type="text" class="personal-d-input-1 per-det-inp" value=${item.link.replace(
+                        "/",
+                        ""
+                      )}/>
                     </div>
                   </form>
                 </div>
@@ -89,4 +94,5 @@ export {
   fillSocialTitle,
   linkDeleteDetails,
   addMoreWebsiteLinkFromLocalStorageMarkup,
+  checkWebLinks,
 };

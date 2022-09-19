@@ -5,6 +5,10 @@ const getEducationFromLocalStorage = JSON.parse(
   localStorage.getItem("allForms")
 );
 
+const checkEducation = getEducationFromLocalStorage.find(
+  (el) => el.type === "education"
+);
+
 const showHideEducationform = function (e) {
   // SELECT EACH FORM THROUGH THE PARENT ELEMENT AND HIDE AND SHOW WHEREVER YOU CLICK ON THE BUTTON
   e.target.closest(this[0]).querySelector(this[1]).classList.toggle("hidden");
@@ -65,14 +69,12 @@ const addMoreEducationMarkupFromLocalStorage = function () {
               <input
                 type="text"
                 class="personal-d-input-1 per-det-inp education-job-title-inp"
-                value=${item.school || " "}
+                value=${item.school}
               />
             </div>
             <div class="input-div">
               <label class="personal-d-label">Degree</label>
-              <input type="text" class="personal-d-input-1 per-det-inp" value=${
-                item.degree || " "
-              } />
+              <input type="text" class="personal-d-input-1 per-det-inp" value=${item.degree} />
             </div>
             <div class="input-div">
               <label class="personal-d-label">Start & End Date</label>
@@ -81,21 +83,19 @@ const addMoreEducationMarkupFromLocalStorage = function () {
                   type="text"
                   placeholder="MM / YYYY"
                   class="personal-d-input-1 per-det-inp start-end-date-inp-edu startdate-edu"
-                  value=${item.startDate || " "} 
+                  value=${item.startDate} 
                 />
                 <input
                   type="text"
                   placeholder="MM / YYYY"
                   class="personal-d-input-1 per-det-inp start-end-date-inp-edu"
-                  value=${item.endDate || " "}
+                  value=${item.endDate}
                 />
               </div>
             </div>
             <div class="input-div">
               <label class="personal-d-label">City</label>
-              <input type="text" class="personal-d-input-1 per-det-inp" value=${
-                item.city || " "
-              } />
+              <input type="text" class="personal-d-input-1 per-det-inp" value=${item.city} />
             </div>
           </form>
     
@@ -161,7 +161,7 @@ const addMoreEducationMarkupFromLocalStorage = function () {
             rows="10"
             cols="35"
             minlength="0"
-            value=${item.about || " "}
+            value=${item.about}
           ></textarea>
         </div>
       </div>
@@ -180,4 +180,5 @@ export {
   addMoreEducationMarkupFromLocalStorage,
   fillEducationTitle,
   educationDeleteDetails,
+  checkEducation,
 };

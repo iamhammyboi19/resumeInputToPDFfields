@@ -277,3 +277,55 @@ Dedicated Visual Artist with a decorated background in a variety of artistic med
 // startDate.value = e.target.textContent + "," + " " + calendarYear.textContent;
 // calendarDiv.classList.toggle("hide-show-calendar-div");
 // });
+
+// const theBoxTextsEmploy = document.querySelector(".suggestion-texts-con-emp");
+// const textareaEmploy = document.querySelector(".summary-input-emp");
+// const prePhraseArrowBtnEmp = document.querySelector(".arrow-btn-con-emp");
+// const suggestionTextsEmp = document.querySelectorAll(
+// ".suggestion-texts-employment"
+// );
+// const prePhraseCloseArrowBtnEmp = document.querySelector(
+// ".close-arrow-btn-con-emp"
+// );
+
+// const showHideSuggestBoxEmployFunc = function () {
+// suggestionBoxDivEmploy.classList.toggle("hide-suggestion-box-emp");
+// showSuggestBoxEmploy.classList.toggle("hide-open-close-btn");
+// hideSuggestBoxEm.classList.toggle("hide-open-close-btn");
+// };
+
+// employment-parent
+
+// hide and show the second suggestion text container
+// showSuggestBoxEmploy.addEventListener("click", showHideSuggestBoxEmployFunc);
+// hideSuggestBoxEm.addEventListener("click", showHideSuggestBoxEmployFunc);
+
+// theBoxTextsEmploy suggestionTextsEmp prePhraseArrowBtnEmp prePhraseCloseArrowBtnEmp textareaEmploy
+// fill textarea at once for second suggestion text
+// prePhraseArrowBtnEmp.addEventListener(
+// "click",
+// textareaFillWhole.bind([
+// theBoxTextsEmploy,
+// suggestionTextsEmp,
+// prePhraseArrowBtnEmp,
+// prePhraseCloseArrowBtnEmp,
+// textareaEmploy,
+// ])
+// );
+
+// const showHideSuggestionBoxEmploy = function (e) {
+// if (
+// e.target.closest(".suggestion-texts-con-div-emp") ||
+// e.target.closest(".pre-written-employment") ||
+// e.target.closest(".close-pre-con-employment")
+// )
+// return;
+// suggestionBoxDivEmploy.classList.remove("hide-suggestion-box-emp");
+// if (!suggestionBoxDivEmploy.classList.contains("hide-suggestion-box-emp")) {
+// showSuggestBoxEmploy.classList.remove("hide-open-close-btn");
+// hideSuggestBoxEm.classList.add("hide-open-close-btn");
+// }
+// };
+
+// document.documentElement.addEventListener("click", showHideSuggestionBoxEmploy);
+// document.documentElement.addEventListener("click", showHideEmCalendar);
