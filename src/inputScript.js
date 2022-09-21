@@ -416,9 +416,9 @@ const deleteSpecificForm = function (e) {
   const curDeleteBtn = e.target.closest(this[0]);
 
   // GET THE CUURENT DELETED ELEMENT AND ALSO DELETE FROM LOCALSTORAGE
-  const { sessionId } = curDeleteBtn.closest(this[1]).dataset;
+  const { sessionid } = curDeleteBtn.closest(this[1]).dataset;
   const savedItems = JSON.parse(localStorage.getItem("allForms"));
-  const curTemplate = savedItems.findIndex((el) => el.id === sessionId);
+  const curTemplate = savedItems.findIndex((el) => el.id === sessionid);
   savedItems.splice(curTemplate, 1);
   if (savedItems.length === 0) localStorage.removeItem("allForms");
   localStorage.setItem("allForms", JSON.stringify(savedItems));
@@ -479,14 +479,16 @@ document
           .closest(".employment-details--")
           .querySelector(".employment-job-title-inp")
           .addEventListener("input", function (e) {
-            const sessionId = e.target.closest(".employment-details--");
-            console.log(sessionId);
-            // const savedItems = JSON.parse(localStorage.getItem("allForms"));
-            // const curTemplate = savedItems.find((el) => el.id === sessionId);
-            // const index = savedItems.indexOf(curTemplate);
-            // curTemplate.jobTitle = e.target.value;
-            // savedItems[index] = curTemplate;
-            // localStorage.setItem("allForms", JSON.stringify(savedItems));
+            const { sessionid } = e.target.closest(
+              ".employment-details--"
+            ).dataset;
+            const savedItems = JSON.parse(localStorage.getItem("allForms"));
+            const curTemplate = savedItems.find((el) => el.id === sessionid);
+            console.log(curTemplate);
+            const index = savedItems.indexOf(curTemplate);
+            curTemplate.jobTitle = e.target.value;
+            savedItems[index] = curTemplate;
+            localStorage.setItem("allForms", JSON.stringify(savedItems));
           });
       }
     }
