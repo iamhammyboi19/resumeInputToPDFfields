@@ -42,6 +42,7 @@ const employmentDeleteDetails = [
 const addMoreEmploymentMarkupFromLocalStorage = function () {
   const employmentFromStorage = JSON.parse(localStorage.getItem("allForms"));
   if (!employmentFromStorage) return;
+  // console.log(employmentFromStorage.map((item) => item.employer));
   return employmentFromStorage.map((item) => {
     if (item.type === "employment") {
       return `
@@ -50,14 +51,18 @@ const addMoreEmploymentMarkupFromLocalStorage = function () {
         <div>
           <div class="job-title-update-div">
             <span class="job-title-update-con-1">
-              <h6 class="job-title-update-1">(Not specified)</h6>
+              <h6 class="job-title-update-1">${
+                item.jobTitle.length < 2 ? "(Not specified)" : item.jobTitle
+              }</h6>
               <ion-icon
                 name="chevron-down-outline"
                 class="job-title-update-icon"
               ></ion-icon
             ></span>
             <span class="job-title-update-con-2 hidden">
-              <h6 class="job-title-update-2">(Not specified)</h6>
+              <h6 class="job-title-update-2">${
+                item.jobTitle.length < 2 ? "(Not specified)" : item.jobTitle
+              }</h6>
               <ion-icon
                 name="chevron-up-outline"
                 class="job-title-update-icon"
@@ -68,13 +73,16 @@ const addMoreEmploymentMarkupFromLocalStorage = function () {
             <div class="input-div input-div-job">
               <label class="personal-d-label">Job Title</label>
               <input
+                value="${item.jobTitle}"
                 type="text"
                 class="personal-d-input-1 per-det-inp employment-job-title-inp"
-                value=${item.jobTitle}>
+              >
             </div>
             <div class="input-div">
               <label class="personal-d-label">Employer</label>
-              <input type="text"  class="personal-d-input-1 per-det-inp" value=${item.employer}>
+              <input type="text" name="employer" class="personal-d-input-1 per-det-inp employment-emp-title-inp" value="${
+                item.employer
+              }" >
             </div>
             <div class="input-div">
               <label class="personal-d-label">Start & End Date</label>
@@ -83,17 +91,19 @@ const addMoreEmploymentMarkupFromLocalStorage = function () {
                   type="text"
                   placeholder="MM / YYYY"
                   class="personal-d-input-1 per-det-inp start-end-date-inp startdate"
-                  value=${item.startDate}>
+                  value="${item.startDate}">
                 <input
                   type="text"
                   placeholder="MM / YYYY"
-                  class="personal-d-input-1 per-det-inp start-end-date-inp"
-                  value=${item.endDate}>
+                  class="personal-d-input-1 per-det-inp start-end-date-inp emp-enddate"
+                  value="${item.endDate}">
               </div>
             </div>
             <div class="input-div">
               <label class="personal-d-label">City</label>
-              <input type="text" class="personal-d-input-1 per-det-inp"  value=${item.city}>
+              <input type="text" class="personal-d-input-1 per-det-inp emp-city"  value="${
+                item.city
+              }" >
             </div>
           </form>
     
@@ -155,12 +165,12 @@ const addMoreEmploymentMarkupFromLocalStorage = function () {
     
           <textarea
             placeholder="e.g Created and implemented lesson plans based on child-led interest and curiosities."
-            class="summary-input-emp"
+            class="summary-input-emp emp-sum-inp"
             rows="10"
             cols="35"
             minlength="0"
-            value=${item.about}
-          ></textarea>
+            
+          >${item.about}</textarea>
     
           <div class="suggestion-texts-con-div-emp">
             <aside class="suggestion-con-emp">

@@ -50,14 +50,18 @@ const addMoreEducationMarkupFromLocalStorage = function () {
         <div>
           <div class="job-title-update-div-edu">
             <span class="job-title-update-con-1-edu">
-              <h6 class="job-title-update-1-edu">(Not specified)</h6>
+              <h6 class="job-title-update-1-edu">${
+                item.school.length < 2 ? "(Not specified)" : item.school
+              }</h6>
               <ion-icon
                 name="chevron-down-outline"
                 class="job-title-update-icon-edu"
               ></ion-icon
             ></span>
             <span class="job-title-update-con-2-edu hidden">
-              <h6 class="job-title-update-2-edu">(Not specified)</h6>
+              <h6 class="job-title-update-2-edu">${
+                item.school.length < 2 ? "(Not specified)" : item.school
+              }</h6>
               <ion-icon
                 name="chevron-up-outline"
                 class="job-title-update-icon-edu"
@@ -70,11 +74,13 @@ const addMoreEducationMarkupFromLocalStorage = function () {
               <input
                 type="text"
                 class="personal-d-input-1 per-det-inp education-job-title-inp"
-                value=${item.school}>
+                value="${item.school}">
             </div>
             <div class="input-div">
               <label class="personal-d-label">Degree</label>
-              <input type="text" class="personal-d-input-1 per-det-inp" value=${item.degree}>
+              <input type="text" class="personal-d-input-1 per-det-inp edu-deg-inp" value="${
+                item.degree
+              }">
             </div>
             <div class="input-div">
               <label class="personal-d-label">Start & End Date</label>
@@ -83,17 +89,19 @@ const addMoreEducationMarkupFromLocalStorage = function () {
                   type="text"
                   placeholder="MM / YYYY"
                   class="personal-d-input-1 per-det-inp start-end-date-inp-edu startdate-edu"
-                  value=${item.startDate}>
+                  value="${item.startDate}">
                 <input
                   type="text"
                   placeholder="MM / YYYY"
-                  class="personal-d-input-1 per-det-inp start-end-date-inp-edu"
-                  value=${item.endDate}>
+                  class="personal-d-input-1 per-det-inp start-end-date-inp-edu enddate-edu"
+                  value="${item.endDate}">
               </div>
             </div>
             <div class="input-div">
               <label class="personal-d-label">City</label>
-              <input type="text" class="personal-d-input-1 per-det-inp" value=${item.city}>
+              <input type="text" class="personal-d-input-1 per-det-inp edu-city" value="${
+                item.city
+              }">
             </div>
           </form>
     
@@ -155,12 +163,11 @@ const addMoreEducationMarkupFromLocalStorage = function () {
     
           <textarea
             placeholder="e.g Graduated with high honors"
-            class="summary-input-edu"
+            class="summary-input-edu edu-sum-inp"
             rows="10"
             cols="35"
             minlength="0"
-            value=${item.about}
-          ></textarea>
+          >${item.about}</textarea>
         </div>
       </div>
       <div class="edu-delete-icon-container">

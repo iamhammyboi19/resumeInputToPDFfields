@@ -52,14 +52,22 @@ const addMoreInternshipsFromLocalStorageMarkup = function () {
                   <div>
                     <div class="job-title-update-div-internship">
                       <span class="job-title-update-con-1-internship">
-                        <h6 class="job-title-update-1-internship">(Not specified)</h6>
+                        <h6 class="job-title-update-1-internship">${
+                          item.jobTitle.length < 2
+                            ? "(Not specified)"
+                            : item.jobTitle
+                        }</h6>
                         <ion-icon
                           name="chevron-down-outline"
                           class="job-title-update-icon-internship"
                         ></ion-icon
                       ></span>
                       <span class="job-title-update-con-2-internship hidden">
-                        <h6 class="job-title-update-2-internship">(Not specified)</h6>
+                        <h6 class="job-title-update-2-internship">${
+                          item.jobTitle.length < 2
+                            ? "(Not specified)"
+                            : item.jobTitle
+                        }</h6>
                         <ion-icon
                           name="chevron-up-outline"
                           class="job-title-update-icon-internship"
@@ -72,11 +80,13 @@ const addMoreInternshipsFromLocalStorageMarkup = function () {
                         <input
                           type="text"
                           class="personal-d-input-1 per-det-inp internship-job-title-inp"
-                          value=${item.jobTitle}>
+                          value="${item.jobTitle}">
                       </div>
                       <div class="input-div">
                         <label class="personal-d-label">Employer</label>
-                        <input type="text" class="personal-d-input-1 per-det-inp" value=${item.employer}>
+                        <input type="text" class="personal-d-input-1 per-det-inp internshipEmployer" value="${
+                          item.employer
+                        }">
                       </div>
                       <div class="input-div">
                         <label class="personal-d-label">Start & End Date</label>
@@ -85,17 +95,19 @@ const addMoreInternshipsFromLocalStorageMarkup = function () {
                             type="text"
                             placeholder="MM / YYYY"
                             class="personal-d-input-1 per-det-inp start-end-date-inp-internship startdate-internship"
-                            value=${item.startDate}>
+                            value="${item.startDate}">
                           <input
                             type="text"
                             placeholder="MM / YYYY"
-                            class="personal-d-input-1 per-det-inp start-end-date-inp-internship"
-                            value=${item.endDate}>
+                            class="personal-d-input-1 per-det-inp start-end-date-inp-internship enddate-internship"
+                            value="${item.endDate}">
                         </div>
                       </div>
                       <div class="input-div">
                         <label class="personal-d-label">City</label>
-                        <input type="text" class="personal-d-input-1 per-det-inp" value=${item.city}>
+                        <input type="text" class="personal-d-input-1 per-det-inp internshipCity" value="${
+                          item.city
+                        }">
                       </div>
                     </form>
     
@@ -127,12 +139,11 @@ const addMoreInternshipsFromLocalStorageMarkup = function () {
     
                     <textarea
                       placeholder="e.g Created and implemented lesson plans based on child-led interests and curiosities"
-                      class="summary-input-internship"
+                      class="summary-input-internship internship-about"
                       rows="10"
                       cols="35"
                       minlength="0"
-                      value=${item.about}
-                    ></textarea>
+                    >${item.about}</textarea>
                   </div>
                 </div>
                 <div class="internship-delete-icon-container">

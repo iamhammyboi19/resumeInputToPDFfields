@@ -1,6 +1,6 @@
 "use strict";
 
-import { textareaFillWhole, textareaFill } from "./textAreaFillWhole.js";
+import { textareaFillWhole } from "./textAreaFillWhole.js";
 
 import {
   EmploymentNewFormSessions,
@@ -10,14 +10,6 @@ import {
   InternshipNewFormSessions,
   SkillsNewFormSessions,
 } from "./formModels.js";
-
-// import {
-//   addMoreEmploymentMarkup,
-//   addMoreWebsiteLinkMarkup,
-//   addMoreSkillsMarkup,
-//   addMoreInternshipsMarkup,
-//   addMoreEducationMarkup,
-// } from "./markups.js";
 
 import {
   showHideEmploymentform,
@@ -234,16 +226,6 @@ hideSuggestBox.addEventListener("click", showHideSuggestionBoxFunc);
 
 // ------------------------------------------------------------------------------------
 
-theBoxTexts.addEventListener(
-  "click",
-  textareaFill.bind(["suggestion-texts", textareaInput])
-);
-
-// theBoxTextsEmploy.addEventListener(
-//   "click",
-//   textareaFill.bind(["suggestion-texts-employment", textareaEmploy])
-// );
-
 // ------------------------------------------------------------------------------------
 
 // theBoxTexts suggestionTexts prePhraseArrowBtn prePhraseCloseArrowBtn textareaInput
@@ -382,6 +364,9 @@ if (calendarMonthsEdu) {
     calendarDivEdu.classList.toggle("hide-show-calendar-div");
   });
 }
+
+// ------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------
 // ------------------------------------------------------------------------------------
 
 // REUSEABLE FUNCTION FOR FILLING THE NON-SPECIFIED PART
@@ -395,6 +380,7 @@ const nonSpecificTextFill = function (e) {
   }
 };
 
+// FILL UP THE NON-SPECIFIED PART ON INPUT
 // [form-details, form-job-title-inp, job-title-update-1-internship, job-title-update-2-internship ]
 const fillMeUp = function (e) {
   // SELECT THE CURRENT ELEMENT INPUT FORM ON CLICK AND addEventListener to it
@@ -412,6 +398,7 @@ const fillMeUp = function (e) {
 };
 
 // [form-details-delete-btn, formDetails]
+// DELETE CURRENT FORM AND ALSO IN LOCAL STORAGE ON DELETE-ICON CLICK
 const deleteSpecificForm = function (e) {
   const curDeleteBtn = e.target.closest(this[0]);
 
@@ -426,6 +413,34 @@ const deleteSpecificForm = function (e) {
     .closest(this[1])
     .parentElement.removeChild(curDeleteBtn.closest(this[1]));
 };
+
+// ADD ITEMS TO LOCALSTORAGE WHILE INPUTTING
+// [".edu-details--", ".education-job-title-inp", "school"]
+// [FORM PARENT, FORM INPUT, labelClass]
+
+const storeAutoAsIwriteToTheForm = function (e) {
+  // TAKE THE BIND ELEMENT AND PASS IT DOWN TO THE SESSIONID
+  // ONLY WORKS THIS WAY
+  const this1 = this[0];
+  const this2 = this[2];
+  e.target
+    .closest(this[0])
+    .querySelector(this[1])
+    .addEventListener("input", function (e) {
+      // CHECK THE CURRENT ELEMENT INPUTTED AND UPDATE IT IN THE LOCALSTORAGE
+      // COLLECT IT PARENTS DATA-SESSIONID AND UPDATE THE PARTICULAR FIELD
+      const { sessionid } = e.target.closest(this1).dataset;
+      const savedItems = JSON.parse(localStorage.getItem("allForms"));
+      const curTemplate = savedItems.find((el) => el.id === sessionid);
+      const index = savedItems.indexOf(curTemplate);
+      curTemplate[this2] = e.target.value;
+      savedItems[index] = curTemplate;
+      localStorage.setItem("allForms", JSON.stringify(savedItems));
+    });
+};
+
+// ------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------
 // ------------------------------------------------------------------------------------
 
 // show employment section
@@ -474,22 +489,58 @@ document
 
       fillMeUp.bind(fillEmploymentTitle)(e);
 
+      // CHECK CURRENT CLICKED ELEMENT ON EMPLOYMENT FORM
       if (e.target.classList.contains("employment-job-title-inp")) {
-        e.target
-          .closest(".employment-details--")
-          .querySelector(".employment-job-title-inp")
-          .addEventListener("input", function (e) {
-            const { sessionid } = e.target.closest(
-              ".employment-details--"
-            ).dataset;
-            const savedItems = JSON.parse(localStorage.getItem("allForms"));
-            const curTemplate = savedItems.find((el) => el.id === sessionid);
-            console.log(curTemplate);
-            const index = savedItems.indexOf(curTemplate);
-            curTemplate.jobTitle = e.target.value;
-            savedItems[index] = curTemplate;
-            localStorage.setItem("allForms", JSON.stringify(savedItems));
-          });
+        storeAutoAsIwriteToTheForm.bind([
+          ".employment-details--",
+          ".employment-job-title-inp",
+          "jobTitle",
+        ])(e);
+      }
+
+      // CHECK CURRENT CLICKED ELEMENT ON EMPLOYMENT FORM
+      if (e.target.classList.contains("employment-emp-title-inp")) {
+        storeAutoAsIwriteToTheForm.bind([
+          ".employment-details--",
+          ".employment-emp-title-inp",
+          "employer",
+        ])(e);
+      }
+
+      // CHECK CURRENT CLICKED ELEMENT ON EMPLOYMENT FORM
+      if (e.target.classList.contains("emp-enddate")) {
+        storeAutoAsIwriteToTheForm.bind([
+          ".employment-details--",
+          ".emp-enddate",
+          "endDate",
+        ])(e);
+      }
+
+      // CHECK CURRENT CLICKED ELEMENT ON EMPLOYMENT FORM
+      if (e.target.classList.contains("startdate")) {
+        storeAutoAsIwriteToTheForm.bind([
+          ".employment-details--",
+          ".startdate",
+          "startDate",
+        ])(e);
+      }
+
+      // CHECK CURRENT CLICKED ELEMENT ON EMPLOYMENT FORM
+      if (e.target.classList.contains("emp-city")) {
+        storeAutoAsIwriteToTheForm.bind([
+          ".employment-details--",
+          ".emp-city",
+          "city",
+        ])(e);
+      }
+
+      // CHECK CURRENT CLICKED ELEMENT ON EMPLOYMENT FORM
+      if (e.target.classList.contains("emp-sum-inp")) {
+        storeAutoAsIwriteToTheForm.bind([
+          ".employment-details--",
+          ".emp-sum-inp",
+          "about",
+        ])(e);
       }
     }
 
@@ -548,6 +599,58 @@ educationParentCon.addEventListener("click", function (e) {
     // SELECT THE CURRENT ELEMENT INPUT FORM ON CLICK AND addEventListener to it
 
     fillMeUp.bind(fillEducationTitle)(e);
+
+    // CHECK CURRENT CLICKED ELEMENT ON EDUCATION FORM
+    if (e.target.classList.contains("education-job-title-inp")) {
+      storeAutoAsIwriteToTheForm.bind([
+        ".edu-details--",
+        ".education-job-title-inp",
+        "school",
+      ])(e);
+    }
+
+    // CHECK CURRENT CLICKED ELEMENT ON EDUCATION FORM
+    if (e.target.classList.contains("edu-deg-inp")) {
+      storeAutoAsIwriteToTheForm.bind([
+        ".edu-details--",
+        ".edu-deg-inp",
+        "degree",
+      ])(e);
+    }
+
+    // CHECK CURRENT CLICKED ELEMENT ON EDUCATION FORM
+    if (e.target.classList.contains("enddate-edu")) {
+      storeAutoAsIwriteToTheForm.bind([
+        ".edu-details--",
+        ".enddate-edu",
+        "endDate",
+      ])(e);
+    }
+
+    // CHECK CURRENT CLICKED ELEMENT ON EDUCATION FORM
+    if (e.target.classList.contains("startdate-edu")) {
+      storeAutoAsIwriteToTheForm.bind([
+        ".edu-details--",
+        ".startdate-edu",
+        "startDate",
+      ])(e);
+    }
+
+    // CHECK CURRENT CLICKED ELEMENT ON EDUCATION FORM
+    if (e.target.classList.contains("edu-city")) {
+      storeAutoAsIwriteToTheForm.bind([".edu-details--", ".edu-city", "city"])(
+        e
+      );
+    }
+
+    // CHECK CURRENT CLICKED ELEMENT ON EDUCATION FORM
+    if (e.target.classList.contains("edu-sum-inp")) {
+      storeAutoAsIwriteToTheForm.bind([
+        ".edu-details--",
+        ".edu-sum-inp",
+        "about",
+      ])(e);
+    }
   }
 
   // DELETE FORM
@@ -603,6 +706,22 @@ webSocialLinkParent.addEventListener("click", function (e) {
   if (e.target.closest(".link-details--")) {
     // SELECT THE CURRENT ELEMENT INPUT FORM ON CLICK AND addEventListener to it
     fillMeUp.bind(fillSocialTitle)(e);
+
+    // CHECK CURRENT CLICKED ELEMENT ON WEBLINK FORM
+    if (e.target.classList.contains("linklabel")) {
+      storeAutoAsIwriteToTheForm.bind([
+        ".link-details--",
+        ".linklabel",
+        "label",
+      ])(e);
+    }
+
+    // CHECK CURRENT CLICKED ELEMENT ON WEBLINK FORM
+    if (e.target.classList.contains("linklink")) {
+      storeAutoAsIwriteToTheForm.bind([".link-details--", ".linklink", "link"])(
+        e
+      );
+    }
   }
 
   // DELETE FORM
@@ -654,6 +773,24 @@ skillsParentCon.addEventListener("click", function (e) {
   if (e.target.closest(".skills-details--")) {
     // SELECT THE CURRENT ELEMENT INPUT FORM ON CLICK AND addEventListener to it
     fillMeUp.bind(fillSkillsTitle)(e);
+
+    // CHECK CURRENT CLICKED ELEMENT ON SKILLS FORM
+    if (e.target.classList.contains("skillslabel")) {
+      storeAutoAsIwriteToTheForm.bind([
+        ".skills-details--",
+        ".skillslabel",
+        "label",
+      ])(e);
+    }
+
+    // CHECK CURRENT CLICKED ELEMENT ON SKILLS FORM
+    if (e.target.classList.contains("skillslevel")) {
+      storeAutoAsIwriteToTheForm.bind([
+        ".skills-details--",
+        ".skillslevel",
+        "link",
+      ])(e);
+    }
   }
 
   // DELETE FORM
@@ -708,6 +845,60 @@ internshipParentCon.addEventListener("click", function (e) {
   // FILLING THE NOT SPECIFIED AREA IN THE FORM
   if (e.target.closest(".internship-details--")) {
     fillMeUp.bind(fillInternshipTitle)(e);
+
+    // CHECK CURRENT CLICKED ELEMENT ON INTERNSHIP FORM
+    if (e.target.classList.contains("internship-job-title-inp")) {
+      storeAutoAsIwriteToTheForm.bind([
+        ".internship-details--",
+        ".internship-job-title-inp",
+        "jobTitle",
+      ])(e);
+    }
+
+    // CHECK CURRENT CLICKED ELEMENT ON INTERNSHIP FORM
+    if (e.target.classList.contains("internshipEmployer")) {
+      storeAutoAsIwriteToTheForm.bind([
+        ".internship-details--",
+        ".internshipEmployer",
+        "employer",
+      ])(e);
+    }
+
+    // CHECK CURRENT CLICKED ELEMENT ON INTERNSHIP FORM
+    if (e.target.classList.contains("startdate-internship")) {
+      storeAutoAsIwriteToTheForm.bind([
+        ".internship-details--",
+        ".startdate-internship",
+        "startDate",
+      ])(e);
+    }
+
+    // CHECK CURRENT CLICKED ELEMENT ON INTERNSHIP FORM
+    if (e.target.classList.contains("enddate-internship")) {
+      storeAutoAsIwriteToTheForm.bind([
+        ".internship-details--",
+        ".enddate-internship",
+        "endDate",
+      ])(e);
+    }
+
+    // CHECK CURRENT CLICKED ELEMENT ON INTERNSHIP FORM
+    if (e.target.classList.contains("internshipCity")) {
+      storeAutoAsIwriteToTheForm.bind([
+        ".internship-details--",
+        ".internshipCity",
+        "city",
+      ])(e);
+    }
+
+    // CHECK CURRENT CLICKED ELEMENT ON INTERNSHIP FORM
+    if (e.target.classList.contains("internship-about")) {
+      storeAutoAsIwriteToTheForm.bind([
+        ".internship-details--",
+        ".internship-about",
+        "about",
+      ])(e);
+    }
   }
 
   // DELETE FORM

@@ -47,14 +47,18 @@ const addMoreWebsiteLinkFromLocalStorageMarkup = function () {
                 <div>
                   <div class="job-title-update-div-link">
                     <span class="job-title-update-con-1-link">
-                      <h6 class="job-title-update-1-link">(Not specified)</h6>
+                      <h6 class="job-title-update-1-link">${
+                        item.label.length < 2 ? "(Not specified)" : item.label
+                      }</h6>
                       <ion-icon
                         name="chevron-down-outline"
                         class="job-title-update-icon-link"
                       ></ion-icon
                     ></span>
                     <span class="job-title-update-con-2-link hidden">
-                      <h6 class="job-title-update-2-link">(Not specified)</h6>
+                      <h6 class="job-title-update-2-link">${
+                        item.label.length < 2 ? "(Not specified)" : item.label
+                      }</h6>
                       <ion-icon
                         name="chevron-up-outline"
                         class="job-title-update-icon-link"
@@ -66,12 +70,14 @@ const addMoreWebsiteLinkFromLocalStorageMarkup = function () {
                       <label class="personal-d-label">Label</label>
                       <input
                         type="text"
-                        class="personal-d-input-1 per-det-inp socialLink-job-title-inp"
-                        value=${item.label}>
+                        class="personal-d-input-1 per-det-inp socialLink-job-title-inp linklabel"
+                        value="${item.label}">
                     </div>
                     <div class="input-div">
                       <label class="personal-d-label">Link</label>
-                      <input type="text" class="personal-d-input-1 per-det-inp" value=${item.link}>
+                      <input type="text" class="personal-d-input-1 per-det-inp linklink" value="${
+                        item.link
+                      }">
                     </div>
                   </form>
                 </div>

@@ -48,14 +48,18 @@ const addMoreSkillsFromLocalStorageMarkup = function () {
         <div>
           <div class="job-title-update-div-skills">
             <span class="job-title-update-con-1-skills">
-              <h6 class="job-title-update-1-skills">(Not specified)</h6>
+              <h6 class="job-title-update-1-skills">${
+                item.label.length < 2 ? "(Not specified)" : item.label
+              }</h6>
               <ion-icon
                 name="chevron-down-outline"
                 class="job-title-update-icon-skills"
               ></ion-icon
             ></span>
             <span class="job-title-update-con-2-skills hidden">
-              <h6 class="job-title-update-2-skills">(Not specified)</h6>
+              <h6 class="job-title-update-2-skills">${
+                item.label.length < 2 ? "(Not specified)" : item.label
+              }</h6>
               <ion-icon
                 name="chevron-up-outline"
                 class="job-title-update-icon-skills"
@@ -67,13 +71,15 @@ const addMoreSkillsFromLocalStorageMarkup = function () {
               <label class="personal-d-label">Label</label>
               <input
                 type="text"
-                class="personal-d-input-1 per-det-inp skills-job-title-inp"
-                value=${item.label}
+                class="personal-d-input-1 per-det-inp skills-job-title-inp skillslabel"
+                value="${item.label}"
               >
             </div>
             <div class="input-div">
               <label class="personal-d-label">Level</label>
-              <input type="text" class="personal-d-input-1 per-det-inp" value=${item.link}>
+              <input type="text" class="personal-d-input-1 per-det-inp skillslevel" value="${
+                item.link
+              }">
             </div>
           </form>
         </div>
