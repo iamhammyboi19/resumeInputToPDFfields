@@ -467,6 +467,22 @@ document
       // SELECT THE CURRENT ELEMENT INPUT FORM ON CLICK AND addEventListener to it
 
       fillMeUp.bind(fillEmploymentTitle)(e);
+
+      if (e.target.classList.contains("employment-job-title-inp")) {
+        e.target
+          .closest(".employment-details--")
+          .querySelector(".employment-job-title-inp")
+          .addEventListener("input", function (e) {
+            const sessionId = e.target.closest(".employment-details--");
+            console.log(sessionId);
+            // const savedItems = JSON.parse(localStorage.getItem("allForms"));
+            // const curTemplate = savedItems.find((el) => el.id === sessionId);
+            // const index = savedItems.indexOf(curTemplate);
+            // curTemplate.jobTitle = e.target.value;
+            // savedItems[index] = curTemplate;
+            // localStorage.setItem("allForms", JSON.stringify(savedItems));
+          });
+      }
     }
 
     // DELETE FORM
