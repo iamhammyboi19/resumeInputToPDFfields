@@ -11,13 +11,13 @@ import {
   SkillsNewFormSessions,
 } from "./formModels.js";
 
-import {
-  addMoreEmploymentMarkup,
-  addMoreWebsiteLinkMarkup,
-  addMoreSkillsMarkup,
-  addMoreInternshipsMarkup,
-  addMoreEducationMarkup,
-} from "./markups.js";
+// import {
+//   addMoreEmploymentMarkup,
+//   addMoreWebsiteLinkMarkup,
+//   addMoreSkillsMarkup,
+//   addMoreInternshipsMarkup,
+//   addMoreEducationMarkup,
+// } from "./markups.js";
 
 import {
   showHideEmploymentform,
@@ -432,20 +432,26 @@ const deleteSpecificForm = function (e) {
 
 // ADDING MORE SECTION
 addEmploymentBtn.addEventListener("click", function () {
+  // CREATE NEW EMPLOYMENT FORM OBJECT AND ADD TO LOCALSTORAGE
+  SaveAndDeleteItemsFromLocalStorage.collectItems(
+    new EmploymentNewFormSessions()
+  );
+  SaveAndDeleteItemsFromLocalStorage.save();
+
+  // CLEAR EMPLOYMENT PARENT
+  employmentParentCon.innerHTML = "";
+
+  // AND DISPLAY ALL FORM OBJECT FROM LOCALSTORAGE
   employmentParentCon.insertAdjacentHTML(
     "beforeend",
-    addMoreEmploymentMarkup()
+    addMoreEmploymentMarkupFromLocalStorage().join("")
   );
+
   if (employmentParentCon.children.length > 0) {
     addEmploymentBtn.querySelector(
       "span"
     ).textContent = `Add one more employment`;
   }
-
-  SaveAndDeleteItemsFromLocalStorage.collectItems(
-    new EmploymentNewFormSessions()
-  );
-  SaveAndDeleteItemsFromLocalStorage.save();
 });
 
 document
@@ -503,15 +509,23 @@ document
 
 // ADDING MORE SECTION
 addEducationBtn.addEventListener("click", function () {
-  educationParentCon.insertAdjacentHTML("beforeend", addMoreEducationMarkup());
+  SaveAndDeleteItemsFromLocalStorage.collectItems(
+    new EducationNewFormSessions()
+  );
+  SaveAndDeleteItemsFromLocalStorage.save();
+
+  educationParentCon.innerHTML = "";
+
+  educationParentCon.insertAdjacentHTML(
+    "beforeend",
+    addMoreEducationMarkupFromLocalStorage().join("")
+  );
+
   if (educationParentCon.children.length > 0) {
     addEducationBtn.querySelector(
       "span"
     ).textContent = `Add one more education`;
   }
-  const eduItems = new EducationNewFormSessions();
-  SaveAndDeleteItemsFromLocalStorage.collectItems(eduItems);
-  SaveAndDeleteItemsFromLocalStorage.save();
 });
 
 // SHOW AND HIDE FORM ON CLICK
@@ -554,17 +568,21 @@ educationParentCon.addEventListener("click", function (e) {
 
 // ADDING MORE SECTION
 addSocialBtn.addEventListener("click", function () {
+  SaveAndDeleteItemsFromLocalStorage.collectItems(
+    new WebSocialLinkFormSessions()
+  );
+  SaveAndDeleteItemsFromLocalStorage.save();
+
+  webSocialLinkParent.innerHTML = "";
+
   webSocialLinkParent.insertAdjacentHTML(
     "beforeend",
-    addMoreWebsiteLinkMarkup()
+    addMoreWebsiteLinkFromLocalStorageMarkup().join("")
   );
+
   if (webSocialLinkParent.children.length > 0) {
     addSocialBtn.querySelector("span").textContent = `Add one more link`;
   }
-
-  const webLinkItems = new WebSocialLinkFormSessions();
-  SaveAndDeleteItemsFromLocalStorage.collectItems(webLinkItems);
-  SaveAndDeleteItemsFromLocalStorage.save();
 });
 
 // SHOW AND HIDE FORM ON CLICK
@@ -604,13 +622,19 @@ webSocialLinkParent.addEventListener("click", function (e) {
 
 // ADD NEW ELEMENT TO THE PARENT
 addSkillsBtn.addEventListener("click", function () {
-  skillsParentCon.insertAdjacentHTML("beforeend", addMoreSkillsMarkup());
+  SaveAndDeleteItemsFromLocalStorage.collectItems(new SkillsNewFormSessions());
+  SaveAndDeleteItemsFromLocalStorage.save();
+
+  skillsParentCon.innerHTML = "";
+
+  skillsParentCon.insertAdjacentHTML(
+    "beforeend",
+    addMoreSkillsFromLocalStorageMarkup().join("")
+  );
+
   if (skillsParentCon.children.length > 0) {
     addSkillsBtn.querySelector("span").textContent = `Add one more skill`;
   }
-  const skillsItems = new SkillsNewFormSessions();
-  SaveAndDeleteItemsFromLocalStorage.collectItems(skillsItems);
-  SaveAndDeleteItemsFromLocalStorage.save();
 });
 
 skillsParentCon.addEventListener("click", function (e) {
@@ -649,9 +673,16 @@ skillsParentCon.addEventListener("click", function (e) {
 
 // ADD NEW ELEMENT TO THE PARENT
 addInternshipBtn.addEventListener("click", function () {
+  SaveAndDeleteItemsFromLocalStorage.collectItems(
+    new InternshipNewFormSessions()
+  );
+  SaveAndDeleteItemsFromLocalStorage.save();
+
+  internshipParentCon.innerHTML = "";
+
   internshipParentCon.insertAdjacentHTML(
     "beforeend",
-    addMoreInternshipsMarkup()
+    addMoreInternshipsFromLocalStorageMarkup().join("")
   );
 
   if (internshipParentCon.children.length > 0) {
@@ -659,10 +690,6 @@ addInternshipBtn.addEventListener("click", function () {
       "span"
     ).textContent = `Add one more internship`;
   }
-
-  const internshipItems = new InternshipNewFormSessions();
-  SaveAndDeleteItemsFromLocalStorage.collectItems(internshipItems);
-  SaveAndDeleteItemsFromLocalStorage.save();
 });
 
 internshipParentCon.addEventListener("click", function (e) {

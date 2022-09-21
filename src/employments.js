@@ -5,7 +5,7 @@ const getEmploymentFromLocalStorage = JSON.parse(
   localStorage.getItem("allForms")
 );
 
-const checkEmployment = getEmploymentFromLocalStorage.find(
+const checkEmployment = getEmploymentFromLocalStorage?.find(
   (el) => el.type === "employment"
 );
 
@@ -40,8 +40,9 @@ const employmentDeleteDetails = [
 ];
 
 const addMoreEmploymentMarkupFromLocalStorage = function () {
-  if (!getEmploymentFromLocalStorage) return;
-  return getEmploymentFromLocalStorage.map((item) => {
+  const employmentFromStorage = JSON.parse(localStorage.getItem("allForms"));
+  if (!employmentFromStorage) return;
+  return employmentFromStorage.map((item) => {
     if (item.type === "employment") {
       return `
       <li class="employment-details-- data-sessionId=${item.id}">

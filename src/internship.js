@@ -5,7 +5,7 @@ const getInternshipFromLocalStorage = JSON.parse(
   localStorage.getItem("allForms")
 );
 
-const checkInternship = getInternshipFromLocalStorage.find(
+const checkInternship = getInternshipFromLocalStorage?.find(
   (el) => el.type === "internship"
 );
 
@@ -42,8 +42,9 @@ const internshipDeleteDetails = [
 
 // GET ITEMS FROM LOCALSTORAGE AND DISPLAY IT ON LOAD action
 const addMoreInternshipsFromLocalStorageMarkup = function () {
-  if (!getInternshipFromLocalStorage) return;
-  return getInternshipFromLocalStorage.map((item) => {
+  const internshipFromStorage = JSON.parse(localStorage.getItem("allForms"));
+  if (!internshipFromStorage) return;
+  return internshipFromStorage.map((item) => {
     if (item.type === "internship") {
       return `
       <li class="internship-details-- data-sessionId=${item.id}">

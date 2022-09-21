@@ -5,7 +5,7 @@ const getWeblinksFromLocalStorage = JSON.parse(
   localStorage.getItem("allForms")
 );
 
-const checkWebLinks = getWeblinksFromLocalStorage.find(
+const checkWebLinks = getWeblinksFromLocalStorage?.find(
   (el) => el.type === "webLinks"
 );
 
@@ -37,8 +37,9 @@ const linkDeleteDetails = [".weblink-delete-icon-container", ".link-details--"];
 
 // GET ITEMS FROM LOCALSTORAGE AND DISPLAY IT ON LOAD action
 const addMoreWebsiteLinkFromLocalStorageMarkup = function () {
-  if (!getWeblinksFromLocalStorage) return;
-  return getWeblinksFromLocalStorage.map((item) => {
+  const webLinksFromStorage = JSON.parse(localStorage.getItem("allForms"));
+  if (!webLinksFromStorage) return;
+  return webLinksFromStorage.map((item) => {
     if (item.type === "webLinks") {
       return `
     <li class="link-details-- data-sessionId=${item.id}">

@@ -3,7 +3,7 @@
 // GET ITEMS FROM LOCALSTORAGE
 const getSkillsFromLocalStorage = JSON.parse(localStorage.getItem("allForms"));
 
-const checkSkills = getSkillsFromLocalStorage.find(
+const checkSkills = getSkillsFromLocalStorage?.find(
   (el) => el.type === "skills"
 );
 
@@ -38,8 +38,9 @@ const skillsDeleteDetails = [
 
 // GET ITEMS FROM LOCALSTORAGE AND DISPLAY IT ON LOAD action
 const addMoreSkillsFromLocalStorageMarkup = function () {
-  if (!getSkillsFromLocalStorage) return;
-  return getSkillsFromLocalStorage.map((item) => {
+  const skillsFromStorage = JSON.parse(localStorage.getItem("allForms"));
+  if (!skillsFromStorage) return;
+  return skillsFromStorage.map((item) => {
     if (item.type === "skills") {
       return `
       <li class="skills-details-- data-sessionId=${item.id}">
@@ -67,14 +68,12 @@ const addMoreSkillsFromLocalStorageMarkup = function () {
               <input
                 type="text"
                 class="personal-d-input-1 per-det-inp skills-job-title-inp"
-                value=${item.label || " "}
+                value=${item.label}
               />
             </div>
             <div class="input-div">
               <label class="personal-d-label">Level</label>
-              <input type="text" class="personal-d-input-1 per-det-inp" value=${
-                item.link || " "
-              }/>
+              <input type="text" class="personal-d-input-1 per-det-inp" value=${item.link}/>
             </div>
           </form>
         </div>

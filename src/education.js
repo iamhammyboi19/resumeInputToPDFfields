@@ -5,7 +5,7 @@ const getEducationFromLocalStorage = JSON.parse(
   localStorage.getItem("allForms")
 );
 
-const checkEducation = getEducationFromLocalStorage.find(
+const checkEducation = getEducationFromLocalStorage?.find(
   (el) => el.type === "education"
 );
 
@@ -40,8 +40,9 @@ const educationDeleteDetails = [".edu-delete-icon-container", ".edu-details--"];
 
 // GET ITEMS FROM LOCALSTORAGE AND DISPLAY IT ON LOAD action
 const addMoreEducationMarkupFromLocalStorage = function () {
-  if (!getEducationFromLocalStorage) return;
-  return getEducationFromLocalStorage.map((item) => {
+  const educationFromStorage = JSON.parse(localStorage.getItem("allForms"));
+  if (!educationFromStorage) return;
+  return educationFromStorage.map((item) => {
     if (item.type === "education") {
       return `
       <li class="edu-details-- data-sessionId=${item.id}">
