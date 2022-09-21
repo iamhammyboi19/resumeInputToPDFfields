@@ -69,11 +69,11 @@ const addMoreSkillsFromLocalStorageMarkup = function () {
                 type="text"
                 class="personal-d-input-1 per-det-inp skills-job-title-inp"
                 value=${item.label}
-              />
+              >
             </div>
             <div class="input-div">
               <label class="personal-d-label">Level</label>
-              <input type="text" class="personal-d-input-1 per-det-inp" value=${item.link}/>
+              <input type="text" class="personal-d-input-1 per-det-inp" value=${item.link}>
             </div>
           </form>
         </div>

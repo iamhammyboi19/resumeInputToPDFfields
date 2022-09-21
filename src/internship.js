@@ -72,12 +72,11 @@ const addMoreInternshipsFromLocalStorageMarkup = function () {
                         <input
                           type="text"
                           class="personal-d-input-1 per-det-inp internship-job-title-inp"
-                          value=${item.jobTitle}
-                        />
+                          value=${item.jobTitle}>
                       </div>
                       <div class="input-div">
                         <label class="personal-d-label">Employer</label>
-                        <input type="text" class="personal-d-input-1 per-det-inp" value=${item.employer}/>
+                        <input type="text" class="personal-d-input-1 per-det-inp" value=${item.employer}>
                       </div>
                       <div class="input-div">
                         <label class="personal-d-label">Start & End Date</label>
@@ -86,19 +85,17 @@ const addMoreInternshipsFromLocalStorageMarkup = function () {
                             type="text"
                             placeholder="MM / YYYY"
                             class="personal-d-input-1 per-det-inp start-end-date-inp-internship startdate-internship"
-                            value=${item.startDate}
-                          />
+                            value=${item.startDate}>
                           <input
                             type="text"
                             placeholder="MM / YYYY"
                             class="personal-d-input-1 per-det-inp start-end-date-inp-internship"
-                            value=${item.endDate}
-                          />
+                            value=${item.endDate}>
                         </div>
                       </div>
                       <div class="input-div">
                         <label class="personal-d-label">City</label>
-                        <input type="text" class="personal-d-input-1 per-det-inp" value=${item.city}/>
+                        <input type="text" class="personal-d-input-1 per-det-inp" value=${item.city}>
                       </div>
                     </form>
     
