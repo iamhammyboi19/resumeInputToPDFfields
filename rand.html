@@ -4,58 +4,731 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Start making your resume</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700&family=Poppins:wght@100;200;400;500;600;700&family=Ubuntu:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <link href="src/inputStyles.css" rel="stylesheet" />
+
+    <script defer src="src/inputScript.js" type="module"></script>
   </head>
   <body>
-    <ul class="internship-parent">
-      <li class="internship-details--">
-        <div class="calendar-form-div-con-internship">
-          <div>
-            <div class="job-title-update-div-internship">
-              <span class="job-title-update-con-1-internship">
-                <h6 class="job-title-update-1-internship">(Not specified)</h6>
-                <ion-icon
-                  name="chevron-down-outline"
-                  class="job-title-update-icon-internship"
+    <div class="form-title">
+      <input
+        type="text"
+        placeholder="Type here"
+        value="Untitled"
+        class="input-form-title"
+      />
+      <p class="form-title-p">🇺🇸 English</p>
+    </div>
+
+    <div class="div-and-form-con">
+      <div class="div-con-for-form">
+        <h5 class="first-h5">Personal Details</h5>
+        <form class="main-form">
+          <div class="input-div">
+            <label class="personal-d-label">Wanted Job Title</label>
+            <input
+              type="text"
+              placeholder="e.g Teacher"
+              class="personal-d-input-1 per-det-inp"
+            />
+          </div>
+          <div class="input-div">
+            <label class="personal-d-label">First Name</label>
+            <input type="text" class="personal-d-input-2 per-det-inp" />
+          </div>
+          <div class="input-div">
+            <label class="personal-d-label">Last Name</label>
+            <input type="text" class="personal-d-input-3 per-det-inp" />
+          </div>
+          <div class="input-div">
+            <label class="personal-d-label">Email</label>
+            <input type="email" class="personal-d-input-4 per-det-inp" />
+          </div>
+          <div class="input-div">
+            <label class="personal-d-label">Phone</label>
+            <input type="tel" class="personal-d-input-5 per-det-inp" />
+          </div>
+          <div class="input-div">
+            <label class="personal-d-label">Country</label>
+            <input type="text" class="personal-d-input-6 per-det-inp" />
+          </div>
+          <div class="input-div hidden-input-divs hidden-form-container">
+            <label class="personal-d-label">City</label>
+            <input type="text" class="personal-d-input-7 per-det-inp" />
+          </div>
+          <div class="input-div hidden-input-divs hidden-form-container">
+            <label class="personal-d-label">Address</label>
+            <input type="text" class="personal-d-input-8 per-det-inp" />
+          </div>
+          <div class="input-div hidden-input-divs hidden-form-container">
+            <label class="personal-d-label">Driving License</label>
+            <input type="text" class="personal-d-input-9 per-det-inp" />
+          </div>
+          <div class="input-div hidden-input-divs hidden-form-container">
+            <label class="personal-d-label">Nationality</label>
+            <input type="text" class="personal-d-input-10 per-det-inp" />
+          </div>
+          <div class="input-div hidden-input-divs hidden-form-container">
+            <label class="personal-d-label">Place Of Birth</label>
+            <input type="text" class="personal-d-input-11 per-det-inp" />
+          </div>
+          <div class="input-div hidden-input-divs hidden-form-container">
+            <label class="personal-d-label">Date Of Birth</label>
+            <input type="text" class="personal-d-input-12 per-det-inp" />
+          </div>
+          <div class="hide-form-container hidden-form-container">
+            <span class="form-input-viewer the-hover">
+              Hide additional Details
+            </span>
+            <ion-icon
+              name="chevron-up-outline"
+              class="hide-reveal-form-icon the-hover"
+            ></ion-icon>
+          </div>
+          <div class="show-form-container">
+            <span class="form-input-viewer the-hover">
+              Edit Additional Details
+            </span>
+            <ion-icon
+              name="chevron-down-outline"
+              class="hide-reveal-form-icon the-hover"
+            ></ion-icon>
+          </div>
+        </form>
+        <h5 class="prof-sum">Professional Summary</h5>
+        <p class="summary-p">
+          Write 2-4 short & energetic sentences to interest the reader! Mention
+          your role, experience & most importantly - your biggest achievements,
+          best qualities and skills.
+        </p>
+        <!-- <div class="text-styles-con-div"> -->
+        <div class="text-styles-con">
+          <div class="text-styles--">
+            <span>
+              <i class="fa-solid fa-bold text-style-icon-sizes"></i>
+            </span>
+            <span
+              ><i class="fa-solid fa-italic text-style-icon-sizes"></i
+            ></span>
+            <span
+              ><i class="fa-solid fa-underline text-style-icon-sizes"></i
+            ></span>
+            <span class="line-up">&nbsp;</span>
+            <span
+              ><i class="fa-solid fa-align-center text-style-icon-sizes"></i
+            ></span>
+            <span
+              ><i class="fa-solid fa-align-justify text-style-icon-sizes"></i
+            ></span>
+            <span class="line-up">&nbsp;</span>
+            <span class="pre-written-profession"
+              ><span class="open-pre-phrase">Pre-written phrases</span
+              ><i
+                class="fa-solid fa-circle-plus text-style-icon-sizes show-hide-suggestion-box"
+              ></i
+            ></span>
+            <span class="close-pre-con hide-open-close-btn">
+              <span class="close-pre-phrase">Pre-written phrases</span
+              ><i class="fa-solid fa-circle-xmark text-style-icon-sizes"></i>
+            </span>
+          </div>
+          <textarea
+            placeholder="e.g passionate science teacher with 8+ years of experience and record of..."
+            class="summary-input"
+            rows="10"
+            cols="35"
+            minlength="0"
+          ></textarea>
+
+          <div
+            class="suggestion-texts-con-div"
+            id="suggestion-texts-con-profession"
+          >
+            <aside class="suggestion-con">
+              <span class="close-arrow-btn-con hide-open-close-btn"
+                ><ion-icon
+                  name="checkmark-outline"
+                  class="close-arrow-btn"
                 ></ion-icon
               ></span>
-              <span class="job-title-update-con-2-internship hidden">
-                <h6 class="job-title-update-2-internship">(Not specified)</h6>
-                <ion-icon
-                  name="chevron-up-outline"
-                  class="job-title-update-icon-internship"
-                ></ion-icon
-              ></span>
-            </div>
-            <form class="main-form internship-form">
-              <div class="input-div input-div-school">
-                <label class="personal-d-label">Label</label>
-                <input
-                  type="text"
-                  class="personal-d-input-1 per-det-inp internship-job-title-inp"
-                />
+              <span class="arrow-btn-con"
+                ><ion-icon
+                  name="arrow-back-outline"
+                  class="arrow-btn"
+                ></ion-icon>
+              </span>
+
+              <div class="suggestion-texts-con">
+                <span class="suggestion-texts"
+                  >Hardworking College Student seeking employment.</span
+                >
+                <span class="suggestion-texts"
+                  >Bringing forth a motivated attitude and a variety of powerful
+                  skills.</span
+                >
+                <span class="suggestion-texts"
+                  >Adept in various social media platforms and office technology
+                  programs.</span
+                >
+                <span class="suggestion-texts"
+                  >Committed to utilizing my skills to further the mission of a
+                  company.</span
+                >
               </div>
-              <div class="input-div">
-                <label class="personal-d-label">Level</label>
-                <input type="text" class="personal-d-input-1 per-det-inp" />
-                <select name="level" id="">
-                  <option value="Novice">Novice</option>
-                  <option value="Beginner">Beginner</option>
-                  <option value="Skillful">Skillful</option>
-                </select>
-              </div>
-            </form>
+            </aside>
           </div>
         </div>
-        <div class="internship-delete-icon-container">
-          <ion-icon name="trash-outline" class="delete-icon"></ion-icon>
-        </div>
-      </li>
-    </ul>
+        <!-- </div> -->
 
-    <div class="internship-div internship-div-add">
-      <ion-icon name="add-outline" class="add-internship"></ion-icon>
-      <span class="add-internship-text">Add internship</span>
+        <h5 class="prof-sum">Employment History</h5>
+        <p class="summary-p">
+          Show your relevant experience (last 10 years). Use bullet points to
+          note your achievements, if possible - use numbers/facts (Achieved X,
+          measured by Y, by doing Z).
+        </p>
+        <ul class="employment-parent">
+          <!-- <li class="employment-details--">
+            <div class="calendar-form-div-con">
+              <div>
+                <div class="job-title-update-div">
+                  <span class="job-title-update-con-1">
+                    <h6 class="job-title-update-1">(Not specified)</h6>
+                    <ion-icon
+                      name="chevron-down-outline"
+                      class="job-title-update-icon"
+                    ></ion-icon
+                  ></span>
+                  <span class="job-title-update-con-2 hidden">
+                    <h6 class="job-title-update-2">(Not specified)</h6>
+                    <ion-icon
+                      name="chevron-up-outline"
+                      class="job-title-update-icon"
+                    ></ion-icon
+                  ></span>
+                </div>
+                <form class="main-form employment-form hidden">
+                  <div class="input-div input-div-job">
+                    <label class="personal-d-label">Job Title</label>
+                    <input
+                      type="text"
+                      class="personal-d-input-1 per-det-inp employment-job-title-inp"
+                    />
+                  </div>
+                  <div class="input-div">
+                    <label class="personal-d-label">Employer</label>
+                    <input type="text" class="personal-d-input-1 per-det-inp" />
+                  </div>
+                  <div class="input-div">
+                    <label class="personal-d-label">Start & End Date</label>
+                    <div class="start-end-date-div">
+                      <input
+                        type="text"
+                        placeholder="MM / YYYY"
+                        class="personal-d-input-1 per-det-inp start-end-date-inp startdate"
+                      />
+                      <input
+                        type="text"
+                        placeholder="MM / YYYY"
+                        class="personal-d-input-1 per-det-inp start-end-date-inp"
+                      />
+                    </div>
+                  </div>
+                  <div class="input-div">
+                    <label class="personal-d-label">City</label>
+                    <input type="text" class="personal-d-input-1 per-det-inp" />
+                  </div>
+                </form>
+
+                <div class="calendar-div">
+                  <div class="calendar">
+                    <div class="calendar-back-front">
+                      <ion-icon
+                        name="chevron-back-outline"
+                        class="calendar-back-pointer"
+                      ></ion-icon>
+                      <span class="calendar-year">2022</span>
+                      <ion-icon
+                        name="chevron-forward-outline"
+                        class="calendar-front-pointer"
+                      ></ion-icon>
+                    </div>
+                    <div class="calendar-months-con">
+                      <span class="calendar-months">Jan</span>
+                      <span class="calendar-months">Feb</span>
+                      <span class="calendar-months">Mar</span>
+                      <span class="calendar-months">Apr</span>
+                      <span class="calendar-months">May</span>
+                      <span class="calendar-months">Jun</span>
+                      <span class="calendar-months">Jul</span>
+                      <span class="calendar-months">Aug</span>
+                      <span class="calendar-months">Sep</span>
+                      <span class="calendar-months">Oct</span>
+                      <span class="calendar-months">Nov</span>
+                      <span class="calendar-months">Dec</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="text-styles-con-employment hidden">
+                <div class="text-styles--employment">
+                  <span>
+                    <i class="fa-solid fa-bold text-style-icon-sizes"></i>
+                  </span>
+                  <span
+                    ><i class="fa-solid fa-italic text-style-icon-sizes"></i
+                  ></span>
+                  <span
+                    ><i class="fa-solid fa-underline text-style-icon-sizes"></i
+                  ></span>
+                  <span class="line-up">&nbsp;</span>
+                  <span
+                    ><i
+                      class="fa-solid fa-align-center text-style-icon-sizes"
+                    ></i
+                  ></span>
+                  <span
+                    ><i
+                      class="fa-solid fa-align-justify text-style-icon-sizes"
+                    ></i
+                  ></span>
+                  <span class="line-up">&nbsp;</span>
+                  <span class="pre-written-employment"
+                    ><span class="open-pre-phrase-employment"
+                      >Pre-written phrases</span
+                    ><i
+                      class="fa-solid fa-circle-plus text-style-icon-sizes show-hide-suggestion-box"
+                    ></i
+                  ></span>
+                  <span class="close-pre-con-employment hide-open-close-btn">
+                    <span class="close-pre-phrase-employment"
+                      >Pre-written phrases</span
+                    ><i
+                      class="fa-solid fa-circle-xmark text-style-icon-sizes"
+                    ></i>
+                  </span> 
+                </div>
+
+                <textarea
+                  placeholder="e.g Created and implemented lesson plans based on child-led interest and curiosities."
+                  class="summary-input-emp"
+                  rows="10"
+                  cols="35"
+                  minlength="0"
+                ></textarea>
+
+                <div class="suggestion-texts-con-div-emp">
+                  <aside class="suggestion-con-emp">
+                    <span class="close-arrow-btn-con-emp hide-open-close-btn"
+                      ><ion-icon
+                        name="checkmark-outline"
+                        class="close-arrow-btn-emp"
+                      ></ion-icon
+                    ></span>
+                    <span class="arrow-btn-con-emp"
+                      ><ion-icon
+                        name="arrow-back-outline"
+                        class="arrow-btn-employment"
+                      ></ion-icon>
+                    </span>
+
+                    <div class="suggestion-texts-con-emp">
+                      <span class="suggestion-texts-employment"
+                        >Worked to ensure a positive and hassle-free customer
+                        experience.</span
+                      >
+                    </div>
+                  </aside>
+                </div>
+              </div>
+            </div>
+            <div class="employ-delete-icon-container">
+              <ion-icon name="trash-outline" class="delete-icon"></ion-icon>
+            </div>
+          </li> -->
+        </ul>
+
+        <div class="employment-div employment-div-add">
+          <ion-icon name="add-outline" class="add-employment"></ion-icon>
+          <span class="add-employment-text">Add employment</span>
+        </div>
+
+        <h5 class="prof-sum">Education</h5>
+        <p class="summary-p">
+          A varied education on your resume sums up the value that your
+          learnings and background will bring to job.
+        </p>
+
+        <ul class="education-parent">
+          <!-- <li class="edu-details-- hidden">
+            <div class="calendar-form-div-con-edu">
+              <div>
+                <div class="job-title-update-div-edu">
+                  <span class="job-title-update-con-1-edu">
+                    <h6 class="job-title-update-1-edu">(Not specified)</h6>
+                    <ion-icon
+                      name="chevron-down-outline"
+                      class="job-title-update-icon-edu"
+                    ></ion-icon
+                  ></span>
+                  <span class="job-title-update-con-2-edu hidden">
+                    <h6 class="job-title-update-2-edu">(Not specified)</h6>
+                    <ion-icon
+                      name="chevron-up-outline"
+                      class="job-title-update-icon-edu"
+                    ></ion-icon
+                  ></span>
+                </div>
+                <form class="main-form education-form hidden">
+                  <div class="input-div input-div-school">
+                    <label class="personal-d-label">School</label>
+                    <input
+                      type="text"
+                      class="personal-d-input-1 per-det-inp education-job-title-inp"
+                    />
+                  </div>
+                  <div class="input-div">
+                    <label class="personal-d-label">Degree</label>
+                    <input type="text" class="personal-d-input-1 per-det-inp" />
+                  </div>
+                  <div class="input-div">
+                    <label class="personal-d-label">Start & End Date</label>
+                    <div class="start-end-date-div-edu">
+                      <input
+                        type="text"
+                        placeholder="MM / YYYY"
+                        class="personal-d-input-1 per-det-inp start-end-date-inp-edu startdate-edu"
+                      />
+                      <input
+                        type="text"
+                        placeholder="MM / YYYY"
+                        class="personal-d-input-1 per-det-inp start-end-date-inp-edu"
+                      />
+                    </div>
+                  </div>
+                  <div class="input-div">
+                    <label class="personal-d-label">City</label>
+                    <input type="text" class="personal-d-input-1 per-det-inp" />
+                  </div>
+                </form>
+
+                <div class="calendar-div-edu">
+                  <div class="calendar-edu">
+                    <div class="calendar-back-front-edu">
+                      <ion-icon
+                        name="chevron-back-outline"
+                        class="calendar-back-pointer-edu"
+                      ></ion-icon>
+                      <span class="calendar-year-edu">2022</span>
+                      <ion-icon
+                        name="chevron-forward-outline"
+                        class="calendar-front-pointer-edu"
+                      ></ion-icon>
+                    </div>
+                    <div class="calendar-months-con-edu">
+                      <span class="calendar-months">Jan</span>
+                      <span class="calendar-months">Feb</span>
+                      <span class="calendar-months">Mar</span>
+                      <span class="calendar-months">Apr</span>
+                      <span class="calendar-months">May</span>
+                      <span class="calendar-months">Jun</span>
+                      <span class="calendar-months">Jul</span>
+                      <span class="calendar-months">Aug</span>
+                      <span class="calendar-months">Sep</span>
+                      <span class="calendar-months">Oct</span>
+                      <span class="calendar-months">Nov</span>
+                      <span class="calendar-months">Dec</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="text-styles-con-education hidden">
+                <div class="text-styles--education">
+                  <span>
+                    <i class="fa-solid fa-bold text-style-icon-sizes"></i>
+                  </span>
+                  <span
+                    ><i class="fa-solid fa-italic text-style-icon-sizes"></i
+                  ></span>
+                  <span
+                    ><i class="fa-solid fa-underline text-style-icon-sizes"></i
+                  ></span>
+                  <span class="line-up">&nbsp;</span>
+                  <span
+                    ><i
+                      class="fa-solid fa-align-center text-style-icon-sizes"
+                    ></i
+                  ></span>
+                  <span
+                    ><i
+                      class="fa-solid fa-align-justify text-style-icon-sizes"
+                    ></i
+                  ></span>
+                  <span class="line-up">&nbsp;</span>
+                </div>
+
+                <textarea
+                  placeholder="e.g Graduated with high honors"
+                  class="summary-input-edu"
+                  rows="10"
+                  cols="35"
+                  minlength="0"
+                ></textarea>
+              </div>
+            </div>
+            <div class="edu-delete-icon-container">
+              <ion-icon name="trash-outline" class="delete-icon"></ion-icon>
+            </div>
+          </li> -->
+        </ul>
+
+        <div class="education-div education-div-add">
+          <ion-icon name="add-outline" class="add-education"></ion-icon>
+          <span class="add-education-text">Add education</span>
+        </div>
+
+        <div class="education-div education-div-addMore hidden">
+          <ion-icon name="add-outline" class="add-education"></ion-icon>
+          <span class="add-education-text">Add one more education</span>
+        </div>
+
+        <h5 class="prof-sum">Website & Social Links</h5>
+        <p class="summary-p">
+          You can add links to websites you want hiring managers to see! Perhaps
+          It will be a link to your portfolio, LinkedIn profile, or personal
+          website
+        </p>
+
+        <ul class="weblink-parent">
+          <!-- <li class="link-details-- hidden">
+            <div class="calendar-form-div-con-link">
+              <div>
+                <div class="job-title-update-div-link">
+                  <span class="job-title-update-con-1-link">
+                    <h6 class="job-title-update-1-link">(Not specified)</h6>
+                    <ion-icon
+                      name="chevron-down-outline"
+                      class="job-title-update-icon-link"
+                    ></ion-icon
+                  ></span>
+                  <span class="job-title-update-con-2-link hidden">
+                    <h6 class="job-title-update-2-link">(Not specified)</h6>
+                    <ion-icon
+                      name="chevron-up-outline"
+                      class="job-title-update-icon-link"
+                    ></ion-icon
+                  ></span>
+                </div>
+                <form class="main-form socialLink-form hidden">
+                  <div class="input-div input-div-school">
+                    <label class="personal-d-label">Label</label>
+                    <input
+                      type="text"
+                      class="personal-d-input-1 per-det-inp socialLink-job-title-inp"
+                    />
+                  </div>
+                  <div class="input-div">
+                    <label class="personal-d-label">Link</label>
+                    <input type="text" class="personal-d-input-1 per-det-inp" />
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="weblink-delete-icon-container">
+              <ion-icon name="trash-outline" class="delete-icon"></ion-icon>
+            </div>
+          </li> -->
+        </ul>
+
+        <div class="link-div link-div-add">
+          <ion-icon name="add-outline" class="add-link"></ion-icon>
+          <span class="add-link-text">Add link</span>
+        </div>
+        <!-- <div class="link-div link-div-addMore hidden">
+          <ion-icon name="add-outline" class="add-link"></ion-icon>
+          <span class="add-link-text">Add one more link</span>
+        </div> -->
+
+        <h5 class="prof-sum">Skills</h5>
+        <p class="summary-p">
+          Choose 5 of the most important skills to show your talents! Make sure
+          they match the keywords of the job listing if applying via an online
+          system.
+        </p>
+
+        <ul class="skills-parent">
+          <!-- <li class="skills-details--">
+            <div class="calendar-form-div-con-skills">
+              <div>
+                <div class="job-title-update-div-skills">
+                  <span class="job-title-update-con-1-skills">
+                    <h6 class="job-title-update-1-skills">(Not specified)</h6>
+                    <ion-icon
+                      name="chevron-down-outline"
+                      class="job-title-update-icon-skills"
+                    ></ion-icon
+                  ></span>
+                  <span class="job-title-update-con-2-skills hidden">
+                    <h6 class="job-title-update-2-skills">(Not specified)</h6>
+                    <ion-icon
+                      name="chevron-up-outline"
+                      class="job-title-update-icon-skills"
+                    ></ion-icon
+                  ></span>
+                </div>
+                <form class="main-form skills-form">
+                  <div class="input-div input-div-school">
+                    <label class="personal-d-label">Label</label>
+                    <input
+                      type="text"
+                      class="personal-d-input-1 per-det-inp skills-job-title-inp"
+                    />
+                  </div>
+                  <div class="input-div">
+                    <label class="personal-d-label">Level</label>
+                    <input type="text" class="personal-d-input-1 per-det-inp" />
+                    <select name="level" id="">
+                      <option value="Novice">Novice</option>
+                      <option value="Beginner">Beginner</option>
+                      <option value="Skillful">Skillful</option>
+                    </select> 
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="skills-delete-icon-container">
+              <ion-icon name="trash-outline" class="delete-icon"></ion-icon>
+            </div>
+          </li> -->
+        </ul>
+
+        <div class="skills-div skills-div-add">
+          <ion-icon name="add-outline" class="add-skills"></ion-icon>
+          <span class="add-skills-text">Add skill</span>
+        </div>
+
+        <h5 class="prof-sum">Internship</h5>
+
+        <ul class="internship-parent">
+          <!-- <li class="internship-details--">
+            <div class="calendar-form-div-con-internship">
+              <div>
+                <div class="job-title-update-div-internship">
+                  <span class="job-title-update-con-1-internship">
+                    <h6 class="job-title-update-1-internship">(Not specified)</h6>
+                    <ion-icon
+                      name="chevron-down-outline"
+                      class="job-title-update-icon-internship"
+                    ></ion-icon
+                  ></span>
+                  <span class="job-title-update-con-2-internship hidden">
+                    <h6 class="job-title-update-2-internship">(Not specified)</h6>
+                    <ion-icon
+                      name="chevron-up-outline"
+                      class="job-title-update-icon-internship"
+                    ></ion-icon
+                  ></span>
+                </div>
+                <form class="main-form internship-form hidden">
+                  <div class="input-div input-div-school">
+                    <label class="personal-d-label">School</label>
+                    <input
+                      type="text"
+                      class="personal-d-input-1 per-det-inp internship-job-title-inp"
+                    />
+                  </div>
+                  <div class="input-div">
+                    <label class="personal-d-label">Degree</label>
+                    <input type="text" class="personal-d-input-1 per-det-inp" />
+                  </div>
+                  <div class="input-div">
+                    <label class="personal-d-label">Start & End Date</label>
+                    <div class="start-end-date-div-edu">
+                      <input
+                        type="text"
+                        placeholder="MM / YYYY"
+                        class="personal-d-input-1 per-det-inp start-end-date-inp-edu startdate-edu"
+                      />
+                      <input
+                        type="text"
+                        placeholder="MM / YYYY"
+                        class="personal-d-input-1 per-det-inp start-end-date-inp-edu"
+                      />
+                    </div>
+                  </div>
+                  <div class="input-div">
+                    <label class="personal-d-label">City</label>
+                    <input type="text" class="personal-d-input-1 per-det-inp" />
+                  </div>
+                </form>
+
+                
+              <div class="text-styles-con-education hidden">
+                <div class="text-styles--education">
+                  <span>
+                    <i class="fa-solid fa-bold text-style-icon-sizes"></i>
+                  </span>
+                  <span
+                    ><i class="fa-solid fa-italic text-style-icon-sizes"></i
+                  ></span>
+                  <span
+                    ><i class="fa-solid fa-underline text-style-icon-sizes"></i
+                  ></span>
+                  <span class="line-up">&nbsp;</span>
+                  <span
+                    ><i
+                      class="fa-solid fa-align-center text-style-icon-sizes"
+                    ></i
+                  ></span>
+                  <span
+                    ><i
+                      class="fa-solid fa-align-justify text-style-icon-sizes"
+                    ></i
+                  ></span>
+                  <span class="line-up">&nbsp;</span>
+                </div>
+
+                <textarea
+                  placeholder="e.g Graduated with high honors"
+                  class="summary-input-edu"
+                  rows="10"
+                  cols="35"
+                  minlength="0"
+                ></textarea>
+              </div>
+            </div>
+            <div class="edu-delete-icon-container">
+              <ion-icon name="trash-outline" class="delete-icon"></ion-icon>
+            </div>
+          </li> -->
+        </ul>
+
+        <div class="internship-div internship-div-add">
+          <ion-icon name="add-outline" class="add-internship"></ion-icon>
+          <span class="add-internship-text">Add internship</span>
+        </div>
+      </div>
     </div>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
   </body>
 </html>
