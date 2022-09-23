@@ -2,6 +2,8 @@
 
 import { textareaFillWhole } from "./textAreaFillWhole.js";
 
+// import { addPersonalDetailsMarkupFromLocalStorage } from "../personalDetails.js";
+
 import {
   EmploymentNewFormSessions,
   WebSocialLinkFormSessions,
@@ -9,6 +11,7 @@ import {
   EducationNewFormSessions,
   InternshipNewFormSessions,
   SkillsNewFormSessions,
+  PersonDetailsFormSession,
 } from "./formModels.js";
 
 import {
@@ -55,6 +58,9 @@ import {
   addMoreInternshipsFromLocalStorageMarkup,
   checkInternship,
 } from "./internship.js";
+
+const personalDetailsMainForm = document.querySelector(".main-form");
+const personalDetailsParent = document.querySelector(".div-con-for-form");
 
 const hiddenForms = document.querySelectorAll(".hidden-input-divs");
 const showFormCon = document.querySelector(".show-form-container");
@@ -140,6 +146,10 @@ if (calendarYearEdu) {
 // ------------------------------------------------------------------------------------
 // SHOW AVAILABLE ITEMS ON RELOAD
 
+// used in getting and setting personalDetails to localStorage
+const personalDetailsOnLoad =
+  JSON.parse(localStorage.getItem("personalDetails")) || [];
+
 window.addEventListener("load", function () {
   // GET EDUCATION FROM LOCALSTORAGE AND DISPLAY IT ON LOAD action
   if (!addMoreEducationMarkupFromLocalStorage()) return;
@@ -196,19 +206,46 @@ window.addEventListener("load", function () {
       "span"
     ).textContent = `Add one more employment`;
   }
+
+  // FILL PERSONAL DETAILS INPUT ON LOAD
+  if (personalDetailsOnLoad.length > 0) {
+    personalDetailsOnLoad.forEach((item) => {
+      document.querySelector(".wantedJob").value = item.wantedJob;
+      document.querySelector(".firstName").value = item.firstName;
+      document.querySelector(".lastName").value = item.lastName;
+      document.querySelector(".email").value = item.email;
+      document.querySelector(".phone").value = item.phone;
+      document.querySelector(".country").value = item.country;
+      document.querySelector(".city").value = item.city;
+      document.querySelector(".address").value = item.address;
+      document.querySelector(".driversLicense").value = item.driversLicense;
+      document.querySelector(".nationality").value = item.nationality;
+      document.querySelector(".placeOfBirth").value = item.placeOfBirth;
+      document.querySelector(".dateOfBirth").value = item.dateOfBirth;
+    });
+  }
+
+  if (personalDetailsOnLoad.length === 0) {
+    SaveAndDeleteItemsFromLocalStorage.collectPersonDetails(
+      new PersonDetailsFormSession()
+    );
+    SaveAndDeleteItemsFromLocalStorage.savePersonalDetails();
+  } else {
+    return;
+  }
 });
 
 // ------------------------------------------------------------------------------------
 
 const hideShowFormCon = function () {
-  [...hiddenForms].forEach((e) => e.classList.toggle("hidden-form-container"));
+  [...hiddenForms]?.forEach((e) => e.classList.toggle("hidden-form-container"));
   hidFormCon.classList.toggle("hidden-form-container");
   showFormCon.classList.toggle("hidden-form-container");
 };
 
 // hide and show the first form container
-showFormCon.addEventListener("click", hideShowFormCon);
-hidFormCon.addEventListener("click", hideShowFormCon);
+showFormCon?.addEventListener("click", hideShowFormCon);
+hidFormCon?.addEventListener("click", hideShowFormCon);
 
 // ------------------------------------------------------------------------------------
 
@@ -240,6 +277,132 @@ prePhraseArrowBtn.addEventListener(
     textareaInput,
   ])
 );
+// ------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------
+
+// PERSONAL DETAILS FORM INPUT SECTION
+
+// used in getting and setting personalDetails to localStorage
+
+const autoSavePersonalDetailsFormOnInput = function (e) {
+  const personalDetails =
+    JSON.parse(localStorage.getItem("personalDetails")) || [];
+  if (personalDetails.length === 0) return;
+  personalDetails[0][this[0]] = e.target.value;
+  localStorage.setItem("personalDetails", JSON.stringify(personalDetails));
+};
+
+personalDetailsMainForm?.addEventListener("click", function (e) {
+  //
+  // CHECK IF INPUT IS WANTED JOB
+  if (e.target.classList.contains("wantedJob")) {
+    personalDetailsMainForm
+      .querySelector(".wantedJob")
+      .addEventListener("input", function (e) {
+        autoSavePersonalDetailsFormOnInput.bind(["wantedJob"])(e);
+      });
+  }
+  // CHECK IF INPUT IS FIRST NAME
+  if (e.target.classList.contains("firstName")) {
+    personalDetailsMainForm
+      .querySelector(".firstName")
+      .addEventListener("input", function (e) {
+        autoSavePersonalDetailsFormOnInput.bind(["firstName"])(e);
+      });
+  }
+
+  // CHECK IF INPUT IS LAST NAME
+  if (e.target.classList.contains("lastName")) {
+    personalDetailsMainForm
+      .querySelector(".lastName")
+      .addEventListener("input", function (e) {
+        autoSavePersonalDetailsFormOnInput.bind(["lastName"])(e);
+      });
+  }
+
+  // CHECK IF INPUT IS EMAIL
+  if (e.target.classList.contains("email")) {
+    personalDetailsMainForm
+      .querySelector(".email")
+      .addEventListener("input", function (e) {
+        autoSavePersonalDetailsFormOnInput.bind(["email"])(e);
+      });
+  }
+
+  // CHECK IF INPUT IS PHONE
+  if (e.target.classList.contains("phone")) {
+    personalDetailsMainForm
+      .querySelector(".phone")
+      .addEventListener("input", function (e) {
+        autoSavePersonalDetailsFormOnInput.bind(["phone"])(e);
+      });
+  }
+
+  // CHECK IF INPUT IS CITY
+  if (e.target.classList.contains("city")) {
+    personalDetailsMainForm
+      .querySelector(".city")
+      .addEventListener("input", function (e) {
+        autoSavePersonalDetailsFormOnInput.bind(["city"])(e);
+      });
+  }
+
+  // CHECK IF INPUT IS COUNTRY
+  if (e.target.classList.contains("country")) {
+    personalDetailsMainForm
+      .querySelector(".country")
+      .addEventListener("input", function (e) {
+        autoSavePersonalDetailsFormOnInput.bind(["country"])(e);
+      });
+  }
+
+  // CHECK IF INPUT IS ADDRESS
+  if (e.target.classList.contains("address")) {
+    personalDetailsMainForm
+      .querySelector(".address")
+      .addEventListener("input", function (e) {
+        autoSavePersonalDetailsFormOnInput.bind(["address"])(e);
+      });
+  }
+
+  // CHECK IF INPUT IS DRIVER'S LICENSE
+  if (e.target.classList.contains("driversLicense")) {
+    personalDetailsMainForm
+      .querySelector(".driversLicense")
+      .addEventListener("input", function (e) {
+        autoSavePersonalDetailsFormOnInput.bind(["driversLicense"])(e);
+      });
+  }
+
+  // CHECK IF INPUT IS NATIONALITY
+  if (e.target.classList.contains("nationality")) {
+    personalDetailsMainForm
+      .querySelector(".nationality")
+      .addEventListener("input", function (e) {
+        autoSavePersonalDetailsFormOnInput.bind(["nationality"])(e);
+      });
+  }
+
+  // CHECK IF INPUT IS PLACE OF BIRTH
+  if (e.target.classList.contains("placeOfBirth")) {
+    personalDetailsMainForm
+      .querySelector(".placeOfBirth")
+      .addEventListener("input", function (e) {
+        autoSavePersonalDetailsFormOnInput.bind(["placeOfBirth"])(e);
+      });
+  }
+
+  // CHECK IF INPUT IS DATE OF BIRTH
+  if (e.target.classList.contains("dateOfBirth")) {
+    personalDetailsMainForm
+      .querySelector(".dateOfBirth")
+      .addEventListener("input", function (e) {
+        autoSavePersonalDetailsFormOnInput.bind(["dateOfBirth"])(e);
+      });
+  }
+});
+
+// ------------------------------------------------------------------------------------
 // ------------------------------------------------------------------------------------
 
 // employment calendar

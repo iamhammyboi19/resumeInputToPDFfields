@@ -21,14 +21,20 @@
     <script defer src="src/inputScript.js" type="module"></script>
   </head>
   <body>
-    <div class="form-title">
-      <input
-        type="text"
-        placeholder="Type here"
-        value="Untitled"
-        class="input-form-title"
-      />
-      <p class="form-title-p">🇺🇸 English</p>
+    <div class="form-title-con">
+      <div class="form-title">
+        <div>
+          <input
+            type="text"
+            placeholder="Type here"
+            value="Untitled"
+            class="input-form-title"
+          />
+        </div>
+        <div>
+          <p class="form-title-p">🇺🇸 English</p>
+        </div>
+      </div>
     </div>
 
     <div class="div-and-form-con">
@@ -40,52 +46,70 @@
             <input
               type="text"
               placeholder="e.g Teacher"
-              class="personal-d-input-1 per-det-inp"
+              class="personal-d-input-1 per-det-inp wantedJob"
             />
           </div>
           <div class="input-div">
             <label class="personal-d-label">First Name</label>
-            <input type="text" class="personal-d-input-2 per-det-inp" />
+            <input
+              type="text"
+              class="personal-d-input-2 per-det-inp firstName"
+            />
           </div>
           <div class="input-div">
             <label class="personal-d-label">Last Name</label>
-            <input type="text" class="personal-d-input-3 per-det-inp" />
+            <input
+              type="text"
+              class="personal-d-input-3 per-det-inp lastName"
+            />
           </div>
           <div class="input-div">
             <label class="personal-d-label">Email</label>
-            <input type="email" class="personal-d-input-4 per-det-inp" />
+            <input type="email" class="personal-d-input-4 per-det-inp email" />
           </div>
           <div class="input-div">
             <label class="personal-d-label">Phone</label>
-            <input type="tel" class="personal-d-input-5 per-det-inp" />
+            <input type="tel" class="personal-d-input-5 per-det-inp phone" />
           </div>
           <div class="input-div">
             <label class="personal-d-label">Country</label>
-            <input type="text" class="personal-d-input-6 per-det-inp" />
+            <input type="text" class="personal-d-input-6 per-det-inp country" />
           </div>
           <div class="input-div hidden-input-divs hidden-form-container">
             <label class="personal-d-label">City</label>
-            <input type="text" class="personal-d-input-7 per-det-inp" />
+            <input type="text" class="personal-d-input-7 per-det-inp city" />
           </div>
           <div class="input-div hidden-input-divs hidden-form-container">
             <label class="personal-d-label">Address</label>
-            <input type="text" class="personal-d-input-8 per-det-inp" />
+            <input type="text" class="personal-d-input-8 per-det-inp address" />
           </div>
           <div class="input-div hidden-input-divs hidden-form-container">
             <label class="personal-d-label">Driving License</label>
-            <input type="text" class="personal-d-input-9 per-det-inp" />
+            <input
+              type="text"
+              class="personal-d-input-9 per-det-inp driversLicense"
+            />
           </div>
           <div class="input-div hidden-input-divs hidden-form-container">
             <label class="personal-d-label">Nationality</label>
-            <input type="text" class="personal-d-input-10 per-det-inp" />
+            <input
+              type="text"
+              class="personal-d-input-10 per-det-inp nationality"
+            />
           </div>
           <div class="input-div hidden-input-divs hidden-form-container">
             <label class="personal-d-label">Place Of Birth</label>
-            <input type="text" class="personal-d-input-11 per-det-inp" />
+            <input
+              type="text"
+              class="personal-d-input-11 per-det-inp placeOfBirth"
+            />
           </div>
           <div class="input-div hidden-input-divs hidden-form-container">
             <label class="personal-d-label">Date Of Birth</label>
-            <input type="text" class="personal-d-input-12 per-det-inp" />
+            <input
+              type="text"
+              class="personal-d-input-12 per-det-inp dateOfBirth"
+            />
           </div>
           <div class="hide-form-container hidden-form-container">
             <span class="form-input-viewer the-hover">
@@ -268,6 +292,11 @@
           <ion-icon name="add-outline" class="add-internship"></ion-icon>
           <span class="add-internship-text">Add internship</span>
         </div>
+      </div>
+
+      <div class="template-con">
+        <div class="template-london"></div>
+        <button class="download-pdf-btn">Download PDF</button>
       </div>
     </div>
 

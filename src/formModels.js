@@ -3,6 +3,36 @@
 let r;
 const randStr = () => (r = (Math.random() + 1).toString(36).substring(7));
 
+class PersonDetailsFormSession {
+  constructor(
+    wantedJob,
+    firstName,
+    lastName,
+    email,
+    phone,
+    country,
+    city,
+    address,
+    driversLicense,
+    nationality,
+    placeOfBirth,
+    dateOfBirth
+  ) {
+    this.wantedJob = " " || wantedJob;
+    this.firstName = " " || firstName;
+    this.lastName = " " || lastName;
+    this.email = " " || email;
+    this.phone = " " || phone;
+    this.country = " " || country;
+    this.city = " " || city;
+    this.address = " " || address;
+    this.driversLicense = " " || driversLicense;
+    this.nationality = " " || nationality;
+    this.placeOfBirth = " " || placeOfBirth;
+    this.dateOfBirth = " " || dateOfBirth;
+  }
+}
+
 class FormSessions {
   id = String(Date.now()).slice(0, 10) + randStr();
   constructor(startDate, endDate, city, about) {
@@ -56,14 +86,28 @@ class SkillsNewFormSessions extends WebSocialLinkFormSessions {
 
 class SaveAndDeleteItemsFromLocalStorage {
   static #userData = [];
+  static #personalDetailsData = [];
 
   static collectItems(...items) {
     this.#userData = JSON.parse(localStorage.getItem("allForms")) || [];
     this.#userData.push(...items);
   }
 
+  static collectPersonDetails(...items) {
+    this.#personalDetailsData =
+      JSON.parse(localStorage.getItem("personalDetails")) || [];
+    this.#personalDetailsData.push(...items);
+  }
+
   static save() {
     localStorage.setItem("allForms", JSON.stringify(this.#userData));
+  }
+
+  static savePersonalDetails() {
+    localStorage.setItem(
+      "personalDetails",
+      JSON.stringify(this.#personalDetailsData)
+    );
   }
 }
 
@@ -74,4 +118,5 @@ export {
   SkillsNewFormSessions,
   InternshipNewFormSessions,
   SaveAndDeleteItemsFromLocalStorage,
+  PersonDetailsFormSession,
 };

@@ -3,46 +3,60 @@
   margin: 0;
   box-sizing: border-box;
 }
+/* width="1856" height="2624" */
 html {
   font-size: 62.5%;
 }
+
 body {
   font-family: "Manrope", sans-serif;
   font-family: "Poppins", sans-serif;
   font-family: "Ubuntu", sans-serif;
 }
+
+.form-title-con {
+  max-width: 70rem;
+}
+
 .form-title {
   margin: 1rem auto;
-  margin-left: 1rem;
-  max-width: 30rem;
+  max-width: 40rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-items: center;
+  justify-content: center;
 }
+
 .input-form-title {
   background-color: transparent;
   font-size: 2rem;
   border: none;
-  width: 29%;
+  width: 100%;
+  text-align: center;
   padding: 0.2rem 0.3rem;
   font-family: "Poppins", sans-serif;
   margin-bottom: 1rem;
 }
+
 .input-form-title:focus {
   outline: none;
   border-bottom: 2px solid #339af0;
 }
+
 h5 {
   font-size: 2rem;
   margin-bottom: 3rem;
   font-weight: 500;
 }
+
 .form-title-p {
   font-size: 1.5rem;
   line-height: 1.3;
   font-weight: 300;
   color: #adb5bd;
 }
+
 .main-form {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -50,6 +64,13 @@ h5 {
   row-gap: 4rem;
   margin-bottom: 4rem;
 }
+
+.div-and-form-con {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+}
+
 .div-con-for-form {
   margin: 1rem auto;
   margin-left: 1rem;
@@ -58,7 +79,9 @@ h5 {
   box-shadow: 0 3.2rem 6.4rem rgba(0, 0, 0, 0.06);
   padding: 8rem 5rem;
   border: 1px solid #e9ecef;
+  overflow: scroll;
 }
+
 .per-det-inp {
   background-color: #e9ecef;
   height: 5rem;
@@ -67,11 +90,13 @@ h5 {
   border-radius: 3px;
   font-family: "Poppins", sans-serif;
 }
+
 .per-det-inp:focus {
   outline: none;
   border-bottom: 2px solid #339af0;
   transition: all 0.2s ease-out;
 }
+
 .personal-d-label {
   font-size: 1.5rem;
   margin-bottom: 0.8rem;
@@ -79,37 +104,45 @@ h5 {
   color: #868e96;
   font-weight: 300;
 }
+
 .form-input-viewer {
   font-size: 1.5rem;
   font-weight: 500;
   color: #339af0;
 }
+
 .hide-reveal-form-icon {
   font-size: 2rem;
   color: #339af0;
 }
+
 .hide-form-container,
 .show-form-container {
   display: flex;
   gap: 0.7rem;
   align-items: center;
 }
+
 .hide-form-container:hover > .the-hover,
 .show-form-container:hover > .the-hover {
   color: #1864ab;
   cursor: pointer;
 }
+
 .input-div {
   display: flex;
   flex-direction: column;
 }
+
 /* .hidden-input-divs{} */
 .hidden-form-container {
   display: none;
 }
+
 .hidden-input-divs {
   animation: slide-up 300ms forwards;
 }
+
 @keyframes slide-up {
   from {
     transform: translateY(-2rem);
@@ -124,68 +157,82 @@ h5 {
 .prof-sum {
   margin-bottom: 1rem;
 }
+
 .summary-p {
   font-size: 1.4rem;
   line-height: 1.4;
   color: #868e96;
   margin-bottom: 2.5rem;
 }
+
 .text-style-icon-sizes {
   font-size: 1.2rem;
   color: #343a40;
 }
+
 .text-styles-- {
   display: flex;
   align-items: center;
   gap: 2rem;
   padding-bottom: 0.5rem;
 }
+
 .pre-written-profession {
   margin-left: auto;
   display: flex;
   align-items: center;
 }
+
 .pre-written-profession span {
   font-size: 1.3rem;
   margin-right: 1rem;
   color: #868e96;
   font-weight: 300;
 }
+
 .close-pre-phrase {
   font-size: 1.3rem;
   margin-right: 1rem;
   color: #868e96;
   font-weight: 300;
 }
+
 .close-pre-con {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-left: auto;
 }
+
 .close-pre-con:hover {
   cursor: pointer;
 }
+
 .text-style-icon-sizes:hover {
   color: #339af0;
   cursor: pointer;
 }
+
 .fa-circle-plus {
   font-size: 2rem;
   color: #339af0;
 }
+
 .fa-circle-xmark {
   font-size: 2rem;
   color: #868e96;
 }
+
 .pre-written-profession > span {
   color: #339af0;
   cursor: pointer;
 }
+
 .fa-circle-xmark:hover {
   color: #868e96;
   cursor: pointer;
 }
+
 .summary-input {
   width: 100%;
   border: none;
@@ -194,19 +241,23 @@ h5 {
   resize: none;
   background-color: #e9ecef;
 }
+
 .summary-input:focus {
   outline: none;
 }
+
 .text-styles-con {
   background-color: #e9ecef;
   padding: 1.5rem 1.3rem;
   padding-bottom: 0;
   margin-bottom: 4rem;
 }
+
 .text-styles-con:hover {
   transition: all 0.3s ease;
   box-shadow: #339af0 0px 2px;
 }
+
 .line-up {
   display: inline-block;
   height: 2rem;
@@ -234,6 +285,7 @@ h5 {
   padding: 1rem 2rem;
   margin-bottom: 3.5rem;
 }
+
 .add-employment,
 .add-education,
 .add-link,
@@ -243,6 +295,7 @@ h5 {
   color: #339af0;
   font-size: 2rem;
 }
+
 .add-employment-text,
 .add-education-text,
 .add-link-text,
@@ -252,6 +305,7 @@ h5 {
   font-weight: 500;
   color: #339af0;
 }
+
 .employment-div:hover,
 .education-div:hover,
 .link-div:hover,
@@ -261,6 +315,7 @@ h5 {
   cursor: pointer;
   transition: all 0.3s ease;
 }
+
 .start-end-date-div,
 .start-end-date-div-edu,
 .start-end-date-div-internship {
@@ -268,22 +323,26 @@ h5 {
   align-items: center;
   gap: 1rem;
 }
+
 .start-end-date-inp,
 .start-end-date-inp-edu,
 .start-end-date-inp-internship {
   width: 50%;
 }
+
 /* calendar */
 .calendar-back-pointer,
 .calendar-back-pointer-edu {
   font-size: 2rem;
   color: #339af0;
 }
+
 .calendar-front-pointer,
 .calendar-front-pointer-edu {
   font-size: 2rem;
   color: #339af0;
 }
+
 .calendar-back-front,
 .calendar-back-front-edu {
   display: flex;
@@ -291,6 +350,7 @@ h5 {
   margin-bottom: 2rem;
   /* gap: 2rem; */
 }
+
 .calendar-back-pointer:hover,
 .calendar-back-pointer-edu:hover {
   color: #1864ab;
@@ -315,6 +375,7 @@ h5 {
   border-radius: 3rem;
   margin: 0 5rem;
 }
+
 .calendar-year:hover,
 .calendar-year-edu:hover {
   background-color: #1864ab;
@@ -329,10 +390,12 @@ h5 {
   column-gap: 2rem;
   row-gap: 2rem;
 }
+
 /* .calendar-form-div-con, */
 .calendar-form-div-con-edu {
   position: relative;
 }
+
 .calendar-div,
 .calendar-div-edu {
   max-width: 35rem;
@@ -359,18 +422,21 @@ h5 {
   border-radius: 0.5rem;
   position: fixed;
 }
+
 .calendar-months {
   font-size: 1.5rem;
   background-color: transparent;
   padding: 1rem 1.5rem;
   border-radius: 3.5rem;
 }
+
 .calendar-months:hover {
   background-color: #c8e7f9;
   cursor: pointer;
   color: #1c7ed6;
   transition: all 0.3s ease;
 }
+
 .hide-show-calendar-div {
   opacity: 1;
   pointer-events: auto;
@@ -385,6 +451,7 @@ h5 {
 .internship-details-- {
   position: relative;
 }
+
 .edu-delete-icon-container,
 .employ-delete-icon-container,
 .weblink-delete-icon-container,
@@ -396,6 +463,7 @@ h5 {
   transform: translateX(150%);
   opacity: 0;
 }
+
 .education-parent:hover,
 .employment-parent:hover,
 .weblink-parent:hover,
@@ -403,6 +471,7 @@ h5 {
 .internship-parent:hover {
   cursor: pointer;
 }
+
 .edu-details--:hover .edu-delete-icon-container,
 .employment-details--:hover .employ-delete-icon-container,
 .link-details--:hover .weblink-delete-icon-container,
@@ -411,10 +480,12 @@ h5 {
   opacity: 100;
   transition: all 0.3s ease-in-out;
 }
+
 .delete-icon {
   font-size: 2rem;
   color: #495057;
 }
+
 .delete-icon:hover {
   color: #4dabf7;
   cursor: pointer;
@@ -428,6 +499,7 @@ h5 {
 .internship-details-- {
   margin-bottom: 1.8rem;
 }
+
 .employment-parent,
 .education-parent,
 .weblink-parent,
@@ -435,6 +507,7 @@ h5 {
 .internship-parent {
   list-style: none;
 }
+
 .employment-form,
 .education-form,
 .socialLink-form,
@@ -442,6 +515,7 @@ h5 {
 .internship-form {
   margin-top: 4rem;
 }
+
 .summary-input-emp,
 .summary-input-edu,
 .summary-input-internship {
@@ -452,11 +526,13 @@ h5 {
   resize: none;
   background-color: #e9ecef;
 }
+
 .summary-input-emp:focus,
 .summary-input-edu:focus,
 .summary-input-internship:focus {
   outline: none;
 }
+
 .text-styles--employment,
 .text-styles--education,
 .text-styles--internship {
@@ -492,18 +568,21 @@ h5 {
   padding-bottom: 0;
   margin-bottom: 1rem;
 }
+
 .close-pre-phrase-employment {
   font-size: 1.3rem;
   margin-right: 1rem;
   color: #868e96;
   font-weight: 300;
 }
+
 .close-pre-con-employment {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-left: auto;
 }
+
 .close-pre-con-employment:hover {
   cursor: pointer;
 }
@@ -528,12 +607,14 @@ h5 {
   pointer-events: none;
   visibility: hidden;
 }
+
 .text-styles-con,
 .text-styles-con-employment,
 .text-styles-con-education,
 .text-styles-con-internship {
   position: relative;
 }
+
 .employment-details--,
 .edu-details--,
 .link-details--,
@@ -543,6 +624,7 @@ h5 {
   padding: 1.5rem 1.5rem;
   border-radius: 0.5rem;
 }
+
 .text-styles-con-employment:hover,
 .text-styles-con-education:hover,
 .text-styles-con-internship:hover {
@@ -606,6 +688,7 @@ h5 {
   font-size: 2rem;
   color: #2f9e44;
 }
+
 .arrow-btn-employment,
 .arrow-btn {
   font-size: 2rem;
@@ -624,6 +707,7 @@ h5 {
   flex-shrink: 0;
   align-self: flex-start;
 }
+
 .suggestion-texts-employment:hover,
 .suggestion-texts:hover {
   background-color: #d0ebff;
@@ -631,6 +715,7 @@ h5 {
   cursor: pointer;
   transition: all 0.3s ease;
 }
+
 .arrow-btn-con-emp:hover,
 .arrow-btn-con:hover {
   color: #1971c2;
@@ -638,6 +723,7 @@ h5 {
   cursor: pointer;
   transition: all 0.3s ease;
 }
+
 .arrow-btn-con-emp:hover + div .suggestion-texts-employment,
 .arrow-btn-con:hover + div .suggestion-texts {
   color: #1971c2;
@@ -687,6 +773,7 @@ h5 {
 .job-title-update-icon-internship[name="chevron-down-outline"] {
   font-size: 1.5rem;
 }
+
 .job-title-update-con-1:hover,
 .job-title-update-con-2:hover,
 .job-title-update-con-1-edu:hover,
@@ -701,6 +788,47 @@ h5 {
   color: #339af0;
   transition: all 0.3s ease;
 }
+
+/* ------------------------- THE TEMPLATE SECTION ------------------------ */
+.template-con {
+  background-color: #89939e;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+}
+
+.template-london {
+  background-color: #f1f3f5;
+  height: 65rem;
+  width: 50rem;
+  border-radius: 1rem;
+  margin: 2.5rem auto;
+}
+
+.download-pdf-btn {
+  font-size: 1.4rem;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+  background-color: #339af0;
+  color: #fff;
+  border: none;
+  padding: 2rem 2rem 2rem 2rem;
+  margin-bottom: 2rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+
+.download-pdf-btn:hover {
+  background-color: #1971c2;
+}
+
+/* #868e96 */
 
 /* ------------------------- link part ------------------------ */
 /* .link-detailsAndDeleteCon {
