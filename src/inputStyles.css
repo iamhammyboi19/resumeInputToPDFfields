@@ -803,10 +803,12 @@ h5 {
 
 .template-london {
   background-color: #f1f3f5;
-  height: 65rem;
-  width: 50rem;
-  border-radius: 1rem;
-  margin: 2.5rem auto;
+  height: 66.4rem;
+  width: 45.6rem;
+  border-radius: 0.5rem;
+  margin: 2rem auto;
+  cursor: pointer;
+  box-shadow: 0 3.2rem 6.4rem rgba(0, 0, 0, 0.06);
 }
 
 .download-pdf-btn {
@@ -817,17 +819,136 @@ h5 {
   background-color: #339af0;
   color: #fff;
   border: none;
-  padding: 2rem 2rem 2rem 2rem;
+  padding: 1.3rem 2rem 1.3rem 2rem;
   margin-bottom: 2rem;
   border-radius: 0.5rem;
   cursor: pointer;
   transition: all 0.4s;
+  position: absolute;
+  right: 14rem;
+  top: 69rem;
+}
+
+.template-contents {
+  padding: 2rem 4rem 1rem 4rem;
+}
+
+.user-name {
+  text-align: center;
+  /* font-family: "Roboto", sans-serif; */
+  color: #343a40;
+  font-weight: 500;
+  margin-bottom: 0.8rem;
+}
+
+.address-part {
+  font-size: 0.6rem;
+  font-weight: 400;
+  text-align: center;
+  color: #495057;
+  margin-bottom: 1.7rem;
+}
+
+.separate-lines {
+  border: 0.3px solid #343a40;
+  margin-bottom: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.first-part {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.dateOfBirthPdf {
+  font-size: 0.6rem;
+  font-weight: 300;
+  letter-spacing: 0.4px;
+}
+
+.first-part-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 2rem;
 }
 
 .download-pdf-btn:hover {
   background-color: #1971c2;
 }
 
+.link-section {
+  font-weight: 400;
+  letter-spacing: 1px;
+  font-size: 1rem;
+  color: #495057;
+}
+
+.links-name,
+.link-list {
+  color: #495057;
+  font-weight: 300;
+  font-size: 0.8rem;
+}
+
+.links-name-parent {
+  list-style: none;
+  /* display: flex;
+  gap: 1rem; */
+}
+
+.link-template-div {
+  display: flex;
+  align-items: center;
+  gap: 7rem;
+  margin-bottom: 1rem;
+}
+
+.employment-history {
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+  color: #495057;
+}
+
+.em-temp-date {
+  font-size: 0.7rem;
+  letter-spacing: 0.2px;
+  font-weight: 300;
+  color: #495057;
+}
+
+.emp-work {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: #495057;
+  letter-spacing: 0.3px;
+  margin-bottom: 0.5rem;
+}
+
+.emp-desc-list {
+  font-size: 0.6rem;
+  font-weight: 300;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+}
+
+.emp-desc-list-con {
+  padding-left: 2rem;
+}
+
+.emp-city {
+  font-size: 0.6rem;
+  letter-spacing: 0.2px;
+  font-weight: 300;
+}
+
+.em-temp-det-con {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
 /* #868e96 */
 
 /* ------------------------- link part ------------------------ */
