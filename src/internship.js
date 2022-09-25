@@ -47,7 +47,7 @@ const addMoreInternshipsFromLocalStorageMarkup = function () {
   return internshipFromStorage.map((item) => {
     if (item.type === "internship") {
       return `
-      <li class="internship-details--" data-sessionId=${item.id}>
+      <li class="internship-details--" data-session-id=${item.id}>
                 <div class="calendar-form-div-con-internship">
                   <div>
                     <div class="job-title-update-div-internship">

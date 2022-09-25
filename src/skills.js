@@ -43,7 +43,7 @@ const addMoreSkillsFromLocalStorageMarkup = function () {
   return skillsFromStorage.map((item) => {
     if (item.type === "skills") {
       return `
-      <li class="skills-details--" data-sessionId=${item.id}>
+      <li class="skills-details--" data-session-id=${item.id}>
       <div class="calendar-form-div-con-skills">
         <div>
           <div class="job-title-update-div-skills">

@@ -42,7 +42,7 @@ const addMoreWebsiteLinkFromLocalStorageMarkup = function () {
   return webLinksFromStorage.map((item) => {
     if (item.type === "webLinks") {
       return `
-    <li class="link-details--" data-sessionId=${item.id}>
+    <li class="link-details--" data-session-id=${item.id}>
               <div class="calendar-form-div-con-link">
                 <div>
                   <div class="job-title-update-div-link">

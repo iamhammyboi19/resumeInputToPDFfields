@@ -49,6 +49,16 @@
               class="personal-d-input-1 per-det-inp wantedJob"
             />
           </div>
+          <div class="input---">
+            <div class="lock-icon-con">
+              <div class="lock-icon-div1">
+                <ion-icon name="lock-closed" class="lock-icon"></ion-icon>
+              </div>
+              <p class="lock-icon-text">
+                This template doesn't support photo upload
+              </p>
+            </div>
+          </div>
           <div class="input-div">
             <label class="personal-d-label">First Name</label>
             <input
@@ -71,7 +81,7 @@
             <label class="personal-d-label">Phone</label>
             <input type="tel" class="personal-d-input-5 per-det-inp phone" />
           </div>
-          <div class="input-div">
+          <div class="input-div hidden-input-divs hidden-form-container">
             <label class="personal-d-label">Country</label>
             <input type="text" class="personal-d-input-6 per-det-inp country" />
           </div>
@@ -82,6 +92,13 @@
           <div class="input-div hidden-input-divs hidden-form-container">
             <label class="personal-d-label">Address</label>
             <input type="text" class="personal-d-input-8 per-det-inp address" />
+          </div>
+          <div class="input-div hidden-input-divs hidden-form-container">
+            <label class="personal-d-label">Postal Code</label>
+            <input
+              type="text"
+              class="personal-d-input-8 per-det-inp postalCode"
+            />
           </div>
           <div class="input-div hidden-input-divs hidden-form-container">
             <label class="personal-d-label">Driving License</label>
@@ -292,16 +309,24 @@
           <ion-icon name="add-outline" class="add-internship"></ion-icon>
           <span class="add-internship-text">Add internship</span>
         </div>
+
+        <h5 class="prof-sum">References</h5>
+
+        <ul class="refs-parent">
+          <!-- REFERENCE SECTION -->
+        </ul>
+
+        <div class="refs-div refs-div-add">
+          <ion-icon name="add-outline" class="add-refs"></ion-icon>
+          <span class="add-refs-text">Add reference</span>
+        </div>
       </div>
 
       <div class="template-con">
         <div class="template-london">
           <div class="template-contents">
-            <h4 class="user-name">Ahmed Adekoya, Medical Doctor</h4>
-            <p class="address-part">
-              123 Nicosia, Lagos, 266584, Nigeria, +2349030820066,
-              laurawilson@example.com
-            </p>
+            <h4 class="user-name"></h4>
+            <p class="address-part"></p>
 
             <hr class="separate-lines" />
 
@@ -342,12 +367,27 @@
             </div>
 
             <hr class="separate-lines" />
+            <div class="link-template-div">
+              <h6 class="profile-temp-section">PROFILE</h6>
+              <p class="profile-temp-about">
+                Dedicated Medical Support Assistant with a proven track record
+                of providing superior assistance to medical personnel for the
+                last ten years. Experienced in providing administrative support
+                to health care facilities and performing tasks such as
+                maintaining patient records, updating patient accounts, and
+                handling all patient and facility correspondence. Bringing forth
+                excellent customer service skills and an understanding of the
+                medical industry and important medical terminology.
+              </p>
+            </div>
+
+            <hr class="separate-lines" />
 
             <h6 class="employment-history">EMPLOYMENT HISTORY</h6>
 
             <div class="em-temp-det-con">
               <span class="em-temp-date"><p>Jan 2022 — Jan 2022</p></span>
-              <div>
+              <div class="emp-sch-det">
                 <h6 class="emp-work">Teaching, Schooling</h6>
                 <ul class="emp-desc-list-con">
                   <li class="emp-desc-list">
@@ -360,10 +400,78 @@
                 </ul>
               </div>
 
-              <p class="emp-city">Lagos</p>
+              <p class="emp-city-temp">Lagos</p>
             </div>
 
             <hr class="separate-lines" />
+
+            <h6 class="education-history">EDUCATION</h6>
+
+            <div class="edu-temp-det-con">
+              <span class="edu-temp-date"><p>Jan 2022 — Jan 2022</p></span>
+              <div class="edu-sch-det">
+                <h6 class="edu-work">NEU, BSC</h6>
+                <ul class="edu-desc-list-con">
+                  <li class="edu-desc-list">GRADUATED</li>
+                </ul>
+              </div>
+
+              <p class="edu-city-temp">Lagos</p>
+            </div>
+
+            <hr class="separate-lines" />
+
+            <div class="skills-parent-con">
+              <h6 class="skills-history">SKILLS</h6>
+
+              <ul class="skills-list-level">
+                <li class="skills-list-desc-level">
+                  <span class="skills-desc">Leadership and Teamwork</span>
+                  <span class="skills-level-temp">Expert</span>
+                </li>
+                <li class="skills-list-desc-level">
+                  <span class="skills-desc">Customer Relations</span>
+                  <span class="skills-level-temp">Expert</span>
+                </li>
+                <li class="skills-list-desc-level">
+                  <span class="skills-desc">Communicate</span>
+                  <span class="skills-level-temp">Expert</span>
+                </li>
+              </ul>
+            </div>
+
+            <hr class="separate-lines" />
+
+            <h6 class="internship-history">INTERNSHIPS</h6>
+
+            <div class="intern-temp-det-con">
+              <span class="intern-temp-date"><p>Jan 2022 — Jan 2022</p></span>
+              <div class="intern-sch-det">
+                <h6 class="intern-work">NEU AI DEPTMENT</h6>
+                <ul class="intern-desc-list-con">
+                  <li class="intern-desc-list">GRADUATED</li>
+                </ul>
+              </div>
+
+              <p class="intern-city-temp">Lagos</p>
+            </div>
+
+            <hr class="separate-lines" />
+
+            <div class="ref-temp-det-con">
+              <h6 class="internship-history">REFRENCES</h6>
+
+              <div class="ref-temp-place">
+                <h6 class="ref-org">MR MAN FROM NEW HORIZON</h6>
+                <p class="ref-phone-email">
+                  myname@example.com, +2346467376353
+                </p>
+                <h6 class="ref-org">MR MAN FROM NEW HORIZON</h6>
+                <p class="ref-phone-email">
+                  myname@example.com, +2346467376353
+                </p>
+              </div>
+            </div>
           </div>
         </div>
         <button class="download-pdf-btn">Download PDF</button>

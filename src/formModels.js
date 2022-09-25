@@ -16,7 +16,8 @@ class PersonDetailsFormSession {
     driversLicense,
     nationality,
     placeOfBirth,
-    dateOfBirth
+    dateOfBirth,
+    postalCode
   ) {
     this.wantedJob = " " || wantedJob;
     this.firstName = " " || firstName;
@@ -30,6 +31,7 @@ class PersonDetailsFormSession {
     this.nationality = " " || nationality;
     this.placeOfBirth = " " || placeOfBirth;
     this.dateOfBirth = " " || dateOfBirth;
+    this.postalCode = " " || postalCode;
   }
 }
 
@@ -84,6 +86,17 @@ class SkillsNewFormSessions extends WebSocialLinkFormSessions {
   }
 }
 
+class RefsNewFormSession {
+  id = String(Date.now()).slice(0, 10) + randStr();
+  constructor(refsFullName, company, phone, email) {
+    this.refsFullName = " " || refsFullName;
+    this.company = " " || company;
+    this.phone = " " || phone;
+    this.email = " " || email;
+    this.type = "refs";
+  }
+}
+
 class SaveAndDeleteItemsFromLocalStorage {
   static #userData = [];
   static #personalDetailsData = [];
@@ -119,4 +132,5 @@ export {
   InternshipNewFormSessions,
   SaveAndDeleteItemsFromLocalStorage,
   PersonDetailsFormSession,
+  RefsNewFormSession,
 };

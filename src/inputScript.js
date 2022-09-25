@@ -2,6 +2,8 @@
 
 import { textareaFillWhole } from "./textAreaFillWhole.js";
 
+import { TemplatesLondonFillUpFromLocalStorage } from "./TemplatesLondon.js";
+
 // import { addPersonalDetailsMarkupFromLocalStorage } from "../personalDetails.js";
 
 import {
@@ -12,6 +14,7 @@ import {
   InternshipNewFormSessions,
   SkillsNewFormSessions,
   PersonDetailsFormSession,
+  RefsNewFormSession,
 } from "./formModels.js";
 
 import {
@@ -58,6 +61,15 @@ import {
   addMoreInternshipsFromLocalStorageMarkup,
   checkInternship,
 } from "./internship.js";
+
+import {
+  showHiderefsForm,
+  showHideRefsDetails,
+  fillRefsTitle,
+  refsDeleteDetails,
+  addMoreRefsFromLocalStorageMarkup,
+  checkRefs,
+} from "./refs.js";
 
 const personalDetailsMainForm = document.querySelector(".main-form");
 const personalDetailsParent = document.querySelector(".div-con-for-form");
@@ -129,6 +141,13 @@ const internshipParentCon = document.querySelector(".internship-parent");
 
 // ------------------------------------------------------------------------------------
 // ------------------------------------------------------------------------------------
+// REFS section
+const addRefsBtn = document.querySelector(".refs-div-add");
+const refsParentCon = document.querySelector(".refs-parent");
+// refs-div-add
+
+// ------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------
 
 const thedate = new Date();
 let curDate = thedate.getFullYear();
@@ -196,6 +215,16 @@ window.addEventListener("load", function () {
   }
 
   // GET INTERNSHIPS FROM LOCALSTORAGE AND DISPLAY IT ON LOAD action
+  if (!addMoreRefsFromLocalStorageMarkup()) return;
+  refsParentCon.insertAdjacentHTML(
+    "beforeend",
+    addMoreRefsFromLocalStorageMarkup().join("")
+  );
+  if (checkRefs) {
+    addRefsBtn.querySelector("span").textContent = `Add one more reference`;
+  }
+
+  // GET EMPLOYMENT FROM LOCALSTORAGE AND DISPLAY IT ON LOAD action
   if (!addMoreEmploymentMarkupFromLocalStorage()) return;
   employmentParentCon.insertAdjacentHTML(
     "beforeend",
@@ -222,6 +251,7 @@ window.addEventListener("load", function () {
       document.querySelector(".nationality").value = item.nationality;
       document.querySelector(".placeOfBirth").value = item.placeOfBirth;
       document.querySelector(".dateOfBirth").value = item.dateOfBirth;
+      document.querySelector(".postalCode").value = item.postalCode;
     });
   }
 
@@ -288,7 +318,9 @@ const autoSavePersonalDetailsFormOnInput = function (e) {
   const personalDetails =
     JSON.parse(localStorage.getItem("personalDetails")) || [];
   if (personalDetails.length === 0) return;
-  personalDetails[0][this[0]] = e.target.value;
+  personalDetails[0][this[0]] = `${
+    e.target.value.length > 0 ? e.target.value : " "
+  }`;
   localStorage.setItem("personalDetails", JSON.stringify(personalDetails));
 };
 
@@ -298,7 +330,7 @@ personalDetailsMainForm?.addEventListener("click", function (e) {
   if (e.target.classList.contains("wantedJob")) {
     personalDetailsMainForm
       .querySelector(".wantedJob")
-      .addEventListener("input", function (e) {
+      .addEventListener("input" || "click", function (e) {
         autoSavePersonalDetailsFormOnInput.bind(["wantedJob"])(e);
       });
   }
@@ -362,6 +394,15 @@ personalDetailsMainForm?.addEventListener("click", function (e) {
       .querySelector(".address")
       .addEventListener("input", function (e) {
         autoSavePersonalDetailsFormOnInput.bind(["address"])(e);
+      });
+  }
+
+  // CHECK IF INPUT IS POSTAL CODE
+  if (e.target.classList.contains("postalCode")) {
+    personalDetailsMainForm
+      .querySelector(".postalCode")
+      .addEventListener("input", function (e) {
+        autoSavePersonalDetailsFormOnInput.bind(["postalCode"])(e);
       });
   }
 
@@ -550,7 +591,7 @@ const fillMeUp = function (e) {
   return e.target
     .closest(this[0])
     .querySelector(this[1])
-    .addEventListener(
+    ?.addEventListener(
       "input",
       nonSpecificTextFill.bind([
         // SELECT THE NON SPECIFIED FIELD AREA FOR EACH CURRENT FORM ELEMENT
@@ -566,9 +607,9 @@ const deleteSpecificForm = function (e) {
   const curDeleteBtn = e.target.closest(this[0]);
 
   // GET THE CUURENT DELETED ELEMENT AND ALSO DELETE FROM LOCALSTORAGE
-  const { sessionid } = curDeleteBtn.closest(this[1]).dataset;
+  const { sessionId } = curDeleteBtn.closest(this[1]).dataset;
   const savedItems = JSON.parse(localStorage.getItem("allForms"));
-  const curTemplate = savedItems.findIndex((el) => el.id === sessionid);
+  const curTemplate = savedItems.findIndex((el) => el.id === sessionId);
   savedItems.splice(curTemplate, 1);
   if (savedItems.length === 0) localStorage.removeItem("allForms");
   localStorage.setItem("allForms", JSON.stringify(savedItems));
@@ -592,11 +633,11 @@ const storeAutoAsIwriteToTheForm = function (e) {
     .addEventListener("input", function (e) {
       // CHECK THE CURRENT ELEMENT INPUTTED AND UPDATE IT IN THE LOCALSTORAGE
       // COLLECT IT PARENTS DATA-SESSIONID AND UPDATE THE PARTICULAR FIELD
-      const { sessionid } = e.target.closest(this1).dataset;
+      const { sessionId } = e.target.closest(this1).dataset;
       const savedItems = JSON.parse(localStorage.getItem("allForms"));
-      const curTemplate = savedItems.find((el) => el.id === sessionid);
+      const curTemplate = savedItems.find((el) => el.id === sessionId);
       const index = savedItems.indexOf(curTemplate);
-      curTemplate[this2] = e.target.value;
+      curTemplate[this2] = `${e.target.value.length > 0 ? e.target.value : ""}`;
       savedItems[index] = curTemplate;
       localStorage.setItem("allForms", JSON.stringify(savedItems));
     });
@@ -971,6 +1012,91 @@ skillsParentCon.addEventListener("click", function (e) {
 // ------------------------------------------------------------------------------------
 // ------------------------------------------------------------------------------------
 
+// ADD NEW ELEMENT TO THE PARENT
+addRefsBtn.addEventListener("click", function () {
+  SaveAndDeleteItemsFromLocalStorage.collectItems(new RefsNewFormSession());
+  SaveAndDeleteItemsFromLocalStorage.save();
+
+  refsParentCon.innerHTML = "";
+
+  refsParentCon.insertAdjacentHTML(
+    "beforeend",
+    addMoreRefsFromLocalStorageMarkup().join("")
+  );
+
+  if (refsParentCon.children.length > 0) {
+    addRefsBtn.querySelector("span").textContent = `Add one more reference`;
+  }
+});
+
+refsParentCon.addEventListener("click", function (e) {
+  // HIDE AND SHOW FORM
+  if (e.target.closest(".job-title-update-con-1-refs")) {
+    showHiderefsForm.bind(showHideRefsDetails)(e);
+  }
+
+  // HIDE AND SHOW FORM
+  if (e.target.closest(".job-title-update-con-2-refs")) {
+    showHiderefsForm.bind(showHideRefsDetails)(e);
+  }
+
+  // FILLING THE NOT SPECIFIED AREA IN THE FORM
+  if (e.target.closest(".refs-details--")) {
+    // SELECT THE CURRENT ELEMENT INPUT FORM ON CLICK AND addEventListener to it
+    fillMeUp.bind(fillRefsTitle)(e);
+
+    // CHECK CURRENT CLICKED ELEMENT ON SKILLS FORM
+    if (e.target.classList.contains("refsFullName--")) {
+      storeAutoAsIwriteToTheForm.bind([
+        ".refs-details--",
+        ".refsFullName--",
+        "refsFullName",
+      ])(e);
+    }
+
+    // CHECK CURRENT CLICKED ELEMENT ON SKILLS FORM
+    if (e.target.classList.contains("refsCompany")) {
+      storeAutoAsIwriteToTheForm.bind([
+        ".refs-details--",
+        ".refsCompany",
+        "company",
+      ])(e);
+    }
+
+    // CHECK CURRENT CLICKED ELEMENT ON SKILLS FORM
+    if (e.target.classList.contains("refsPhone")) {
+      storeAutoAsIwriteToTheForm.bind([
+        ".refs-details--",
+        ".refsPhone",
+        "phone",
+      ])(e);
+    }
+
+    // CHECK CURRENT CLICKED ELEMENT ON SKILLS FORM
+    if (e.target.classList.contains("refsEmail")) {
+      storeAutoAsIwriteToTheForm.bind([
+        ".refs-details--",
+        ".refsEmail",
+        "email",
+      ])(e);
+    }
+  }
+
+  // DELETE FORM
+  if (e.target.closest(".refs-delete-icon-container")) {
+    // delete on click
+    deleteSpecificForm.bind(refsDeleteDetails)(e);
+
+    // check if there is any child element left
+    if (refsParentCon.children.length === 0) {
+      addRefsBtn.querySelector("span").textContent = `Add reference`;
+    }
+  }
+});
+
+// ------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------
+
 // add internship section
 
 // ADD NEW ELEMENT TO THE PARENT
@@ -1110,3 +1236,12 @@ document.documentElement.addEventListener("click", showHideSuggestionBoxProf);
 // hiding positioned element clicking outing the element EMPLOY
 
 // suggestion-texts-con-div-emp pre-written-employment close-pre-con-employment hide-suggestion-box-emp
+
+// ------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------
+
+// TEMPLATE LONDON SECTION
+new TemplatesLondonFillUpFromLocalStorage();
+
+// ------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------

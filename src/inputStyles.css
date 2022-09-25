@@ -276,7 +276,8 @@ h5 {
 .education-div,
 .link-div,
 .skills-div,
-.internship-div {
+.internship-div,
+.refs-div {
   display: flex;
   align-items: center;
   justify-items: center;
@@ -291,7 +292,8 @@ h5 {
 .add-link,
 .delete-link,
 .add-skills,
-.add-internship {
+.add-internship,
+.add-refs {
   color: #339af0;
   font-size: 2rem;
 }
@@ -300,7 +302,8 @@ h5 {
 .add-education-text,
 .add-link-text,
 .add-skills-text,
-.add-internship-text {
+.add-internship-text,
+.add-refs-text {
   font-size: 1.5rem;
   font-weight: 500;
   color: #339af0;
@@ -310,7 +313,8 @@ h5 {
 .education-div:hover,
 .link-div:hover,
 .skills-div:hover,
-.internship-div:hover {
+.internship-div:hover,
+.refs-div:hover {
   background-color: #e7f5ff;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -448,7 +452,8 @@ h5 {
 .employment-details--,
 .link-details--,
 .skills-details--,
-.internship-details-- {
+.internship-details--,
+.refs-details-- {
   position: relative;
 }
 
@@ -456,7 +461,8 @@ h5 {
 .employ-delete-icon-container,
 .weblink-delete-icon-container,
 .skills-delete-icon-container,
-.internship-delete-icon-container {
+.internship-delete-icon-container,
+.refs-delete-icon-container {
   position: absolute;
   right: 0;
   top: 30%;
@@ -468,7 +474,8 @@ h5 {
 .employment-parent:hover,
 .weblink-parent:hover,
 .skills-parent:hover,
-.internship-parent:hover {
+.internship-parent:hover,
+.refs-parent:hover {
   cursor: pointer;
 }
 
@@ -476,7 +483,8 @@ h5 {
 .employment-details--:hover .employ-delete-icon-container,
 .link-details--:hover .weblink-delete-icon-container,
 .skills-details--:hover .skills-delete-icon-container,
-.internship-details--:hover .internship-delete-icon-container {
+.internship-details--:hover .internship-delete-icon-container,
+.refs-details--:hover .refs-delete-icon-container {
   opacity: 100;
   transition: all 0.3s ease-in-out;
 }
@@ -484,6 +492,42 @@ h5 {
 .delete-icon {
   font-size: 2rem;
   color: #495057;
+}
+
+.lock-icon {
+  font-size: 1.5rem;
+  color: #adb5bd;
+  border: 1px solid #adb5bd;
+  border-radius: 50%;
+  padding: 0.7rem;
+}
+
+.lock-icon-div1 {
+  height: 6rem;
+  min-width: 6rem;
+  background-color: #e9ecef;
+  border-radius: 0.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lock-icon-text {
+  font-size: 1.3rem;
+  line-height: 1.5;
+  font-weight: 300;
+  color: #868e96;
+}
+
+.lock-icon-con {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.input--- {
+  padding-top: 1.5rem;
+  padding-right: 3rem;
 }
 
 .delete-icon:hover {
@@ -496,7 +540,8 @@ h5 {
 .edu-details--,
 .link-details--,
 .skills-details--,
-.internship-details-- {
+.internship-details--,
+.refs-details-- {
   margin-bottom: 1.8rem;
 }
 
@@ -504,7 +549,8 @@ h5 {
 .education-parent,
 .weblink-parent,
 .skills-parent,
-.internship-parent {
+.internship-parent,
+.refs-parent {
   list-style: none;
 }
 
@@ -512,7 +558,8 @@ h5 {
 .education-form,
 .socialLink-form,
 .skills-form,
-.internship-form {
+.internship-form,
+.refs-form {
   margin-top: 4rem;
 }
 
@@ -619,7 +666,8 @@ h5 {
 .edu-details--,
 .link-details--,
 .skills-details--,
-.internship-details-- {
+.internship-details--,
+.refs-details-- {
   border: 1px solid #e9ecef;
   padding: 1.5rem 1.5rem;
   border-radius: 0.5rem;
@@ -650,6 +698,7 @@ h5 {
   box-shadow: 0 3.2rem 5.4rem rgba(0, 0, 0, 0.06);
   border: 1px solid #868e96;
   border-radius: 5px;
+  z-index: 999;
 }
 
 .hide-suggestion-box-emp,
@@ -741,7 +790,9 @@ h5 {
 .job-title-update-con-1-skills,
 .job-title-update-con-2-skills,
 .job-title-update-con-1-internship,
-.job-title-update-con-2-internship {
+.job-title-update-con-2-internship,
+.job-title-update-con-1-refs,
+.job-title-update-con-2-refs {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -757,7 +808,9 @@ h5 {
 .job-title-update-1-skills,
 .job-title-update-2-skills,
 .job-title-update-1-internship,
-.job-title-update-2-internship {
+.job-title-update-2-internship,
+.job-title-update-1-refs,
+.job-title-update-2-refs {
   font-size: 1.3rem;
 }
 
@@ -770,7 +823,9 @@ h5 {
 .job-title-update-icon-skills[name="chevron-up-outline"],
 .job-title-update-icon-skills[name="chevron-down-outline"],
 .job-title-update-icon-internship[name="chevron-up-outline"],
-.job-title-update-icon-internship[name="chevron-down-outline"] {
+.job-title-update-icon-internship[name="chevron-down-outline"],
+.job-title-update-icon-refs[name="chevron-up-outline"],
+.job-title-update-icon-refs[name="chevron-down-outline"] {
   font-size: 1.5rem;
 }
 
@@ -783,7 +838,9 @@ h5 {
 .job-title-update-con-1-skills:hover,
 .job-title-update-con-2-skills:hover,
 .job-title-update-con-1-internship:hover,
-.job-title-update-con-2-internship:hover {
+.job-title-update-con-2-internship:hover,
+.job-title-update-con-1-refs:hover,
+.job-title-update-con-2-refs:hover {
   cursor: pointer;
   color: #339af0;
   transition: all 0.3s ease;
@@ -798,7 +855,7 @@ h5 {
   right: 0;
   width: 50%;
   position: fixed;
-  z-index: 1;
+  z-index: -99;
 }
 
 .template-london {
@@ -877,13 +934,6 @@ h5 {
   background-color: #1971c2;
 }
 
-.link-section {
-  font-weight: 400;
-  letter-spacing: 1px;
-  font-size: 1rem;
-  color: #495057;
-}
-
 .links-name,
 .link-list {
   color: #495057;
@@ -904,22 +954,41 @@ h5 {
   margin-bottom: 1rem;
 }
 
-.employment-history {
-  font-size: 1rem;
+.link-section,
+.profile-temp-section {
+  font-weight: 400;
+  letter-spacing: 1px;
+  font-size: 0.8rem;
+  color: #495057;
+  align-self: flex-start;
+}
+
+.employment-history,
+.education-history,
+.skills-history,
+.internship-history {
+  font-size: 0.8rem;
   font-weight: 400;
   margin-bottom: 1rem;
   letter-spacing: 1px;
   color: #495057;
+  align-self: flex-start;
 }
 
-.em-temp-date {
+.em-temp-date,
+.edu-temp-date,
+.intern-temp-date {
   font-size: 0.7rem;
   letter-spacing: 0.2px;
   font-weight: 300;
   color: #495057;
 }
 
-.emp-work {
+.emp-work,
+.edu-work,
+.skills-desc,
+.intern-work,
+.ref-org {
   font-size: 0.7rem;
   font-weight: 500;
   color: #495057;
@@ -927,7 +996,12 @@ h5 {
   margin-bottom: 0.5rem;
 }
 
-.emp-desc-list {
+.emp-desc-list,
+.edu-desc-list,
+.skills-level-temp,
+.intern-desc-list,
+.ref-phone-email,
+.profile-temp-about {
   font-size: 0.6rem;
   font-weight: 300;
   line-height: 1.5;
@@ -938,15 +1012,61 @@ h5 {
   padding-left: 2rem;
 }
 
-.emp-city {
+.edu-desc-list-con,
+.skills-list-level,
+.intern-desc-list-con {
+  list-style: none;
+}
+
+.edu-sch-det,
+.emp-sch-det,
+.intern-sch-det {
+  width: 25.36rem;
+}
+
+.edu-city-temp,
+.intern-city-temp,
+.emp-city-temp {
   font-size: 0.6rem;
   letter-spacing: 0.2px;
   font-weight: 300;
 }
 
-.em-temp-det-con {
+.em-temp-det-con,
+.edu-temp-det-con,
+.intern-temp-det-con {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.skills-parent-con {
+  display: flex;
+  justify-content: space-between;
+}
+
+.skills-list-desc-level {
+  display: flex;
+  justify-content: space-between;
+}
+
+.skills-list-level {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 2rem;
+  width: 28.8rem;
+}
+
+.ref-temp-det-con {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ref-temp-place {
+  width: 28.8rem;
+}
+
+.ref-phone-email {
   margin-bottom: 1rem;
 }
 /* #868e96 */
