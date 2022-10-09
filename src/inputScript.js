@@ -166,76 +166,12 @@ if (calendarYearEdu) {
 // SHOW AVAILABLE ITEMS ON RELOAD
 
 // used in getting and setting personalDetails to localStorage
+
 const personalDetailsOnLoad =
   JSON.parse(localStorage.getItem("personalDetails")) || [];
 
 window.addEventListener("load", function () {
-  // GET EDUCATION FROM LOCALSTORAGE AND DISPLAY IT ON LOAD action
-  if (!addMoreEducationMarkupFromLocalStorage()) return;
-  educationParentCon.insertAdjacentHTML(
-    "beforeend",
-    addMoreEducationMarkupFromLocalStorage().join("")
-  );
-  if (checkEducation) {
-    addEducationBtn.querySelector(
-      "span"
-    ).textContent = `Add one more education`;
-  }
-
-  // GET WEBLINKS FROM LOCALSTORAGE AND DISPLAY IT ON LOAD action
-  if (!addMoreWebsiteLinkFromLocalStorageMarkup()) return;
-  webSocialLinkParent.insertAdjacentHTML(
-    "beforeend",
-    addMoreWebsiteLinkFromLocalStorageMarkup().join("")
-  );
-  if (checkWebLinks) {
-    addSocialBtn.querySelector("span").textContent = `Add one more link`;
-  }
-
-  // GET SKILLS FROM LOCALSTORAGE AND DISPLAY IT ON LOAD action
-  if (!addMoreSkillsFromLocalStorageMarkup()) return;
-  skillsParentCon.insertAdjacentHTML(
-    "beforeend",
-    addMoreSkillsFromLocalStorageMarkup().join("")
-  );
-  if (checkSkills) {
-    addSkillsBtn.querySelector("span").textContent = `Add one more skill`;
-  }
-
-  // GET INTERNSHIPS FROM LOCALSTORAGE AND DISPLAY IT ON LOAD action
-  if (!addMoreInternshipsFromLocalStorageMarkup()) return;
-  internshipParentCon.insertAdjacentHTML(
-    "beforeend",
-    addMoreInternshipsFromLocalStorageMarkup().join("")
-  );
-  if (checkInternship) {
-    addInternshipBtn.querySelector(
-      "span"
-    ).textContent = `Add one more internship`;
-  }
-
-  // GET INTERNSHIPS FROM LOCALSTORAGE AND DISPLAY IT ON LOAD action
-  if (!addMoreRefsFromLocalStorageMarkup()) return;
-  refsParentCon.insertAdjacentHTML(
-    "beforeend",
-    addMoreRefsFromLocalStorageMarkup().join("")
-  );
-  if (checkRefs) {
-    addRefsBtn.querySelector("span").textContent = `Add one more reference`;
-  }
-
-  // GET EMPLOYMENT FROM LOCALSTORAGE AND DISPLAY IT ON LOAD action
-  if (!addMoreEmploymentMarkupFromLocalStorage()) return;
-  employmentParentCon.insertAdjacentHTML(
-    "beforeend",
-    addMoreEmploymentMarkupFromLocalStorage().join("")
-  );
-  if (checkEmployment) {
-    addEmploymentBtn.querySelector(
-      "span"
-    ).textContent = `Add one more employment`;
-  }
-
+  //
   // FILL PERSONAL DETAILS INPUT ON LOAD
   if (personalDetailsOnLoad.length > 0) {
     personalDetailsOnLoad.forEach((item) => {
@@ -260,8 +196,76 @@ window.addEventListener("load", function () {
       new PersonDetailsFormSession()
     );
     SaveAndDeleteItemsFromLocalStorage.savePersonalDetails();
-  } else {
-    return;
+  }
+
+  // else {
+  //   return;
+  // }
+
+  // GET EDUCATION FROM LOCALSTORAGE AND DISPLAY IT ON LOAD action
+  // if (!addMoreEducationMarkupFromLocalStorage()) return;
+  educationParentCon.insertAdjacentHTML(
+    "beforeend",
+    addMoreEducationMarkupFromLocalStorage().join("")
+  );
+  if (checkEducation) {
+    addEducationBtn.querySelector(
+      "span"
+    ).textContent = `Add one more education`;
+  }
+
+  // GET WEBLINKS FROM LOCALSTORAGE AND DISPLAY IT ON LOAD action
+  // if (!addMoreWebsiteLinkFromLocalStorageMarkup()) return;
+  webSocialLinkParent.insertAdjacentHTML(
+    "beforeend",
+    addMoreWebsiteLinkFromLocalStorageMarkup().join("")
+  );
+  if (checkWebLinks) {
+    addSocialBtn.querySelector("span").textContent = `Add one more link`;
+  }
+
+  // GET SKILLS FROM LOCALSTORAGE AND DISPLAY IT ON LOAD action
+  // if (!addMoreSkillsFromLocalStorageMarkup()) return;
+  skillsParentCon.insertAdjacentHTML(
+    "beforeend",
+    addMoreSkillsFromLocalStorageMarkup().join("")
+  );
+  if (checkSkills) {
+    addSkillsBtn.querySelector("span").textContent = `Add one more skill`;
+  }
+
+  // GET INTERNSHIPS FROM LOCALSTORAGE AND DISPLAY IT ON LOAD action
+  // if (!addMoreInternshipsFromLocalStorageMarkup()) return;
+  internshipParentCon.insertAdjacentHTML(
+    "beforeend",
+    addMoreInternshipsFromLocalStorageMarkup().join("")
+  );
+  if (checkInternship) {
+    addInternshipBtn.querySelector(
+      "span"
+    ).textContent = `Add one more internship`;
+  }
+
+  // GET INTERNSHIPS FROM LOCALSTORAGE AND DISPLAY IT ON LOAD action
+  // if (!addMoreRefsFromLocalStorageMarkup()) return;
+  refsParentCon.insertAdjacentHTML(
+    "beforeend",
+    addMoreRefsFromLocalStorageMarkup().join("")
+  );
+  if (checkRefs) {
+    addRefsBtn.querySelector("span").textContent = `Add one more reference`;
+  }
+
+  // GET EMPLOYMENT FROM LOCALSTORAGE AND DISPLAY IT ON LOAD action
+  // if (!addMoreEmploymentMarkupFromLocalStorage()) return;
+  employmentParentCon.insertAdjacentHTML(
+    "beforeend",
+    addMoreEmploymentMarkupFromLocalStorage().join("")
+  );
+  if (checkEmployment) {
+    addEmploymentBtn.querySelector(
+      "span"
+    ).textContent = `Add one more employment`;
   }
 });
 

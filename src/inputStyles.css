@@ -912,7 +912,11 @@ h5 {
   margin-top: 0.5rem;
 }
 
-.first-part {
+.first-part,
+.first-part-1,
+.first-part-2,
+.first-part-3,
+.first-part-4 {
   display: flex;
   justify-content: space-between;
   margin-bottom: 1rem;
@@ -939,6 +943,7 @@ h5 {
   color: #495057;
   font-weight: 300;
   font-size: 0.8rem;
+  cursor: pointer;
 }
 
 .links-name-parent {
@@ -966,7 +971,8 @@ h5 {
 .employment-history,
 .education-history,
 .skills-history,
-.internship-history {
+.internship-history,
+.refs-history {
   font-size: 0.8rem;
   font-weight: 400;
   margin-bottom: 1rem;
