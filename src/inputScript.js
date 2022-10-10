@@ -149,6 +149,7 @@ const addRefsBtn = document.querySelector(".refs-div-add");
 const refsParentCon = document.querySelector(".refs-parent");
 // refs-div-add
 
+const formTitle = document.querySelector(".input-form-title");
 const downloadTemplateLondonBtn = document.querySelector(".download-pdf-btn");
 
 // ------------------------------------------------------------------------------------
@@ -1265,23 +1266,30 @@ document.documentElement.addEventListener("click", showHideSuggestionBoxProf);
 // ------------------------------------------------------------------------------------
 // ------------------------------------------------------------------------------------
 
+const pdfOptions = {
+  filename: `${formTitle.value}.pdf`,
+  image: { type: "jpeg", quality: 1 },
+  html2canvas: {
+    dpi: 192,
+    scale: 4,
+    width: 470,
+    letterRendering: true,
+    useCORS: true,
+  },
+  jsPDF: { unit: "in", format: "a4", orientation: "portrait" },
+};
+
 downloadTemplateLondonBtn.addEventListener("click", function () {
   const templateLondonPdfFormat = document.getElementById(
     "template-london-pdf-format"
   );
-  // html2pdf(templateLondonPdfFormat);
-  html2pdf().from(templateLondonPdfFormat).save();
-  // html2pdf().set(pdfOptions).from(templateLondonPdfFormat).save();
+
+  html2pdf().set(pdfOptions).from(templateLondonPdfFormat).save();
 });
 
 // TEMPLATE LONDON SECTION
 new TemplatesLondonFillUpFromLocalStorage();
 
-// const pdfOptions = {
-//   filename: "resumeFile.pdf",
-// };
-
-// html2pdf().set(pdfOptions).from(element).save();
-
 // ------------------------------------------------------------------------------------
 // ------------------------------------------------------------------------------------
+

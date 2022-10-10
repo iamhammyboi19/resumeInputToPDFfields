@@ -859,12 +859,20 @@ h5 {
 
 .template-london {
   background-color: #f1f3f5;
+  /* height: 66.4rem;
+  width: 45.6rem; */
+  max-width: 46.8rem;
   height: 66.4rem;
-  width: 45.6rem;
   border-radius: 0.5rem;
   margin: 2rem auto;
   cursor: pointer;
   box-shadow: 0 3.2rem 6.4rem rgba(0, 0, 0, 0.06);
+}
+
+/* 2480 pixels x 3508  */
+.template-contents {
+  max-width: 46.8rem;
+  height: 66.4rem;
 }
 
 .download-pdf-btn {
