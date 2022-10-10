@@ -8,6 +8,7 @@ const templatePlaceOfBirthParent = document.querySelector(".first-part-2");
 const templateNationalityParent = document.querySelector(".first-part-3");
 const templateDlParent = document.querySelector(".first-part-4");
 const templateLinkList = document.querySelector(".link-list");
+const templateProfileTitle = document.querySelector(".profile-temp-section");
 
 class TemplatesLondonFillUpFromLocalStorage {
   constructor() {
@@ -20,6 +21,7 @@ class TemplatesLondonFillUpFromLocalStorage {
     this.#showSkills();
     this.#showInternship();
     this.#showRefs();
+    this.#showProfSum();
   }
 
   #getItemsFromLocalStorage() {
@@ -28,6 +30,31 @@ class TemplatesLondonFillUpFromLocalStorage {
 
   #getAllFormsFromLocalStorage() {
     return JSON.parse(localStorage.getItem("allForms"));
+  }
+
+  #getProfSumFromLocalStorage() {
+    return localStorage.getItem("professionalSummary");
+  }
+
+  #showProfSum() {
+    setInterval(() => {
+      // IF NO ITEM IN LOCAL STORAGE RETURN IMMEDIATELY
+      if (!this.#getProfSumFromLocalStorage()) return;
+
+      if (this.#getProfSumFromLocalStorage().length > 3) {
+        document.querySelector(".profile-line").innerHTML = "";
+        document.querySelector(
+          ".profile-line"
+        ).innerHTML = `<hr class="separate-lines" />`;
+        templateProfileTitle.textContent = "PROFILE";
+        document.querySelector(".profile-temp-about").textContent =
+          this.#getProfSumFromLocalStorage();
+      } else {
+        document.querySelector(".profile-line").innerHTML = "";
+        templateProfileTitle.textContent = "";
+        document.querySelector(".profile-temp-about").textContent = "";
+      }
+    }, 1000);
   }
 
   //////// WEB SOCIAL LINKS SECTION
@@ -56,17 +83,22 @@ class TemplatesLondonFillUpFromLocalStorage {
       // GET ALL WEBLINKS AND GENERATE MARKUP
       const allLinks = this.#getAllFormsFromLocalStorage().map((item) => {
         if (item.type === "webLinks") {
-          return `<a href="${item.link}" target="_blank" class="links-name">${item.label}, </a>`;
+          return `<a href="${
+            item.link.startsWith("https") ? item.link : `https://${item.link}`
+          }" target="_blank" class="links-name">${item.label}, </a>`;
         }
       });
 
       // DISPLAY WEBLINKS
+
       templateLinkList.innerHTML = "";
 
       templateLinkList.insertAdjacentHTML("beforeend", allLinks.join(""));
 
-      templateLinkList.lastChild.textContent =
-        templateLinkList.lastChild.textContent.replace(", ", "");
+      if (templateLinkList.lastChild) {
+        templateLinkList.lastChild.textContent =
+          templateLinkList.lastChild.textContent.replace(", ", "");
+      }
     }, 1000);
   }
 
@@ -108,8 +140,8 @@ class TemplatesLondonFillUpFromLocalStorage {
               item.startDate.length > 2 ? "—" : ""
             } ${item.endDate}</p></span>
                   <div class="emp-sch-det">
-                    <h6 class="emp-work">${item.jobTitle}${
-              item.jobTitle.length > 2 ? "," : ""
+                    <h6 class="emp-work">${item.jobTitle} ${
+              item.jobTitle.length > 2 ? "AT" : ""
             } ${item.employer}</h6>
                     <ul class="emp-desc-list-con">
                     ${aboutMe.join("")}
@@ -273,7 +305,9 @@ class TemplatesLondonFillUpFromLocalStorage {
               item.startDate.length > 2 ? "—" : ""
             } ${item.endDate}</p></span>
               <div class="intern-sch-det">
-                <h6 class="intern-work">${item.jobTitle}, ${item.employer}</h6>
+                <h6 class="intern-work">${item.jobTitle} AT ${
+              item.employer
+            }</h6>
                 <ul class="intern-desc-list-con">
                   ${aboutMe.join("")}
                 </ul>
@@ -308,14 +342,24 @@ class TemplatesLondonFillUpFromLocalStorage {
 
       // IF REFERENCE DISPLAY REFERENCE
       if (checkForRefs) {
+        // LINE BEFORE REFS LINE
         document.querySelector(".refs-line").innerHTML = "";
         document.querySelector(
           ".refs-line"
         ).innerHTML = `<hr class="separate-lines" />`;
+
+        // LAST LINE
+        document.querySelector(".last-inline").innerHTML = "";
+        document.querySelector(
+          ".last-inline"
+        ).innerHTML = `<hr class="separate-lines" />`;
+
+        //
         document.querySelector(".refs-history").textContent = "REFERENCE";
       } else {
         document.querySelector(".refs-history").textContent = "";
         document.querySelector(".refs-line").innerHTML = "";
+        document.querySelector(".last-inline").innerHTML = "";
       }
 
       const allRefsListed = this.#getAllFormsFromLocalStorage().map((item) => {
@@ -381,7 +425,7 @@ class TemplatesLondonFillUpFromLocalStorage {
 
       // ADD MARKUP TO TEMPLATE
       templateAddress.innerHTML = markup;
-    }, 1000);
+    });
   }
 
   ///////// DOB POB DL NA SECTION
@@ -401,10 +445,10 @@ class TemplatesLondonFillUpFromLocalStorage {
       const markup4 = ` <p class="dateOfBirthPdf">Driving License</p> <p class="dateOfBirthPdf">${driversLicense}</p>`;
 
       if (
-        dateOfBirth.length > 0 ||
-        placeOfBirth.length > 0 ||
-        nationality.length > 0 ||
-        driversLicense.length > 0
+        dateOfBirth.length > 1 ||
+        placeOfBirth.length > 1 ||
+        nationality.length > 1 ||
+        driversLicense.length > 1
       ) {
         // <hr class="separate-lines" />
         document.querySelector(".first-line").innerHTML = "";
@@ -441,7 +485,7 @@ class TemplatesLondonFillUpFromLocalStorage {
       } else {
         templateDlParent.innerHTML = "";
       }
-    }, 1000);
+    });
   }
 }
 

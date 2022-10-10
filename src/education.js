@@ -87,12 +87,12 @@ const addMoreEducationMarkupFromLocalStorage = function () {
               <div class="start-end-date-div-edu">
                 <input
                   type="text"
-                  placeholder="MM / YYYY"
+                  placeholder="JAN 2008"
                   class="personal-d-input-1 per-det-inp start-end-date-inp-edu startdate-edu"
                   value="${item.startDate}">
                 <input
                   type="text"
-                  placeholder="MM / YYYY"
+                  placeholder="JUL 2009"
                   class="personal-d-input-1 per-det-inp start-end-date-inp-edu enddate-edu"
                   value="${item.endDate}">
               </div>

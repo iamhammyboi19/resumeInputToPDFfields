@@ -19,6 +19,8 @@
     <link rel="icon" type="image/x-icon" href="/resume-icon.jpeg" />
     <link href="src/inputStyles.css" rel="stylesheet" />
 
+    <!-- <script src="html2pdf.bundle.min.js"></script> -->
+
     <script defer src="src/inputScript.js" type="module"></script>
   </head>
   <body>
@@ -127,6 +129,7 @@
             <input
               type="text"
               class="personal-d-input-12 per-det-inp dateOfBirth"
+              placeholder="DD-MM-YYYY"
             />
           </div>
           <div class="hide-form-container hidden-form-container">
@@ -187,7 +190,7 @@
           </div>
           <textarea
             placeholder="e.g passionate science teacher with 8+ years of experience and record of..."
-            class="summary-input"
+            class="summary-input prof-summary-textfield"
             rows="10"
             cols="35"
             minlength="0"
@@ -324,7 +327,7 @@
       </div>
 
       <div class="template-con">
-        <div class="template-london">
+        <div class="template-london" id="template-london-pdf-format">
           <div class="template-contents">
             <h4 class="user-name"></h4>
             <p class="address-part"></p>
@@ -372,20 +375,20 @@
             </div>
 
             <span class="profile-line">
-              <hr class="separate-lines" />
+              <!-- <hr class="separate-lines" /> -->
             </span>
 
             <div class="link-template-div">
-              <h6 class="profile-temp-section">PROFILE</h6>
+              <h6 class="profile-temp-section"></h6>
               <p class="profile-temp-about">
-                Dedicated Medical Support Assistant with a proven track record
+                <!-- Dedicated Medical Support Assistant with a proven track record
                 of providing superior assistance to medical personnel for the
                 last ten years. Experienced in providing administrative support
                 to health care facilities and performing tasks such as
                 maintaining patient records, updating patient accounts, and
                 handling all patient and facility correspondence. Bringing forth
                 excellent customer service skills and an understanding of the
-                medical industry and important medical terminology.
+                medical industry and important medical terminology. -->
               </p>
             </div>
 
@@ -462,7 +465,7 @@
               <!-- <hr class="separate-lines" /> -->
             </span>
 
-            <h6 class="internship-history">INTERNSHIPS</h6>
+            <h6 class="internship-history"></h6>
 
             <div class="intern-temp-major-parent">
               <!-- <div class="intern-temp-det-con">
@@ -496,6 +499,10 @@
                 </p> -->
               </div>
             </div>
+
+            <span class="last-inline">
+              <!-- <hr class="separate-lines" /> -->
+            </span>
           </div>
         </div>
         <button class="download-pdf-btn">Download PDF</button>

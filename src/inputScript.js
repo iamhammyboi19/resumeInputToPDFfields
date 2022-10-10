@@ -90,6 +90,9 @@ const prePhraseArrowBtn = document.querySelector(".arrow-btn-con");
 const suggestionTexts = document.querySelectorAll(".suggestion-texts");
 const prePhraseCloseArrowBtn = document.querySelector(".close-arrow-btn-con");
 
+// prof-summary-textfield
+const profSummartText = document.querySelector(".prof-summary-textfield");
+
 // ------------------------------------------------------------------------------------
 
 //  form calendar part first calendar
@@ -146,6 +149,8 @@ const addRefsBtn = document.querySelector(".refs-div-add");
 const refsParentCon = document.querySelector(".refs-parent");
 // refs-div-add
 
+const downloadTemplateLondonBtn = document.querySelector(".download-pdf-btn");
+
 // ------------------------------------------------------------------------------------
 // ------------------------------------------------------------------------------------
 
@@ -169,6 +174,9 @@ if (calendarYearEdu) {
 
 const personalDetailsOnLoad =
   JSON.parse(localStorage.getItem("personalDetails")) || [];
+
+const profSumFromLocalStorage =
+  localStorage.getItem("professionalSummary") || "";
 
 window.addEventListener("load", function () {
   //
@@ -267,6 +275,8 @@ window.addEventListener("load", function () {
       "span"
     ).textContent = `Add one more employment`;
   }
+
+  profSummartText.textContent = profSumFromLocalStorage;
 });
 
 // ------------------------------------------------------------------------------------
@@ -1209,6 +1219,17 @@ internshipParentCon.addEventListener("click", function (e) {
 // ------------------------------------------------------------------------------------
 // ------------------------------------------------------------------------------------
 
+profSummartText.addEventListener("input", function (e) {
+  if (e.target.value.length > 0) {
+    localStorage.setItem("professionalSummary", e.target.value);
+  } else {
+    localStorage.setItem("professionalSummary", " ");
+  }
+});
+
+// ------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------
+
 // hiding positioned element clicking outing the element PROFESSIONAL
 
 // LOGIC
@@ -1246,6 +1267,19 @@ document.documentElement.addEventListener("click", showHideSuggestionBoxProf);
 
 // TEMPLATE LONDON SECTION
 new TemplatesLondonFillUpFromLocalStorage();
+
+// const pdfOptions = {
+//   filename: "resumeFile.pdf",
+// };
+
+// downloadTemplateLondonBtn.addEventListener("click", function () {
+//   const templateLondonPdfFormat = document.getElementById(
+//     "template-london-pdf-format"
+//   );
+//   html2pdf().set(pdfOptions).from(templateLondonPdfFormat).save();
+// });
+
+// html2pdf().set(pdfOptions).from(element).save();
 
 // ------------------------------------------------------------------------------------
 // ------------------------------------------------------------------------------------

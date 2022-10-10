@@ -855,7 +855,6 @@ h5 {
   right: 0;
   width: 50%;
   position: fixed;
-  z-index: -99;
 }
 
 .template-london {
@@ -936,6 +935,7 @@ h5 {
 
 .download-pdf-btn:hover {
   background-color: #1971c2;
+  cursor: pointer;
 }
 
 .links-name,
