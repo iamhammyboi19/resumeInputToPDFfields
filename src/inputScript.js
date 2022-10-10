@@ -1265,19 +1265,21 @@ document.documentElement.addEventListener("click", showHideSuggestionBoxProf);
 // ------------------------------------------------------------------------------------
 // ------------------------------------------------------------------------------------
 
+downloadTemplateLondonBtn.addEventListener("click", function () {
+  const templateLondonPdfFormat = document.getElementById(
+    "template-london-pdf-format"
+  );
+  // html2pdf(templateLondonPdfFormat);
+  html2pdf().from(templateLondonPdfFormat).save();
+  // html2pdf().set(pdfOptions).from(templateLondonPdfFormat).save();
+});
+
 // TEMPLATE LONDON SECTION
 new TemplatesLondonFillUpFromLocalStorage();
 
 // const pdfOptions = {
 //   filename: "resumeFile.pdf",
 // };
-
-// downloadTemplateLondonBtn.addEventListener("click", function () {
-//   const templateLondonPdfFormat = document.getElementById(
-//     "template-london-pdf-format"
-//   );
-//   html2pdf().set(pdfOptions).from(templateLondonPdfFormat).save();
-// });
 
 // html2pdf().set(pdfOptions).from(element).save();
 
