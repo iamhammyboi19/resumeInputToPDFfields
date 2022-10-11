@@ -1266,20 +1266,20 @@ document.documentElement.addEventListener("click", showHideSuggestionBoxProf);
 // ------------------------------------------------------------------------------------
 // ------------------------------------------------------------------------------------
 
-const pdfOptions = {
-  filename: `${formTitle.value}.pdf`,
-  image: { type: "jpeg", quality: 1 },
-  html2canvas: {
-    dpi: 192,
-    scale: 4,
-    width: 470,
-    letterRendering: true,
-    useCORS: true,
-  },
-  jsPDF: { unit: "in", format: "a4", orientation: "portrait" },
-};
-
 downloadTemplateLondonBtn.addEventListener("click", function () {
+  const pdfOptions = {
+    filename: `${formTitle.value}.pdf`,
+    image: { type: "jpeg", quality: 1 },
+    html2canvas: {
+      dpi: 192,
+      scale: 4,
+      width: 470,
+      letterRendering: true,
+      useCORS: true,
+    },
+    jsPDF: { unit: "in", format: "a4", orientation: "portrait" },
+  };
+
   const templateLondonPdfFormat = document.getElementById(
     "template-london-pdf-format"
   );
@@ -1292,4 +1292,3 @@ new TemplatesLondonFillUpFromLocalStorage();
 
 // ------------------------------------------------------------------------------------
 // ------------------------------------------------------------------------------------
-
