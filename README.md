@@ -2,9 +2,9 @@
 
 ###### About
 
-> This is available to use on desktop application as there is no media queries for the css yet to make it a responsive design
-> This first version would be hosted on netlify
-> I will implement node js authentications in the future because it uses just localStorage to save and retrieve your inputted details
+> This is available to use on desktop application as there is no media queries for the css yet to make it a responsive design.
+> This first version would be hosted on netlify.
+> I will implement node js authentications in the future because it uses just localStorage to save and retrieve your inputted details.
 > So even if you want to use on other computers your details would be available to use anywhere and continue updating
 
 ###### Usage
