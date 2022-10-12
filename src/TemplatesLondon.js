@@ -380,7 +380,7 @@ class TemplatesLondonFillUpFromLocalStorage {
       document
         .querySelector(".ref-temp-place")
         .insertAdjacentHTML("beforeend", allRefsListed.join(""));
-    });
+    }, 1000);
   }
 
   ///////// USERNAME AND WANTED JOB SECTION
@@ -425,7 +425,7 @@ class TemplatesLondonFillUpFromLocalStorage {
 
       // ADD MARKUP TO TEMPLATE
       templateAddress.innerHTML = markup;
-    });
+    }, 1000);
   }
 
   ///////// DOB POB DL NA SECTION
@@ -485,7 +485,7 @@ class TemplatesLondonFillUpFromLocalStorage {
       } else {
         templateDlParent.innerHTML = "";
       }
-    });
+    }, 1000);
   }
 }
 
