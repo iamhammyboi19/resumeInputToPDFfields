@@ -1,4 +1,4 @@
-## RESUME BUILDER WEB APP INSPIRED BY resume.io written in HTML, CSS and JAVASCRIPT.
+### RESUME BUILDER WEB APP INSPIRED BY resume.io written in HTML, CSS and JAVASCRIPT.
 
 ###### About
 
