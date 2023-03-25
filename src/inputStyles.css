@@ -1035,7 +1035,7 @@ h5 {
 .edu-sch-det,
 .emp-sch-det,
 .intern-sch-det {
-  width: 25.36rem;
+  max-width: 25.36rem;
 }
 
 .edu-city-temp,
@@ -1044,13 +1044,15 @@ h5 {
   font-size: 0.6rem;
   letter-spacing: 0.2px;
   font-weight: 300;
+  text-align: right;
 }
 
 .em-temp-det-con,
 .edu-temp-det-con,
 .intern-temp-det-con {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  column-gap: 1rem;
   margin-bottom: 1rem;
 }
 
