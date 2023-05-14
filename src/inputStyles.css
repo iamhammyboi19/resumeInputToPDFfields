@@ -889,8 +889,9 @@ h5 {
   cursor: pointer;
   transition: all 0.4s;
   position: absolute;
-  left: 17%;
-  bottom: 3%;
+  position: fixed;
+  left: 70%;
+  bottom: 5%;
   /* right: 14rem;
   top: 69rem; */
   cursor: pointer;
@@ -1217,6 +1218,11 @@ h5 {
     visibility: visible;
     opacity: 1;
   }
+
+  .download-pdf-btn {
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 
 /* @media(max-width:)  {} */
@@ -1235,11 +1241,9 @@ h5 {
     content: "";
   }
 
-  /* .download-pdf-btn {
-    right: 63%;
-    bottom: 20%;
-    transform: translateY(6%);
-  } */
+  .download-pdf-btn {
+    bottom: 5%;
+  }
 
   .div-and-form-con {
     padding: 1rem;
