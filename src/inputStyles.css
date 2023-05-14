@@ -861,8 +861,14 @@ h5 {
   background-color: #f1f3f5;
   /* height: 66.4rem;
   width: 45.6rem; */
-  max-width: 46.8rem;
-  height: 66.4rem;
+  /* width: 46.8rem;
+  height: 66.4rem; */
+  width: 468px;
+  height: 664px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
   border-radius: 0.5rem;
   margin: 2rem auto;
   cursor: pointer;
@@ -871,8 +877,10 @@ h5 {
 
 /* 2480 pixels x 3508  */
 .template-contents {
-  max-width: 46.8rem;
-  height: 66.4rem;
+  /* width: 46.8rem; */
+  width: 468px;
+  height: 664px;
+  /* height: 66.4rem; */
 }
 
 .download-pdf-btn {
@@ -1196,6 +1204,18 @@ h5 {
     margin: 1rem auto;
   }
 
+  .template-con {
+    height: 100vh;
+    padding: 1rem;
+    width: 100%;
+    top: 0;
+    right: 50%;
+    transform: translateX(50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .hidetemplatecon {
     display: none;
   }
@@ -1204,13 +1224,8 @@ h5 {
     left: 35%;
   }
 
-  .template-con {
-    height: 100vh;
-    padding: 1rem;
-    width: 100%;
-    top: 0;
-    right: 50%;
-    transform: translateX(50%);
+  .template-london {
+    margin: 0 auto;
   }
 
   .previewanddownloadbtn {
@@ -1239,6 +1254,20 @@ h5 {
   .previewanddownloadbtn span::after,
   .previewanddownloadbtn span::before {
     content: "";
+  }
+
+  .template-london {
+    transform: scale(0.7);
+    /*  */
+    width: 52rem;
+    height: 73.78rem;
+  }
+
+  .template-contents {
+    /* width: 468px;
+    height: 664px; */
+    width: 52rem;
+    height: 73.78rem;
   }
 
   .download-pdf-btn {
