@@ -3,4 +3,5 @@ rand.html
 contents.md
 donotuse.html
 node_modules
+.parcel-cache
 /node
