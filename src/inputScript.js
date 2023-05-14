@@ -1287,6 +1287,27 @@ downloadTemplateLondonBtn.addEventListener("click", function () {
   html2pdf().set(pdfOptions).from(templateLondonPdfFormat).save();
 });
 
+// previewbtn
+const previewbtn = document.querySelector(".previewanddownloadbtn");
+const previewbtnspan = document.querySelector(".previewanddownloadbtnspan");
+
+previewbtn?.addEventListener("click", function (e) {
+  if (!e.target.closest(".previewanddownloadbtn")) return;
+  // template-con div-con-for-form
+
+  document.querySelector(".template-con").classList.toggle("hidetemplatecon");
+  document.querySelector(".div-con-for-form").classList.toggle("hidden");
+  document.querySelector(".doctextoutline").classList.toggle("hidden");
+  document.querySelector(".formtextoutline").classList.toggle("hidden");
+
+  if (document.querySelector(".formtextoutline").classList.contains("hidden")) {
+    // previewanddownloadbtnspan
+    previewbtnspan.textContent = "Preview & Download";
+  } else {
+    previewbtnspan.textContent = "Back to editor";
+  }
+});
+
 // TEMPLATE LONDON SECTION
 new TemplatesLondonFillUpFromLocalStorage();
 

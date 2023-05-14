@@ -72,14 +72,14 @@ h5 {
 }
 
 .div-con-for-form {
-  margin: 1rem auto;
-  margin-left: 1rem;
+  margin: 1rem;
   max-width: 70rem;
   background-color: #fff;
   box-shadow: 0 3.2rem 6.4rem rgba(0, 0, 0, 0.06);
   padding: 8rem 5rem;
   border: 1px solid #e9ecef;
-  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .per-det-inp {
@@ -889,8 +889,11 @@ h5 {
   cursor: pointer;
   transition: all 0.4s;
   position: absolute;
-  right: 14rem;
-  top: 69rem;
+  left: 17%;
+  bottom: 3%;
+  /* right: 14rem;
+  top: 69rem; */
+  cursor: pointer;
 }
 
 .template-contents {
@@ -1087,6 +1090,30 @@ h5 {
 }
 /* #868e96 */
 
+/* online or offline */
+.onlineOrOffline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  margin-top: 2rem;
+}
+.onlineOfflineIcon {
+  font-size: 0.5rem;
+  color: #fff;
+}
+.online {
+  color: #2b8a3e;
+}
+.offline {
+  color: #c92a2a;
+}
+
+/* hidden */
+.hidden {
+  display: none;
+}
+
 /* ------------------------- link part ------------------------ */
 /* .link-detailsAndDeleteCon {
   display: grid;
@@ -1101,6 +1128,50 @@ h5 {
 .link-detailsAndDeleteCon:hover {
   cursor: pointer;
 } */
+
+.previewanddownloadbtn {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  gap: 0.5rem;
+  background-color: #339af0;
+  border: none;
+  border-radius: 5rem;
+  padding: 1.8rem 3rem;
+  cursor: pointer;
+  position: absolute;
+  position: fixed;
+  right: 2%;
+  bottom: 5%;
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.showpreviewanddownloadbtn {
+  pointer-events: visible;
+  visibility: visible;
+  opacity: 1;
+}
+
+.previewanddownloadbtn:hover {
+  background-color: #1971c2;
+  transition: all ease 0.3s;
+}
+
+.previewanddownloadbtn span {
+  font-size: 1.4rem;
+  font-weight: 550;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.doctextoutline,
+.formtextoutline {
+  font-size: 2.5rem;
+  color: #fff;
+  font-weight: 600;
+}
 /*  ------------------- hide few things ----------------------- */
 .hide-open-close-btn,
 .hidden {
@@ -1108,3 +1179,81 @@ h5 {
 }
 
 /* --------------------------------------------------------------------- */
+
+/* MEDIA QUERRIES */
+@media (max-width: 78.1875em) {
+  .div-and-form-con {
+    grid-template-columns: 1fr;
+  }
+
+  .div-con-for-form {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .form-title-con {
+    margin: 1rem auto;
+  }
+
+  .hidetemplatecon {
+    display: none;
+  }
+
+  .download-pdf-btn {
+    left: 35%;
+  }
+
+  .template-con {
+    height: 100vh;
+    padding: 1rem;
+    width: 100%;
+    top: 0;
+    right: 50%;
+    transform: translateX(50%);
+  }
+
+  .previewanddownloadbtn {
+    pointer-events: visible;
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+/* @media(max-width:)  {} */
+
+@media (max-width: 41.875em) {
+  html {
+    font-size: 56.25%;
+  }
+
+  .previewanddownloadbtn span {
+    display: none;
+  }
+
+  .previewanddownloadbtn span::after,
+  .previewanddownloadbtn span::before {
+    content: "";
+  }
+
+  /* .download-pdf-btn {
+    right: 63%;
+    bottom: 20%;
+    transform: translateY(6%);
+  } */
+
+  .div-and-form-con {
+    padding: 1rem;
+  }
+
+  .div-con-for-form {
+    padding: 5rem 2.5rem;
+  }
+
+  .main-form {
+    grid-template-columns: 1fr;
+  }
+}
+
+.showhidden {
+  display: block;
+}
