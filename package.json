@@ -1,0 +1,15 @@
+{
+  "name": "resume-builder-input-section",
+  "version": "1.0.0",
+  "description": "Responsive part to input and build your template",
+  "source": "indexInput.html",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build --dist-dir ./distributor"
+  },
+  "author": "iamhammyboi19",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.8.3"
+  }
+}
