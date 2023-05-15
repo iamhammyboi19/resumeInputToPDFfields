@@ -215,7 +215,7 @@ window.addEventListener("load", function () {
   // if (!addMoreEducationMarkupFromLocalStorage()) return;
   educationParentCon.insertAdjacentHTML(
     "beforeend",
-    addMoreEducationMarkupFromLocalStorage().join("")
+    addMoreEducationMarkupFromLocalStorage()?.join("") || ""
   );
   if (checkEducation) {
     addEducationBtn.querySelector(
@@ -227,7 +227,7 @@ window.addEventListener("load", function () {
   // if (!addMoreWebsiteLinkFromLocalStorageMarkup()) return;
   webSocialLinkParent.insertAdjacentHTML(
     "beforeend",
-    addMoreWebsiteLinkFromLocalStorageMarkup().join("")
+    addMoreWebsiteLinkFromLocalStorageMarkup()?.join("") || ""
   );
   if (checkWebLinks) {
     addSocialBtn.querySelector("span").textContent = `Add one more link`;
@@ -237,7 +237,7 @@ window.addEventListener("load", function () {
   // if (!addMoreSkillsFromLocalStorageMarkup()) return;
   skillsParentCon.insertAdjacentHTML(
     "beforeend",
-    addMoreSkillsFromLocalStorageMarkup().join("")
+    addMoreSkillsFromLocalStorageMarkup()?.join("") || ""
   );
   if (checkSkills) {
     addSkillsBtn.querySelector("span").textContent = `Add one more skill`;
@@ -247,7 +247,7 @@ window.addEventListener("load", function () {
   // if (!addMoreInternshipsFromLocalStorageMarkup()) return;
   internshipParentCon.insertAdjacentHTML(
     "beforeend",
-    addMoreInternshipsFromLocalStorageMarkup().join("")
+    addMoreInternshipsFromLocalStorageMarkup()?.join("") || ""
   );
   if (checkInternship) {
     addInternshipBtn.querySelector(
@@ -259,7 +259,7 @@ window.addEventListener("load", function () {
   // if (!addMoreRefsFromLocalStorageMarkup()) return;
   refsParentCon.insertAdjacentHTML(
     "beforeend",
-    addMoreRefsFromLocalStorageMarkup().join("")
+    addMoreRefsFromLocalStorageMarkup()?.join("") || ""
   );
   if (checkRefs) {
     addRefsBtn.querySelector("span").textContent = `Add one more reference`;
@@ -269,7 +269,7 @@ window.addEventListener("load", function () {
   // if (!addMoreEmploymentMarkupFromLocalStorage()) return;
   employmentParentCon.insertAdjacentHTML(
     "beforeend",
-    addMoreEmploymentMarkupFromLocalStorage().join("")
+    addMoreEmploymentMarkupFromLocalStorage()?.join("") || ""
   );
   if (checkEmployment) {
     addEmploymentBtn.querySelector(
@@ -678,7 +678,7 @@ addEmploymentBtn.addEventListener("click", function () {
   // AND DISPLAY ALL FORM OBJECT FROM LOCALSTORAGE
   employmentParentCon.insertAdjacentHTML(
     "beforeend",
-    addMoreEmploymentMarkupFromLocalStorage().join("")
+    addMoreEmploymentMarkupFromLocalStorage()?.join("") || ""
   );
 
   if (employmentParentCon.children.length > 0) {
@@ -790,7 +790,7 @@ addEducationBtn.addEventListener("click", function () {
 
   educationParentCon.insertAdjacentHTML(
     "beforeend",
-    addMoreEducationMarkupFromLocalStorage().join("")
+    addMoreEducationMarkupFromLocalStorage()?.join("") || ""
   );
 
   if (educationParentCon.children.length > 0) {
@@ -901,7 +901,7 @@ addSocialBtn.addEventListener("click", function () {
 
   webSocialLinkParent.insertAdjacentHTML(
     "beforeend",
-    addMoreWebsiteLinkFromLocalStorageMarkup().join("")
+    addMoreWebsiteLinkFromLocalStorageMarkup()?.join("") || ""
   );
 
   if (webSocialLinkParent.children.length > 0) {
@@ -969,7 +969,7 @@ addSkillsBtn.addEventListener("click", function () {
 
   skillsParentCon.insertAdjacentHTML(
     "beforeend",
-    addMoreSkillsFromLocalStorageMarkup().join("")
+    addMoreSkillsFromLocalStorageMarkup()?.join("") || ""
   );
 
   if (skillsParentCon.children.length > 0) {
@@ -1036,7 +1036,7 @@ addRefsBtn.addEventListener("click", function () {
 
   refsParentCon.insertAdjacentHTML(
     "beforeend",
-    addMoreRefsFromLocalStorageMarkup().join("")
+    addMoreRefsFromLocalStorageMarkup()?.join("") || ""
   );
 
   if (refsParentCon.children.length > 0) {
@@ -1125,7 +1125,7 @@ addInternshipBtn.addEventListener("click", function () {
 
   internshipParentCon.insertAdjacentHTML(
     "beforeend",
-    addMoreInternshipsFromLocalStorageMarkup().join("")
+    addMoreInternshipsFromLocalStorageMarkup()?.join("") || ""
   );
 
   if (internshipParentCon.children.length > 0) {
@@ -1296,6 +1296,9 @@ previewbtn?.addEventListener("click", function (e) {
   // template-con div-con-for-form
 
   document.querySelector(".template-con").classList.toggle("hidetemplatecon");
+  document
+    .querySelector(".download-pdf-btn")
+    .classList.toggle("hidetemplatecon");
   document.querySelector(".div-con-for-form").classList.toggle("hidden");
   document.querySelector(".doctextoutline").classList.toggle("hidden");
   document.querySelector(".formtextoutline").classList.toggle("hidden");

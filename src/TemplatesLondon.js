@@ -64,7 +64,7 @@ class TemplatesLondonFillUpFromLocalStorage {
       if (!this.#getAllFormsFromLocalStorage()) return;
 
       // CHECK IF THERE IS WEBLINK
-      const checkforWebLinks = this.#getAllFormsFromLocalStorage().find(
+      const checkforWebLinks = this.#getAllFormsFromLocalStorage()?.find(
         (items) => items.type === "webLinks"
       );
 
@@ -81,7 +81,7 @@ class TemplatesLondonFillUpFromLocalStorage {
       }
 
       // GET ALL WEBLINKS AND GENERATE MARKUP
-      const allLinks = this.#getAllFormsFromLocalStorage().map((item) => {
+      const allLinks = this.#getAllFormsFromLocalStorage()?.map((item) => {
         if (item.type === "webLinks") {
           return `<a href="${
             item.link.startsWith("https") ? item.link : `https://${item.link}`
@@ -93,7 +93,10 @@ class TemplatesLondonFillUpFromLocalStorage {
 
       templateLinkList.innerHTML = "";
 
-      templateLinkList.insertAdjacentHTML("beforeend", allLinks.join(""));
+      templateLinkList.insertAdjacentHTML(
+        "beforeend",
+        allLinks?.join("") || ""
+      );
 
       if (templateLinkList.lastChild) {
         templateLinkList.lastChild.textContent =
@@ -109,7 +112,7 @@ class TemplatesLondonFillUpFromLocalStorage {
       if (!this.#getAllFormsFromLocalStorage()) return;
 
       // CHECK IF THERE IS EMPLOYMENT
-      const checkforEmployment = this.#getAllFormsFromLocalStorage().find(
+      const checkforEmployment = this.#getAllFormsFromLocalStorage()?.find(
         (items) => items.type === "employment"
       );
 
@@ -127,10 +130,10 @@ class TemplatesLondonFillUpFromLocalStorage {
       }
 
       // EMPLOYMENT MARKUP
-      const allEmploymentHistory = this.#getAllFormsFromLocalStorage().map(
+      const allEmploymentHistory = this.#getAllFormsFromLocalStorage()?.map(
         (item) => {
           if (item.type === "employment") {
-            const aboutMe = item.about.split("\n").map((i) => {
+            const aboutMe = item.about.split("\n")?.map((i) => {
               return `<li class="emp-desc-list">${i}</li>`;
             });
 
@@ -144,7 +147,7 @@ class TemplatesLondonFillUpFromLocalStorage {
               item.jobTitle.length > 2 ? "AT" : ""
             } ${item.employer}</h6>
                     <ul class="emp-desc-list-con">
-                    ${aboutMe.join("")}
+                    ${aboutMe?.join("") || ""}
                     </ul>
                   </div>
                   <p class="emp-city-temp">${item.city}</p>
@@ -159,7 +162,7 @@ class TemplatesLondonFillUpFromLocalStorage {
 
       document
         .querySelector(".emp-temp-major-parent")
-        .insertAdjacentHTML("beforeend", allEmploymentHistory.join(""));
+        .insertAdjacentHTML("beforeend", allEmploymentHistory?.join("") || "");
     }, 1000);
   }
 
@@ -170,7 +173,7 @@ class TemplatesLondonFillUpFromLocalStorage {
       if (!this.#getItemsFromLocalStorage()) return;
 
       // CHECK IF THERE IS EDUCATION
-      const checkForEducation = this.#getAllFormsFromLocalStorage().find(
+      const checkForEducation = this.#getAllFormsFromLocalStorage()?.find(
         (items) => items.type === "education"
       );
 
@@ -187,10 +190,10 @@ class TemplatesLondonFillUpFromLocalStorage {
       }
 
       // EDUCATION
-      const allEducationHistory = this.#getAllFormsFromLocalStorage().map(
+      const allEducationHistory = this.#getAllFormsFromLocalStorage()?.map(
         (item) => {
           if (item.type === "education") {
-            const aboutMe = item.about.split("\n").map((i) => {
+            const aboutMe = item.about.split("\n")?.map((i) => {
               return `<li class="edu-desc-list">${i}</li>`;
             });
 
@@ -202,7 +205,7 @@ class TemplatesLondonFillUpFromLocalStorage {
                 <div class="edu-sch-det">
                   <h6 class="edu-work">${item.school}, ${item.degree}</h6>
                   <ul class="edu-desc-list-con">
-                    ${aboutMe.join("")}
+                    ${aboutMe?.join("") || ""}
                   </ul>
                 </div>
   
@@ -218,7 +221,7 @@ class TemplatesLondonFillUpFromLocalStorage {
 
       document
         .querySelector(".edu-temp-major-parent")
-        .insertAdjacentHTML("beforeend", allEducationHistory.join(""));
+        .insertAdjacentHTML("beforeend", allEducationHistory?.join("") || "");
     }, 1000);
   }
 
@@ -229,7 +232,7 @@ class TemplatesLondonFillUpFromLocalStorage {
       if (!this.#getItemsFromLocalStorage()) return;
 
       // CHECK IF THERE IS SKILLS
-      const checkForSkills = this.#getAllFormsFromLocalStorage().find(
+      const checkForSkills = this.#getAllFormsFromLocalStorage()?.find(
         (items) => items.type === "skills"
       );
 
@@ -245,7 +248,7 @@ class TemplatesLondonFillUpFromLocalStorage {
         document.querySelector(".skills-line").innerHTML = "";
       }
 
-      const allSkillsListed = this.#getAllFormsFromLocalStorage().map(
+      const allSkillsListed = this.#getAllFormsFromLocalStorage()?.map(
         (item) => {
           if (item.type === "skills") {
             return `
@@ -263,7 +266,7 @@ class TemplatesLondonFillUpFromLocalStorage {
 
       document
         .querySelector(".skills-list-level")
-        .insertAdjacentHTML("beforeend", allSkillsListed.join(""));
+        .insertAdjacentHTML("beforeend", allSkillsListed?.join("") || "");
     }, 1000);
   }
 
@@ -274,7 +277,7 @@ class TemplatesLondonFillUpFromLocalStorage {
       if (!this.#getItemsFromLocalStorage()) return;
 
       // CHECK IF THERE IS INTERNSHIP
-      const checkForInterships = this.#getAllFormsFromLocalStorage().find(
+      const checkForInterships = this.#getAllFormsFromLocalStorage()?.find(
         (items) => items.type === "internship"
       );
 
@@ -292,10 +295,10 @@ class TemplatesLondonFillUpFromLocalStorage {
       }
 
       // INTERNSHIPS
-      const allInternshipsHistory = this.#getAllFormsFromLocalStorage().map(
+      const allInternshipsHistory = this.#getAllFormsFromLocalStorage()?.map(
         (item) => {
           if (item.type === "internship") {
-            const aboutMe = item.about.split("\n").map((i) => {
+            const aboutMe = item.about.split("\n")?.map((i) => {
               return ` <li class="intern-desc-list">${i}</li>`;
             });
 
@@ -309,7 +312,7 @@ class TemplatesLondonFillUpFromLocalStorage {
               item.employer
             }</h6>
                 <ul class="intern-desc-list-con">
-                  ${aboutMe.join("")}
+                  ${aboutMe?.join("") || ""}
                 </ul>
               </div>
 
@@ -325,7 +328,7 @@ class TemplatesLondonFillUpFromLocalStorage {
 
       document
         .querySelector(".intern-temp-major-parent")
-        .insertAdjacentHTML("beforeend", allInternshipsHistory.join(""));
+        .insertAdjacentHTML("beforeend", allInternshipsHistory?.join("") || "");
     }, 1000);
   }
 
@@ -336,7 +339,7 @@ class TemplatesLondonFillUpFromLocalStorage {
       if (!this.#getItemsFromLocalStorage()) return;
 
       // CHECK IF THERE IS REFERENCE
-      const checkForRefs = this.#getAllFormsFromLocalStorage().find(
+      const checkForRefs = this.#getAllFormsFromLocalStorage()?.find(
         (items) => items.type === "refs"
       );
 
@@ -362,7 +365,7 @@ class TemplatesLondonFillUpFromLocalStorage {
         document.querySelector(".last-inline").innerHTML = "";
       }
 
-      const allRefsListed = this.#getAllFormsFromLocalStorage().map((item) => {
+      const allRefsListed = this.#getAllFormsFromLocalStorage()?.map((item) => {
         if (item.type === "refs") {
           return `
           <h6 class="ref-org">${item.refsFullName} ${
@@ -379,8 +382,8 @@ class TemplatesLondonFillUpFromLocalStorage {
 
       document
         .querySelector(".ref-temp-place")
-        .insertAdjacentHTML("beforeend", allRefsListed.join(""));
-    }, 1000);
+        .insertAdjacentHTML("beforeend", allRefsListed?.join("") || "");
+    });
   }
 
   ///////// USERNAME AND WANTED JOB SECTION
@@ -425,7 +428,7 @@ class TemplatesLondonFillUpFromLocalStorage {
 
       // ADD MARKUP TO TEMPLATE
       templateAddress.innerHTML = markup;
-    }, 1000);
+    });
   }
 
   ///////// DOB POB DL NA SECTION
@@ -485,7 +488,7 @@ class TemplatesLondonFillUpFromLocalStorage {
       } else {
         templateDlParent.innerHTML = "";
       }
-    }, 1000);
+    });
   }
 }
 
